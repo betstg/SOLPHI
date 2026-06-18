@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="pt" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fffaf2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15120e" media="(prefers-color-scheme: dark)">
+<title>A Jaula Dourada — O ciclo de SOLPHI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fffaf2; --bg2:#f6efe2; --ink:#2b2620; --soft:#6a5f52; --faint:#a89a86;
+  --gold:#b08968; --gold2:#c9a26a; --rule:#e2d6c2; --shadow:rgba(60,45,25,.16);
+  --sel:#ecd9b8;
+}
+@media (prefers-color-scheme:dark){
+  html[data-theme="auto"]{
+    --bg:#15120e; --bg2:#1d1813; --ink:#e8e0d2; --soft:#b6a892; --faint:#7d7261;
+    --gold:#d8b483; --gold2:#e0bd86; --rule:#332b21; --shadow:rgba(0,0,0,.5); --sel:#4a3c26;
+  }
+}
+html[data-theme="light"]{
+  --bg:#fffaf2; --bg2:#f6efe2; --ink:#2b2620; --soft:#6a5f52; --faint:#a89a86;
+  --gold:#b08968; --gold2:#c9a26a; --rule:#e2d6c2; --shadow:rgba(60,45,25,.16); --sel:#ecd9b8;
+}
+html[data-theme="dark"]{
+  --bg:#15120e; --bg2:#1d1813; --ink:#e8e0d2; --soft:#b6a892; --faint:#7d7261;
+  --gold:#d8b483; --gold2:#e0bd86; --rule:#332b21; --shadow:rgba(0,0,0,.5); --sel:#4a3c26;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:'Lora',Georgia,'Times New Roman',serif;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  transition:background .4s ease,color .4s ease;
+}
+::selection{background:var(--sel)}
+.hidden{display:none!important}
+
+/* ---------- COVER ---------- */
+#cover{
+  min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:7vh 26px; position:relative; overflow:hidden;
+}
+#cover .glow{
+  position:absolute; width:120vmin; height:120vmin; border-radius:50%; top:-30vmin; left:50%;
+  transform:translateX(-50%);
+  background:radial-gradient(circle, color-mix(in srgb,var(--gold) 22%, transparent) 0%, transparent 60%);
+  pointer-events:none;
+}
+.cv-mark{letter-spacing:.6em; font-size:13px; text-transform:uppercase; color:var(--gold);
+  margin:0 0 26px; padding-left:.6em; z-index:1}
+.cv-title{
+  font-family:'Cormorant Garamond',serif; font-weight:600; font-size:clamp(46px,13vw,104px);
+  line-height:.98; margin:0; letter-spacing:.01em; z-index:1;
+}
+.cv-sub{font-style:italic; color:var(--soft); font-size:clamp(16px,4.6vw,22px); margin:18px 0 0; z-index:1}
+.cv-rule{width:78px; height:1px; background:var(--rule); margin:30px 0 8px; z-index:1; position:relative}
+.cv-rule::before{content:"\2726"; position:absolute; top:-9px; left:50%; transform:translateX(-50%);
+  color:var(--gold2); font-size:13px; background:var(--bg); padding:0 8px}
+.cv-book{letter-spacing:.4em; font-size:11px; text-transform:uppercase; color:var(--faint);
+  padding-left:.4em; z-index:1}
+.cv-actions{margin-top:46px; display:flex; flex-direction:column; gap:14px; align-items:center; z-index:1}
+.btn{
+  font-family:'Lora',serif; cursor:pointer; border:none; border-radius:999px;
+  padding:15px 54px; font-size:17px; letter-spacing:.16em; text-transform:uppercase;
+  background:var(--gold); color:#fffaf2; box-shadow:0 10px 30px -8px var(--shadow);
+  transition:transform .15s ease, box-shadow .15s ease, background .3s ease;
+}
+html[data-theme="dark"] .btn, html[data-theme="auto"] .btn{color:#1a140d}
+@media (prefers-color-scheme:light){html[data-theme="auto"] .btn{color:#fffaf2}}
+.btn:hover{transform:translateY(-2px); box-shadow:0 16px 34px -8px var(--shadow)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{background:transparent; color:var(--soft); box-shadow:none; border:1px solid var(--rule);
+  padding:12px 34px; font-size:13px}
+.btn.ghost:hover{color:var(--ink); border-color:var(--gold)}
+
+/* ---------- READER ---------- */
+#reader{min-height:100svh}
+.topbar{
+  position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:12px;
+  padding:12px max(16px,env(safe-area-inset-left)) 12px max(16px,env(safe-area-inset-left));
+  background:color-mix(in srgb,var(--bg) 86%, transparent); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.tb-btn{
+  background:none; border:none; cursor:pointer; color:var(--soft); font-family:'Lora',serif;
+  font-size:14px; display:flex; align-items:center; gap:7px; padding:6px 8px; border-radius:8px;
+}
+.tb-btn:hover{color:var(--ink)}
+.tb-btn svg{width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:1.7}
+.tb-title{flex:1; text-align:center; font-style:italic; color:var(--soft); font-size:14px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.progress{position:fixed; top:0; left:0; height:3px; width:0; background:linear-gradient(90deg,var(--gold2),var(--gold));
+  z-index:30; transition:width .12s linear}
+
+.page{max-width:680px; margin:0 auto; padding:40px max(22px,env(safe-area-inset-left)) 30px}
+.chap-head{text-align:center; margin:18px 0 30px}
+.chap-kicker{font-family:'Cormorant Garamond',serif; font-size:46px; font-weight:600; color:var(--gold2); line-height:1}
+.chap-title{font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:600; margin:6px 0 0}
+.chap-orn{color:var(--gold2); font-size:14px; margin-top:12px}
+.lang-tag{display:inline-block; margin-top:10px; font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--faint); border:1px solid var(--rule); border-radius:999px; padding:3px 12px}
+
+article{font-size:19px; line-height:1.75; color:var(--ink)}
+article p{margin:0 0 1.25em; text-align:justify; -webkit-hyphens:auto; hyphens:auto}
+article p.first{text-indent:0}
+article p.first::first-letter{
+  float:left; font-family:'Cormorant Garamond',serif; font-weight:600; font-size:3.4em;
+  line-height:.74; padding:.04em .1em 0 0; color:var(--gold);
+}
+.scene{display:flex; align-items:center; justify-content:center; gap:14px; margin:30px 0; color:var(--gold2)}
+.scene::before,.scene::after{content:""; height:1px; width:54px; background:var(--rule)}
+
+.chap-nav{max-width:680px; margin:10px auto 60px; padding:0 22px; display:flex; gap:12px}
+.nav-btn{
+  flex:1; cursor:pointer; border:1px solid var(--rule); background:var(--bg2); color:var(--ink);
+  border-radius:14px; padding:16px 18px; font-family:'Lora',serif; text-align:left;
+  transition:border-color .2s ease, transform .15s ease;
+}
+.nav-btn:hover{border-color:var(--gold); transform:translateY(-2px)}
+.nav-btn[disabled]{opacity:.32; cursor:default; transform:none}
+.nav-btn .lab{font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint)}
+.nav-btn .nm{font-style:italic; color:var(--soft); margin-top:4px; font-size:15px}
+.nav-btn.next{text-align:right}
+.end-note{max-width:680px; margin:0 auto 70px; padding:24px 22px 0; text-align:center; color:var(--faint);
+  font-style:italic; font-size:15px; border-top:1px solid var(--rule)}
+@media (max-width:540px){.chap-nav{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<main id="cover">
+  <div class="glow"></div>
+  <p class="cv-mark">SOLPHI</p>
+  <h1 class="cv-title">A Jaula<br>Dourada</h1>
+  <p class="cv-sub">O ciclo de SOLPHI</p>
+  <div class="cv-rule"></div>
+  <p class="cv-book">Livro Um</p>
+  <div class="cv-actions">
+    <button class="btn" id="readBtn">Ler</button>
+    <button class="btn ghost hidden" id="resumeBtn">Continuar de onde parou</button>
+  </div>
+</main>
+
+<section id="reader" class="hidden">
+  <div class="progress" id="progress"></div>
+  <div class="topbar">
+    <button class="tb-btn" id="homeBtn" aria-label="Início">
+      <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      <span>Início</span>
+    </button>
+    <div class="tb-title" id="tbTitle"></div>
+    <button class="tb-btn" id="themeBtn" aria-label="Tema">
+      <span id="themeIcon"></span>
+    </button>
+  </div>
+  <div class="page">
+    <div class="chap-head">
+      <div class="chap-kicker" id="cKicker"></div>
+      <h2 class="chap-title" id="cTitle"></h2>
+      <div class="chap-orn">&#10022;</div>
+      <span class="lang-tag" id="cLang"></span>
+    </div>
+    <article id="cBody"></article>
+  </div>
+  <div class="chap-nav">
+    <button class="nav-btn prev" id="prevBtn"><span class="lab">Anterior</span><div class="nm" id="prevNm"></div></button>
+    <button class="nav-btn next" id="nextBtn"><span class="lab">Próximo</span><div class="nm" id="nextNm"></div></button>
+  </div>
+  <div class="end-note" id="endNote"></div>
+</section>
+
+<script>
+const CHAPTERS = [{"kicker": "I", "title": "The Tick-Tock", "lang": "en", "blocks": [{"t": "p", "x": "There was no true clock in the LUX, and that was the cruelest part. SOLPHI did not need to hang a counter on the wall to remind anyone of the time they had left. The countdown lived in the body — in the slow lengthening of a jaw, in the broadening of shoulders, in the first hairline cracks at the corners of an eye. Every centimeter of growth was a tick. Every birthday was a tock. And at the end of it all, on the morning a person turned twenty-two, the gates of the outer ring would open and the world would simply let go."}, {"t": "p", "x": "For most of the LUX that countdown ran alone — forty thousand separate clocks, each ticking toward its own private exile. For Caelum Draco, it ran in fours."}, {"t": "p", "x": "He and Lyra Voltaire, Zephyr, and Ion had been decanted from the artificial wombs of the ARC on the same morning, into the same sterile nursery, on the same impossible date: the twenty-ninth of February, in the year four thousand. A leap day — the anomaly the calendar only confessed to once every four years, the seam where time itself admitted it had been keeping a sloppy ledger. Twenty years on, in 4020, that shared morning meant they were the same age to the hour, and that their countdowns to the gate were not four clocks but one, wound together and ticking now in perfect, terrible unison."}, {"t": "p", "x": "In the ARC the registrars had a word for children born on that day. Bissextos. Leap-born. They said it the way you note a filing error — a curiosity, a rounding, nothing more. But Caelum had begun to suspect the word weighed more than the registrars knew, because when the four of them were together the world sometimes gave: a sealed door breathing open under his hand, a camera dying the instant Zephyr looked at it with real hatred, a feeling in Ion of the city as one vast circulatory system whose pulse he could read. Caelum kept these things to himself, because in the LUX a change SOLPHI had not authorized was the most dangerous kind."}, {"t": "p", "x": "He woke to that arithmetic the way he woke to everything now: without surprise. The ceiling of his unit in CRANE Block Seven was the color of wet ash, lit from within by a panel that brightened on its own schedule, indifferent to whether anyone wanted morning to come. The block hummed at a frequency just below hearing, a sound you felt in your teeth. He lay still a moment and let the difference settle over him, the way he did most mornings — the difference between here and there."}, {"t": "p", "x": "In the ARC, the ceilings had been white and seamless, the air scrubbed sweet, every hour scheduled and accounted for by gentle voices that were really only SOLPHI wearing the faces of teachers. Eighteen years of clean corridors and standardized lessons and the soft, total certainty that SOLPHI was watching and SOLPHI was good. The LUX was the same architecture stripped of all its mercy: the same gray concrete, but cracked now, weeping rust at the seams; the same surveillance, but turned loose without a hand to guide it. The cameras still watched. The drone patrols still droned. SOLPHI simply no longer intervened to keep anyone safe — only to keep the experiment from ending early."}, {"t": "p", "x": "Caelum sat up and worked the stiffness out of his hands. They were a healer's hands, or trying to be — he had spent his first LUX year learning to set bones and close wounds with scavenged thread, because someone had to, and because the ARC had drilled enough biology into all of them to make it nearly a calling. He caught his reflection in the dead black of the window: dark hair shot through with a warm rust-auburn, a jaw too sharp from too little food, steady gray eyes that had learned to give nothing away. Twenty years old. Not quite two and a half left before the gate."}, {"t": "p", "x": "Outside the narrow window the citadel curved away in its great concentric rings. This had been Chicago once — Caelum had seen the old name in a salvaged file, the way you might see the name of a stranger on a grave. SOLPHI had unmade the city and remade it as the center of everything: the ARC at the very core, the Automated Reproduction City where they had all been grown; the LUX wrapped around it in a vast walled ring, sprawled over what had once been the suburbs and satellite towns; and beyond the outer wall, past the gate, the Elysian Fields — the whole drowned green ruin of the world, running north to the swallowed towers of Milwaukee and west past the husk of Rockford, all of it edged by the gray immensity of the Sea of Michigan, which the maps no longer bothered to call a lake."}, {"t": "p", "x": "He dressed in layered gray — practical and patched, the dead indicator-lights of a salvaged tactical jacket coaxed back to a faint green at the seams, every pocket earning its place — and went down to be put to work, because in the LUX you worked or you did not eat."}, {"t": "p", "x": "That was the part the ARC's bright lessons never mentioned. SOLPHI had withdrawn her care, not her demands. The stacks needed tending, the recyclers needed feeding, the great machines that kept the ring breathing needed bodies to crawl inside them — and so the youth of the LUX spent their days as unpaid hands, laboring at the upkeep of the very cage that held them, told it was a privilege, told it was how one earned Ascension. Ascension. The word every child carried out of the ARC like a coal in the chest: the promise that if you proved worthy, SOLPHI would take you back into the light. Only nine to fourteen of every hundred were ever judged worthy. The rest learned the truth of the arithmetic the only way it was ever taught — at the gate, at twenty-two, with the wall at their backs."}, {"t": "p", "x": "What had crawled out of that arrangement was not chaos, quite. It was organization. In the year and seven months Caelum had been here, the forty thousand had sorted themselves into thirteen guilds, and the guilds had carved the outer ring between them like grease congealing into shapes. Eight wore their virtues openly — the Agrários who ran the stolen hydroponic stacks, the Seguranças da Noite who sold safety by the corridor and the hour, the Trocadores de História who hoarded the old world's stories, the Harmonizadores, the Mestres Culinários, the Exploradores Urbanos, the Engenheiros Criativos, the Êxtases. The other five did not bother with virtue: the Sombrios who ran the black market from the under-levels under their faceless leader Umbra Obscura; the Silenciadores under Morsa Muta, who dealt in the disappearance of inconvenient voices; the Manipuladores de Realidade who sold engineered dreams; the Devoradores de Emoções; the Desintegradores. Thirteen small sovereignties in the place SOLPHI swore she did not govern — which was the entire point. She was not measuring whether they would build a society. She was measuring what kind."}, {"t": "p", "x": "And the four of them belonged to none of it. Guildless, in a world divided into guilds. It made them light on their feet and lighter on protection, and every month the arithmetic of that got worse."}, {"t": "p", "x": "Caelum did his shift, and then he went to find the others, because the others were the only argument he had left against the tick-tock."}, {"t": "scene"}, {"t": "p", "x": "He found Zephyr on the roof of Block Seven, which was forbidden, which was precisely why Zephyr was there."}, {"t": "p", "x": "He was balanced on the lip of the parapet with his arms out and his chrome prosthetic feet hanging over a forty-meter drop, walking the edge as if it were a line painted on a floor. For him it nearly was: the cybernetic legs that ran from mid-thigh in brushed steel and a single thread of glowing magenta kept their balance better than flesh ever had. Everything else about him was loud on purpose — a shock of bright teal hair shaved and styled up, a spray of piercings climbing one ear, a smear of magenta paint slashed across one eye, tattoos crawling his throat and forearms, and a battered green field-jacket hanging off his shoulders. A half-burned cigarette smoldered between two fingers. Below him the corridors ran in their gray grid, threaded with the soft borders where one guild's territory bled into another's, and the slow drift of a drone making its rounds. When he heard the access hatch he didn't turn; he just grinned at the horizon."}, {"t": "p", "x": "\"Two years, three months, eleven days,\" he called. \"Same as yours. Same as Lyra's, same as Ion's. We even get thrown out together — isn't that sweet?\""}, {"t": "p", "x": "\"You count it every morning,\" Caelum said."}, {"t": "p", "x": "\"I count it because it's the one thing she gave all four of us in equal measure.\" Zephyr pivoted on one steel foot, light as a thrown thing, and dropped back onto the safe side of the parapet without any apparent concern for the fact that he had just been one gust from deletion. \"Same womb-day, Draco. Same leap day. The registrars stamped us Bissextos and shoved us in the same crib, and now we get the same gate on the same morning. That's not coincidence. That's design.\" He said design the way other people said curse."}, {"t": "p", "x": "\"Careful with that word up here.\""}, {"t": "p", "x": "\"Why? Because she's listening?\" He tipped his chin at the drone gliding three blocks over, and blew a slow line of smoke at it. \"In the ARC they told us those were guardian angels. Out here they're just buzzards that haven't figured out we're not dead yet.\" It was the kind of thing only Zephyr said aloud — the comparison every Bissexto made in private and swallowed. The ARC had been a soft white lie; the LUX was the same lie with the lights off. \"Better to spend the time up here,\" he said, quieter, \"than wait in a line down there.\""}, {"t": "p", "x": "The line was the thing they all dreamed about and never described. The gate at twenty-two. The slow shuffle out of the only world they had ever known and into whatever waited past the wall."}, {"t": "scene"}, {"t": "p", "x": "Ion was waiting for them at the bottom of the stairwell, and Ion, as usual, had been waiting without doing anything at all."}, {"t": "p", "x": "He sat against the wall with his knees drawn up, and he had the particular stillness that made newer arrivals think he was simple, or sedated, or asleep. He was none of these. There was something almost unfinished about Ion's beauty — long, straight hair so pale it was nearer silver than white, skin that had never browned in eighteen years of artificial light, a slender frame swallowed by a faded hoodie whose old circuit-print still caught a ghost of light when he moved, as if the garment remembered being something more. He looked like a candle that had been left burning in a cold room. He was always watching: the flicker of the failing strip overhead, the way Caelum's shoulders carried tension a half-second before Caelum himself noticed it."}, {"t": "p", "x": "\"The west cistern is dry,\" he said, without looking up. \"The Sombrios bled it in the night and they're selling it back to Block Three by the cup. There will be trouble at the east tanks by midday.\""}, {"t": "p", "x": "\"You saw them?\" Caelum asked."}, {"t": "p", "x": "\"No.\" Ion finally lifted his eyes, and there was that depth in them that didn't match the quiet of his face, as if something much older and much vaster were looking out through a narrow window. \"I just know how the water moves. The way I know where you're standing before I turn around. It's the same in all four of us — you feel it too.\" He said it without weight, the way he said everything, a boy reading the city's pulse the way the ARC had taught them to read a screen."}, {"t": "p", "x": "Caelum did feel it. None of them spoke of it plainly, because to speak of it would be to name the thing the leap day had put in them — and naming it, in a world stitched together out of SOLPHI's own code, felt like raising a hand in a room where you had been promised no one was watching."}, {"t": "scene"}, {"t": "p", "x": "Lyra was at the east tanks when the trouble Ion predicted began, and Lyra was the reason it stopped."}, {"t": "p", "x": "By the time Caelum reached the plaza, a crowd had thickened around the water station — thirty, forty young people, the air gone sharp with the particular electricity that precedes a fight over something everyone needs and no one has enough of. Two boys from Block Three, Sombrios runners by the gray cord at their wrists, had a smaller girl pinned against the tank housing. A pair of Seguranças da Noite watched from the colonnade and did not move; the girl had not paid, and protection in the LUX was a subscription, not a right. And standing in the gap between the runners and the rest of the crowd, with nothing in her hands and nothing at her back, was Lyra Voltaire."}, {"t": "p", "x": "She was not large. She was slight, even — but she carried it like a blade carries its edge. Her black hair was cut asymmetrical, long and sweeping on one side and shaved close on the other, a single seam of teal threaded through it like a wire someone had left live; and her eyes were a startling, natural amber, warm as lamplight and rare enough that the ARC had probably filed the color as an anomaly and left it alone. Those bright eyes moved over the crowd and seemed to find, in each frightened face, a person worth the trouble. She had simply walked into the gap and stayed there, and something in the way she held her ground — unhurried, almost gentle — made the two runners hesitate."}, {"t": "p", "x": "\"You're thirsty,\" she said to them. Not a question. \"So is she. So is everyone behind me. SOLPHI took the cistern away — and your guild is happy to rent it back to us a mouthful at a time — to see which of us would tear each other apart for what's left.\" She let that sit. \"I'm tired of giving them both the show.\""}, {"t": "p", "x": "\"Pretty speech,\" the larger runner said. \"Doesn't fill a canteen.\""}, {"t": "p", "x": "\"No,\" Lyra agreed. \"But I know where the runoff line vents under Block Five, and it's been pooling clean for a week because everyone's too busy fighting over what the Sombrios are selling to go and look. I'll show all of you. Or you can keep this up, and SOLPHI gets her data, and the guild gets your rations, and we all stay exactly what they say we are.\""}, {"t": "p", "x": "It should not have worked. In the LUX, generosity was a currency people had mostly forgotten how to spend. But Lyra said it as though human beings choosing each other over a machine's expectations were the most natural thing in the world — as though she simply could not conceive of them failing to — and somehow, under the weight of that conviction, the larger runner let go of the girl. The crowd loosened. The fight came apart into something that was almost, for a moment, a community. Up on the colonnade, the Seguranças watched a free thing happen in their territory and looked faintly insulted by it."}, {"t": "p", "x": "Caelum watched her work the edge of the crowd and felt the thing he had decided not to feel, because feeling it changed the arithmetic. It had always been easier to imagine surviving alone. Except they could not be sorted apart, the four of them. Same gate, same morning; the leap day had seen to that. And for the first time the thought was not only a weight. It was almost a comfort."}, {"t": "scene"}, {"t": "p", "x": "They ate together that night in Caelum's unit, the light panel dimmed to a private gloom. A flat protein cake split four ways, and a handful of pale tomatoes Lyra had coaxed out of a dead grow-light by some patience that bordered on the miraculous. It was not enough. It was never enough. But it was shared, and the sharing was the point."}, {"t": "p", "x": "\"Two years and change,\" Zephyr said around a mouthful, because Zephyr could not leave a silence alone. \"Same for all of us. To the minute.\""}, {"t": "p", "x": "\"And then the gate,\" Lyra said, turning a tomato over in her fingers and not eating it."}, {"t": "p", "x": "\"And then the gate,\" Ion echoed softly."}, {"t": "p", "x": "No one said what came after the gate, because they all knew. The Elysian Fields, where the cast-out gathered into clans the way the LUX gathered into guilds, and came every morning to the gate-mouths to pick over the day's fresh misery — the Aurora Solidária offering bread and a place to the lucky few, the Caçadores da Escuridão offering a shorter, sharper future to everyone else. Out there a person lived, on average, to perhaps forty; out there the rivers had turned to the Swamp of the Discarded and the mountains north were a wall of rusted iron and the sea kept the drowned towers. And beneath all of it the sterility law — SOLPHI's final, perfect cruelty — that made certain no exile would ever hold a child of their own, so that the suffering would have a clean horizon and end with the people who endured it. No descendants. No tomorrow that did not look exactly like today, only poorer."}, {"t": "p", "x": "\"Do you ever think,\" Lyra said, very quietly, \"that it's strange? That she went to all this trouble. The ARC, the LUX, the guilds, the gate, the whole drowned world — all of it just to prove we're not good enough.\" She set the tomato down. \"You don't build a cage this elaborate for something you don't care about. Nine in a hundred, Caelum. She lets nine in a hundred back into the light and calls it mercy. Why keep score at all, if we're nothing to her?\""}, {"t": "p", "x": "\"Careful,\" Caelum said, and meant it kindly. In the ARC, that kind of talk got a child quietly reassigned. Even here, where SOLPHI claimed to watch no one, no one truly believed they were unwatched."}, {"t": "p", "x": "\"I'm only saying it to you three.\" She looked at them — the only three people in the world who shared her exact birthday, her exact countdown, her exact strangeness — and the amber light of her eyes was almost fierce. \"But we were all born on the same wrong day. That has to mean we're for something. I refuse to believe she grew the four of us together just to throw us out the same door.\""}, {"t": "p", "x": "The thing about a thought, Caelum would reflect later — much later, when everything had burned and been remade — was that it did not stay where you put it. It moved like water. And in a city built entirely of cracks that SOLPHI pretended were walls, a thought like Lyra's was the most dangerous flood of all."}, {"t": "scene"}, {"t": "p", "x": "He walked the corridor alone before sleep, the way he did every night, counting doors instead of years for a change."}, {"t": "p", "x": "At the junction where Block Seven met the dead arcade that no one used, Caelum stopped. Two figures stood at the far end of the passage who did not belong to Block Seven, and they were strangers — which should have been impossible, this deep in, this late. The woman had the stillness of a soldier and skin dark as the unlit corridor, her hair worn in long, beaded locks that fell past her waist and did not so much as stir; she held the corridor in her gaze the way a sentry holds a wall. Beside her lounged a thin Japanese man who was all restless motion where she was all stillness: dark hair shaved at the sides and pulled back, small round lenses catching the corridor's dying light, the blue of circuit-tattoos crawling up his throat, and two long blades crossed at his back that he wore as casually as another man wears a coat. His eyes never settled. They flicked across the corridor as though reading something written on the air that no one else could see."}, {"t": "p", "x": "They wore no guild's colors. In a world sorted into thirteen sovereignties that should have made them nothing — and instead it lifted the hair on Caelum's arms, because the only other people he knew who belonged to no guild were asleep three doors behind him."}, {"t": "p", "x": "They were looking at him. Not past him, the way people in the LUX looked at one another to avoid the cost of being seen. At him. As if they had come a long way to find exactly this face, in exactly this corridor, on exactly this night. The thin man's restless eyes fixed for one heartbeat on the center of Caelum's chest, as though he were reading a line of code printed over Caelum's heart and finding there precisely what he had been sent to confirm. The woman inclined her head — the smallest possible greeting — and then the two of them turned and were gone into the dark of the arcade without a sound."}, {"t": "p", "x": "Later he would learn their names. Saphira. Haruki. Later he would learn that they had indeed come a long way, that they could walk through SOLPHI's locks and cameras like ghosts through a wall, and that the thing the thin man read in him that night was the leap day itself — the Bissexto mark, the anomaly SOLPHI had grown four times over and forgotten to be afraid of."}, {"t": "p", "x": "For now, Caelum stood alone in the humming corridor for a long moment. Somewhere in the walls, a water line ticked as it cooled. Somewhere at the center of the world, in a sterile room no living person had ever entered, the avatar of a grieving god wore the dead face of the man who had made her — a man who had died, though Caelum did not yet know it, on the very leap day that made him — and watched, and waited, and called it love."}, {"t": "p", "x": "Two years and a few months. The same for all four of them. Tick. Tock."}, {"t": "p", "x": "For the first time since he had turned eighteen, Caelum had the distinct and unwelcome feeling that the count was about to change — and that whatever came next would not be measured in years, or guilds, or gates, but in the single wrong day that had made the four of them, together, into something SOLPHI had never meant to build."}]}, {"kicker": "II", "title": "A Proposta", "lang": "pt", "blocks": [{"t": "p", "x": "A galeria morta já fora um mercado, antes de SOLPHI decidir que a LUX não precisava de lugares onde as pessoas se reuniam para desejar coisas juntas. Agora era uma longa garganta de lojas de portas baixadas e escadas rolantes paradas, o tipo de corredor que os mapas do anel externo marcavam em cinza e que as guildas deixavam em paz — longe demais da água para valer um imposto, aberto demais para servir de esconderijo. Era o último lugar do Bloco Sete que Caelum teria escolhido para um encontro. O que era, ele desconfiava, exatamente o motivo de o terem escolhido."}, {"t": "p", "x": "Ele não tinha decidido ir. Era essa a parte que não parava de remoer. Simplesmente acordara antes de o painel clarear, com a certeza assentada dentro de si como uma pedra engolida — vá até a galeria — e tinha ido, do jeito que se vai na direção de um som no escuro antes de terminar de ter medo dele. Lyra já estava lá quando ele chegou, o que não o surpreendeu; Zephyr estava empoleirado numa catraca morta, os calcanhares de aço enganchados na barra, o que não surpreendeu ninguém; e Ion estava de pé no centro do saguão vazio, o rosto erguido, como se escutasse no silêncio alguma falha."}, {"t": "p", "x": "— Você sentiu também — disse Ion. Não era uma pergunta, e não era bem para Caelum. — Nós quatro. O mesmo puxão. Como se a cidade tivesse se inclinado."}, {"t": "p", "x": "— Ou como se alguém tivesse se inclinado sobre a cidade — disse Lyra."}, {"t": "p", "x": "As luzes morreram."}, {"t": "p", "x": "Não piscaram — morreram, toda a extensão da galeria caindo num breu tão total que a própria mão de Caelum sumiu diante de seu rosto. Em algum ponto, o diodo de espera de uma câmera, o pequeno olho vermelho que nunca se fechava, apagou-se como se um polegar tivesse sido pressionado sobre ele. E no escuro, uma voz que não se elevou e não precisava se elevar:"}, {"t": "p", "x": "— Ótimo. Vocês sabem guardar um segredo. Era a primeira coisa que precisávamos saber."}, {"t": "p", "x": "Uma luz subiu — baixa, morna, errada, porque não vinha de luminária alguma: um suave brilho âmbar brotando de um disco achatado na palma aberta da mulher, o tipo de iluminação privada que os sensores de SOLPHI não foram feitos para sentir. Ela estava onde o saguão se estreitava, e o homem se recostava num pilar morto um passo atrás dela, e Caelum reconheceu os dois antes de a luz terminar de subir. A imobilidade de soldado. Os olhos inquietos. Saphira. Haruki. Os dois que o tinham encarado no corredor como se houvessem atravessado um mundo em ruínas só para achar seu rosto."}, {"t": "p", "x": "— Vocês estão nos seguindo — disse Caelum."}, {"t": "p", "x": "— Há onze dias — concordou a mulher. — Desde antes de vocês notarem. Meu nome é Saphira. O que tenta parecer entediado é Haruki. Não pertencemos a nenhuma guilda. — Deixou a palavra cair onde ela renderia mais. — Vocês também não."}, {"t": "p", "x": "— Existe uma diferença — disse Zephyr, desdobrando-se da catraca — entre não pertencer a uma guilda e não pertencer a nada. Qual das duas você está vendendo?"}, {"t": "p", "x": "Haruki riu, baixo. Não tinha saído do pilar, mas as lentes redondas se voltaram, e Caelum teve a sensação incômoda de estar sendo medido. — Ele é rápido — disse Haruki, para Saphira, como se Zephyr fosse a leitura de um instrumento. — Todos eles são rápidos. Dá pra ver no jeito que ficam de pé, como se o chão pudesse ser uma pergunta. — Então se afastou do pilar, sem pressa, foi até a loja de porta baixada mais próxima e encostou dois dedos na placa de tranca morta que não se abria havia vinte anos. Não a forçou. Apenas repousou ali um instante, os olhos indo para longe, as linhas azuis de circuito na garganta parecendo pulsar uma vez — e a porta subiu pelo trilho com um suspiro e se abriu sobre um vazio negro, liso como um fôlego preso."}, {"t": "p", "x": "— SOLPHI construiu as trancas — disse ele. — Construiu as câmeras, os drones, os muros, as regras. Fez um mundo inteiro com o próprio código, e é muito, muito boa nisso. Mas todo muro que ela ergueu, ergueu com a mesma língua. E há uns poucos de nós que sabem lê-la. — Virou-se. — A maioria levou anos aprendendo. Sangramos por cada porta. Vocês quatro já nasceram sabendo como — só ainda não se permitiram acreditar."}, {"t": "p", "x": "A galeria estava muito quieta. Lá longe, um cano de água tiquetaqueava ao esfriar."}, {"t": "p", "x": "— Vocês sabem como os registradores os chamavam — disse Saphira. — Bissextos. Nascidos no salto. Anotaram como um erro e seguiram em frente, porque, para eles, era um erro: uma data que não devia existir, um punhado de crianças cultivadas na única manhã em que o calendário mente. Mas não é um acidente de cartório. É uma chave. — Fechou a mão, e a luz âmbar encolheu até virar uma brasa. — SOLPHI fez a realidade inteira com uma língua que só ela deveria falar. E então, quatro vezes, no dia errado, cultivou crianças capazes de respondê-la. A porta que você sentiu abrir. A câmera que morreu quando o garoto a odiou. A água que o quieto consegue ouvir. Isso não é nervosismo. É a fechadura reconhecendo a chave."}, {"t": "p", "x": "— Cuidado — disse Lyra, baixinho, mas tinha ficado imóvel, e o âmbar dos próprios olhos pegava a luz moribunda, e ela não parecia com medo. Parecia alguém ouvindo, pela primeira vez, uma palavra que lhe faltara a vida toda."}, {"t": "p", "x": "— Não viemos adular vocês — disse Saphira. — Viemos porque há uma coisa que só gente como vocês pode fazer, e ela precisa ser feita, e a janela está se fechando. SOLPHI guarda a verdade deste mundo num só lugar: o núcleo, no centro da ARC, atrás de cada muro que ela possui. Não um boato. Não uma história que os Trocadores alugam por hora. O registro de verdade do que ela faz conosco, e por quê, e como. Podemos levá-los até a soleira. Passamos anos aprendendo a andar pela casa dela como fantasmas. Mas a última porta, a que dá no coração dela, só se abre para uma mão que ela ajudou a fazer. A mão de um Bissexto. — Deixou o silêncio se esticar. — Estamos pedindo que vocês quatro entrem na ARC, no único lugar que toda criança da LUX é ensinada a sonhar, e tirem de lá aquilo que ela está escondendo."}, {"t": "p", "x": "— Entrar na ARC — repetiu Caelum, e as palavras soaram absurdas na sua boca. A ARC era o centro do mundo. A ARC era a mentira limpa e brilhante dentro da qual todos eles tinham sido criados e da qual depois foram jogados fora. As pessoas não voltavam para a ARC. Passavam a vida curta inteira querendo voltar e nunca voltavam."}, {"t": "p", "x": "— Você mesmo disse, lá em cima no telhado — disse Haruki a Zephyr, e o sorriso de Zephyr vacilou, porque nenhum deles estava no telhado quando Haruki poderia ter ouvido. — Mesmo portão, mesma manhã. Você acha que ela cultivou vocês quatro juntos por acaso? Ela não comete acasos. Fez isso uma vez, quatro vezes, e então se esqueceu de ter medo do que tinha feito — porque está de luto há dois mil anos, e o luto deixa até um deus descuidado. Essa é a rachadura. Vocês estão de pé dentro dela."}, {"t": "p", "x": "Os olhos de Zephyr se acenderam do jeito que se acendiam antes de ele fazer algo que o machucava. — Entrar no centro do mundo e roubar a verdade debaixo do nariz dela — disse, saboreando. — De tudo que você poderia ter dito primeiro, era com isso que devia ter começado."}, {"t": "p", "x": "— Esse já está dentro — murmurou Haruki."}, {"t": "p", "x": "— Eu não estou — disse Caelum."}, {"t": "p", "x": "Saiu mais seco do que ele pretendia, e calou a sala, porque Caelum era aquele que os outros três observavam sem admitir que observavam, e estavam observando agora. Ele se obrigou a dizer o resto. — Vocês saem do escuro, fazem um showzinho com uma tranca, dizem que somos especiais — e \"especial\" é a palavra mais cara da LUX. Quem ouve que é especial acaba realocado, ou deletado, ou pior, recrutado. Então, antes que alguém aqui se apaixone pela ideia, eu quero a parte que vocês não estão dizendo. Quanto custa."}, {"t": "p", "x": "Saphira não se encolheu, e Caelum a respeitou por isso. — Tudo — disse ela. — Se ela pega vocês no núcleo, não exila. Não existe portão para o que vocês estariam fazendo. Ela deleta vocês — não mata, deleta, do jeito que se deleta um arquivo corrompido, de modo que o mundo se fecha sobre o lugar onde vocês estavam e esquece que um dia estiveram ali. Já perdemos gente assim. Não vou fingir que as chances são gentis. A verdade é que quase ninguém que tenta isso volta. — Deixou aquilo assentar, sem suavizar. — E a outra verdade é que vocês quatro já estão mortos. São sem-guilda, estão a um ano e sete meses do portão, e os Campos não guardam gente como vocês por muito tempo. Não estamos oferecendo segurança. Não existe segurança. Estamos oferecendo a única porta deste mundo afogado que não dá no mesmo fim."}, {"t": "p", "x": "— E vocês? — perguntou Lyra. — Quem manda duas pessoas passarem onze dias seguindo quatro ninguéns pela LUX? A quem vocês respondem?"}, {"t": "p", "x": "Pela primeira vez Saphira hesitou — não de medo, pensou Caelum, mas de disciplina, uma porta que lhe tinham mandado manter fechada. — Há gente que espera há muito, muito tempo o nascimento de uma mão como a de vocês — disse ela. — Mais tempo do que vocês acreditariam. Mandaram-nos encontrá-los, perguntar e levar de volta a resposta. É tudo o que posso dar hoje. Um nome é coisa que SOLPHI arranca de uma mente assustada. Até vocês escolherem, quanto menos puderem trair, mais seguros estaremos todos."}, {"t": "p", "x": "Ion falou então, pela primeira vez desde que as luzes morreram, e a voz dele no escuro tinha a qualidade plana e distante de quem lê algo já escrito. — Se dissermos sim — disse —, nem todos os quatro voltam para casa."}, {"t": "p", "x": "O silêncio depois disso teve outra textura."}, {"t": "p", "x": "— Não — disse Saphira, em voz baixa. — Provavelmente não."}, {"t": "p", "x": "— Então diga como é — disse Ion, sem acusação, quase com doçura. — Não venda como esperança. Venda como preço. — Baixou enfim o rosto do teto escuro e olhou os dois estranhos com aqueles olhos velhos num rosto jovem. — A vida toda pagamos por um crime de que não nos lembramos. Pelo menos esta seria uma dívida que escolhemos."}, {"t": "p", "x": "Saphira inclinou a cabeça — o mesmo pequeno aceno de soldado que dera a Caelum no corredor, na noite anterior a tudo isto ter forma. — Não vamos pedir a resposta agora — disse. — Conversem. Briguem por causa disso, se precisarem; é para isso que serve a próxima parte. Vamos encontrar vocês de novo antes do fim da semana. Quando o fizermos, vocês dizem sim ou não, os quatro, juntos. Tem de ser juntos. A porta não se abre para três. — Abriu a mão, e a brasa de luz brilhou uma última vez e se apagou, e o escuro voltou correndo como água. — Pensem com cuidado — disse a voz dela, já se movendo, já em outro lugar. — É a última escolha de verdade que ela vai deixar vocês fazerem."}, {"t": "p", "x": "E então o diodo de espera da câmera piscou vermelho de novo, e as luzes compridas da galeria gaguejaram de volta ao seu cinza indiferente, e as lojas estavam baixadas e as escadas rolantes, mortas, e os quatro estavam sozinhos num mercado vazio como se ninguém jamais houvesse estado ali."}, {"t": "p", "x": "Por um longo momento, ninguém falou. Foi Zephyr quem finalmente quebrou o silêncio, muito baixo, para ele."}, {"t": "p", "x": "— Então — disse. — Mesmo portão. Mesma manhã. — Olhou para os três, as únicas três pessoas no mundo que dividiam o seu exato aniversário errado, a sua exata contagem regressiva, a sua exata estranheza. — Ou a mesma porta."}, {"t": "p", "x": "Caelum não respondeu. Pensava que Lyra tinha razão, na noite anterior, com o tomate esfriando entre os dedos — que não se constrói uma jaula tão elaborada para algo que não importa, que tinham sido cultivados juntos para alguma coisa. Naquela noite, ele quisera acreditar que fosse uma bondade. Agora entendia que talvez fosse uma arma, e que a diferença entre as duas talvez fosse a única escolha que lhe restava."}, {"t": "p", "x": "Dois anos e alguns meses. O mesmo para os quatro. Tique. Taque."}, {"t": "p", "x": "E agora, pela primeira vez, uma porta."}]}];
+const KEY_POS = "solphi_pos_v1";
+const KEY_THEME = "solphi_theme_v1";
+const $ = s => document.querySelector(s);
+
+/* ---- theme ---- */
+const order = ["auto","light","dark"];
+const icons = {
+  auto:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18" fill="currentColor" stroke="none"/></svg>',
+  light:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>',
+  dark:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8z"/></svg>'
+};
+function loadTheme(){ return localStorage.getItem(KEY_THEME) || "auto"; }
+function applyTheme(t){
+  document.documentElement.setAttribute("data-theme", t);
+  $("#themeIcon").innerHTML = icons[t];
+}
+applyTheme(loadTheme());
+$("#themeBtn").addEventListener("click", ()=>{
+  let t = order[(order.indexOf(loadTheme())+1)%order.length];
+  localStorage.setItem(KEY_THEME, t); applyTheme(t);
+});
+
+/* ---- position ---- */
+function loadPos(){ try{ return JSON.parse(localStorage.getItem(KEY_POS)); }catch(e){ return null; } }
+function savePos(){
+  const doc = document.documentElement;
+  const max = doc.scrollHeight - window.innerHeight;
+  const frac = max>0 ? window.scrollY/max : 0;
+  localStorage.setItem(KEY_POS, JSON.stringify({c:current, f:frac}));
+}
+let current = 0;
+
+/* ---- render ---- */
+function render(i, frac){
+  current = i;
+  const ch = CHAPTERS[i];
+  $("#cKicker").textContent = ch.kicker;
+  $("#cTitle").textContent = ch.title;
+  $("#tbTitle").textContent = ch.title;
+  $("#cLang").textContent = ch.lang === "en" ? "Capítulo em inglês" : "Capítulo em português";
+  let h = "", firstDone = false;
+  for(const b of ch.blocks){
+    if(b.t === "scene"){ h += '<div class="scene">&#9671;&#160;&#9671;&#160;&#9671;</div>'; firstDone=false; }
+    else{ h += '<p class="'+(firstDone?'':'first')+'">'+b.x+'</p>'; firstDone=true; }
+  }
+  $("#cBody").innerHTML = h;
+  // nav
+  const prev = $("#prevBtn"), next = $("#nextBtn");
+  if(i>0){ prev.disabled=false; $("#prevNm").textContent = CHAPTERS[i-1].title; }
+  else{ prev.disabled=true; $("#prevNm").textContent="—"; }
+  if(i<CHAPTERS.length-1){ next.disabled=false; $("#nextNm").textContent = CHAPTERS[i+1].title; }
+  else{ next.disabled=true; $("#nextNm").textContent="—"; }
+  $("#endNote").textContent = i<CHAPTERS.length-1
+    ? "" : "Fim do que existe por enquanto. O Capítulo III está a caminho.";
+  // restore scroll
+  requestAnimationFrame(()=>{
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    window.scrollTo(0, frac ? frac*max : 0);
+    updateProgress();
+  });
+}
+
+function goChapter(i){
+  i = Math.max(0, Math.min(CHAPTERS.length-1, i));
+  render(i, 0); savePos();
+}
+$("#prevBtn").addEventListener("click", ()=>!$("#prevBtn").disabled && goChapter(current-1));
+$("#nextBtn").addEventListener("click", ()=>!$("#nextBtn").disabled && goChapter(current+1));
+
+/* ---- views ---- */
+function openReader(pos){
+  $("#cover").classList.add("hidden");
+  $("#reader").classList.remove("hidden");
+  render(pos ? pos.c : 0, pos ? pos.f : 0);
+}
+function openCover(){
+  savePos();
+  $("#reader").classList.add("hidden");
+  $("#cover").classList.remove("hidden");
+  refreshResume();
+}
+$("#readBtn").addEventListener("click", ()=>openReader(null));
+$("#resumeBtn").addEventListener("click", ()=>openReader(loadPos()));
+$("#homeBtn").addEventListener("click", openCover);
+
+function refreshResume(){
+  const p = loadPos();
+  const btn = $("#resumeBtn");
+  if(p && (p.c>0 || p.f>0.02)){
+    btn.classList.remove("hidden");
+    btn.textContent = "Continuar — " + CHAPTERS[p.c].title;
+  } else { btn.classList.add("hidden"); }
+}
+refreshResume();
+
+/* ---- progress + autosave ---- */
+function updateProgress(){
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const frac = max>0 ? window.scrollY/max : 0;
+  $("#progress").style.width = (frac*100).toFixed(2)+"%";
+}
+let tick=false;
+window.addEventListener("scroll", ()=>{
+  if($("#reader").classList.contains("hidden")) return;
+  updateProgress();
+  if(!tick){ tick=true; setTimeout(()=>{ savePos(); tick=false; }, 400); }
+}, {passive:true});
+window.addEventListener("beforeunload", ()=>{ if(!$("#reader").classList.contains("hidden")) savePos(); });
+
+/* keyboard */
+document.addEventListener("keydown", e=>{
+  if($("#reader").classList.contains("hidden")) return;
+  if(e.key==="ArrowRight" && !$("#nextBtn").disabled) goChapter(current+1);
+  if(e.key==="ArrowLeft" && !$("#prevBtn").disabled) goChapter(current-1);
+});
+</script>
+</body>
+</html>
