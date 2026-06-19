@@ -129,6 +129,19 @@ article p.first::first-letter{
 .end-note{max-width:680px; margin:0 auto 70px; padding:24px 22px 0; text-align:center; color:var(--faint);
   font-style:italic; font-size:15px; border-top:1px solid var(--rule)}
 @media (max-width:540px){.chap-nav{flex-direction:column}}
+
+/* ---------- READING BOOKMARK ---------- */
+article p{position:relative}
+article p.bm::before{content:""; position:absolute; left:-22px; top:.18em; bottom:.18em; width:3px;
+  border-radius:3px; background:var(--gold); box-shadow:0 0 12px -1px var(--gold)}
+.bm-tag{position:absolute; left:-22px; top:0; transform:translateY(-128%);
+  font-family:'Lora',serif; font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--gold); white-space:nowrap; background:var(--bg); padding:3px 10px;
+  border:1px solid var(--rule); border-radius:999px; box-shadow:0 6px 18px -8px var(--shadow)}
+.bm-fade{animation:bmFade 6s ease forwards}
+@keyframes bmFade{0%,68%{opacity:1}100%{opacity:0}}
+#markBtn.has-mark svg{fill:var(--gold); stroke:var(--gold)}
+@media (max-width:560px){article p.bm::before{left:-12px} .bm-tag{left:-12px}}
 </style>
 </head>
 <body>
@@ -154,6 +167,9 @@ article p.first::first-letter{
       <span>Início</span>
     </button>
     <div class="tb-title" id="tbTitle"></div>
+    <button class="tb-btn" id="markBtn" aria-label="Ir para o marcador" title="Ir para onde você parou">
+      <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+    </button>
     <button class="tb-btn" id="themeBtn" aria-label="Tema">
       <span id="themeIcon"></span>
     </button>
@@ -198,28 +214,64 @@ $("#themeBtn").addEventListener("click", ()=>{
   localStorage.setItem(KEY_THEME, t); applyTheme(t);
 });
 
-/* ---- position ---- */
+/* ---- position (paragraph-precise bookmark) ---- */
+const READ_LINE = 0.28; // where the "reading line" sits in the viewport
 function loadPos(){ try{ return JSON.parse(localStorage.getItem(KEY_POS)); }catch(e){ return null; } }
+function currentParaIdx(){
+  const ps = $("#cBody").querySelectorAll("p");
+  const line = window.innerHeight * READ_LINE;
+  let best = 0, bestDist = Infinity;
+  ps.forEach(p=>{
+    const r = p.getBoundingClientRect();
+    if(r.bottom < 0) return;
+    const d = Math.abs(r.top - line);
+    if(d < bestDist){ bestDist = d; best = +p.dataset.p; }
+  });
+  return best;
+}
 function savePos(){
   const doc = document.documentElement;
   const max = doc.scrollHeight - window.innerHeight;
   const frac = max>0 ? window.scrollY/max : 0;
-  localStorage.setItem(KEY_POS, JSON.stringify({c:current, f:frac}));
+  localStorage.setItem(KEY_POS, JSON.stringify({c:current, p:currentParaIdx(), f:frac}));
+}
+function scrollToPara(idx){
+  const el = $('#cBody p[data-p="'+idx+'"]');
+  if(!el) return null;
+  const y = window.scrollY + el.getBoundingClientRect().top - window.innerHeight*READ_LINE;
+  window.scrollTo(0, Math.max(0, y));
+  return el;
+}
+let bmTimer = null;
+function clearMark(){
+  $("#cBody").querySelectorAll("p.bm").forEach(p=>p.classList.remove("bm","bm-fade"));
+  const t = $(".bm-tag"); if(t) t.remove();
+}
+function flashMark(el){
+  clearMark();
+  if(!el) return;
+  el.classList.add("bm","bm-fade");
+  const tag = document.createElement("span");
+  tag.className = "bm-tag bm-fade";
+  tag.textContent = "Você parou aqui";
+  el.appendChild(tag);
+  clearTimeout(bmTimer);
+  bmTimer = setTimeout(clearMark, 6000);
 }
 let current = 0;
 
 /* ---- render ---- */
-function render(i, frac){
+function render(i, restore){
   current = i;
   const ch = CHAPTERS[i];
   $("#cKicker").textContent = ch.kicker;
   $("#cTitle").textContent = ch.title;
   $("#tbTitle").textContent = ch.title;
   $("#cLang").style.display = "none";
-  let h = "", firstDone = false;
+  let h = "", firstDone = false, pi = 0;
   for(const b of ch.blocks){
     if(b.t === "scene"){ h += '<div class="scene">&#9671;&#160;&#9671;&#160;&#9671;</div>'; firstDone=false; }
-    else{ h += '<p class="'+(firstDone?'':'first')+'">'+b.x+'</p>'; firstDone=true; }
+    else{ h += '<p class="'+(firstDone?'':'first')+'" data-p="'+pi+'">'+b.x+'</p>'; firstDone=true; pi++; }
   }
   $("#cBody").innerHTML = h;
   // nav
@@ -230,11 +282,20 @@ function render(i, frac){
   else{ next.disabled=true; $("#nextNm").textContent="—"; }
   $("#endNote").textContent = i<CHAPTERS.length-1
     ? "" : "Fim do que existe por enquanto. O Capítulo IV — Invasão — está a caminho.";
-  // restore scroll
+  // restore scroll (paragraph-precise when available)
+  clearMark();
   requestAnimationFrame(()=>{
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    window.scrollTo(0, frac ? frac*max : 0);
+    let landed = false;
+    if(restore && restore.p != null){
+      const el = scrollToPara(restore.p);
+      if(el){ if(restore.flash) flashMark(el); landed = true; }
+    }
+    if(!landed){
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      window.scrollTo(0, (restore && restore.f) ? restore.f*max : 0);
+    }
     updateProgress();
+    refreshMarkBtn();
   });
 }
 
@@ -249,7 +310,7 @@ $("#nextBtn").addEventListener("click", ()=>!$("#nextBtn").disabled && goChapter
 function openReader(pos){
   $("#cover").classList.add("hidden");
   $("#reader").classList.remove("hidden");
-  render(pos ? pos.c : 0, pos ? pos.f : 0);
+  render(pos ? pos.c : 0, pos ? {p:pos.p, f:pos.f, flash:true} : null);
 }
 function openCover(){
   savePos();
@@ -261,10 +322,27 @@ $("#readBtn").addEventListener("click", ()=>openReader(null));
 $("#resumeBtn").addEventListener("click", ()=>openReader(loadPos()));
 $("#homeBtn").addEventListener("click", openCover);
 
+/* ---- bookmark jump button ---- */
+function refreshMarkBtn(){
+  const p = loadPos();
+  $("#markBtn").classList.toggle("has-mark", !!(p && p.c===current && p.p));
+}
+$("#markBtn").addEventListener("click", ()=>{
+  const p = loadPos();
+  if(!p || p.p==null) return;
+  if(p.c === current){
+    const el = scrollToPara(p.p);
+    if(el) flashMark(el);
+  } else {
+    render(p.c, {p:p.p, f:p.f, flash:true});
+    savePos();
+  }
+});
+
 function refreshResume(){
   const p = loadPos();
   const btn = $("#resumeBtn");
-  if(p && (p.c>0 || p.f>0.02)){
+  if(p && (p.c>0 || p.p>0 || p.f>0.02)){
     btn.classList.remove("hidden");
     btn.textContent = "Continuar — " + CHAPTERS[p.c].title;
   } else { btn.classList.add("hidden"); }
