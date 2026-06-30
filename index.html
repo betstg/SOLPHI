@@ -74,9 +74,10 @@ html[data-theme="dark"] .btn, html[data-theme="auto"] .btn{color:#1a140d}
 @media (prefers-color-scheme:light){html[data-theme="auto"] .btn{color:#fffaf2}}
 .btn:hover{transform:translateY(-2px); box-shadow:0 16px 34px -8px var(--shadow)}
 .btn:active{transform:translateY(0)}
-.btn.ghost{background:transparent; color:var(--soft); box-shadow:none; border:1px solid var(--rule);
+.btn.ghost{background:transparent; color:var(--ink); box-shadow:none; border:1px solid var(--gold);
   padding:12px 34px; font-size:13px}
-.btn.ghost:hover{color:var(--ink); border-color:var(--gold)}
+.btn.ghost:hover{color:var(--ink); border-color:var(--gold);
+  background:color-mix(in srgb, var(--gold) 14%, transparent)}
 
 /* ---------- READER ---------- */
 #reader{min-height:100svh}
