@@ -70,8 +70,8 @@ body{
   background:var(--gold); color:#fffaf2; box-shadow:0 10px 30px -8px var(--shadow);
   transition:transform .15s ease, box-shadow .15s ease, background .3s ease;
 }
-html[data-theme="dark"] .btn, html[data-theme="auto"] .btn{color:#1a140d}
-@media (prefers-color-scheme:light){html[data-theme="auto"] .btn{color:#fffaf2}}
+html[data-theme="dark"] .btn:not(.ghost), html[data-theme="auto"] .btn:not(.ghost){color:#1a140d}
+@media (prefers-color-scheme:light){html[data-theme="auto"] .btn:not(.ghost){color:#fffaf2}}
 .btn:hover{transform:translateY(-2px); box-shadow:0 16px 34px -8px var(--shadow)}
 .btn:active{transform:translateY(0)}
 .btn.ghost{background:transparent; color:var(--ink); box-shadow:none; border:1px solid var(--gold);
