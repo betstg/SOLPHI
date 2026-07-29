@@ -73,8 +73,12 @@ body{
     el.textContent = new Intl.NumberFormat("pt-BR").format(n);
   }
   fetch("https://abacus.jasoncameron.dev/get/betstg-solphi-gaiola/acessos")
-    .then(function(r){ return r.json(); })
-    .then(function(d){ render((d && typeof d.value === "number") ? d.value : 0); })
+    .then(function(r){ return r.text(); })
+    .then(function(t){
+      var n = 0;
+      try{ var d = JSON.parse(t); if(d && typeof d.value === "number") n = d.value; }catch(e){}
+      render(n);
+    })
     .catch(function(){ el.classList.remove("loading"); el.textContent = "—"; el.style.color = "var(--faint)"; });
 })();
 </script>
