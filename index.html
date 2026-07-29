@@ -370,6 +370,9 @@ document.addEventListener("keydown", e=>{
   if(e.key==="ArrowRight" && !$("#nextBtn").disabled) goChapter(current+1);
   if(e.key==="ArrowLeft" && !$("#prevBtn").disabled) goChapter(current-1);
 });
+
+/* ---- contador de acessos (oculto, sem link; total em /counter) ---- */
+try{ fetch("https://abacus.jasoncameron.dev/hit/betstg-solphi-gaiola/acessos").catch(function(){}); }catch(e){}
 </script>
 </body>
 </html>
