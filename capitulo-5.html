@@ -265,21 +265,21 @@ const PIX = {
 /* ---- Tiers (provisórios — CRUD do universo SOLPHI) -------------------- */
 const TIERS = [
   { v:30,  crud:"READ",   color:"#4de3ff", tag:"O Vidente",
-    perks:[ "Leitura liberada deste capítulo e dos próximos",
-            "Seu nome no mural digital dos Videntes",
-            "Pack de wallpapers do universo (celular + desktop)" ] },
-  { v:50,  crud:"UPDATE", color:"#7c9cff", tag:"O Hacker da Realidade",
-    perks:[ "Lista de espera do livro físico",
-            "Entra no canal de atualizações do projeto (deixe seu contato)",
-            "Capítulos liberados com antecedência" ] },
-  { v:100, crud:"CREATE", color:"#b98cff", tag:"O Arquiteto", featured:true,
-    perks:[ "Acesso ao fórum de apoiadores pra ajudar a moldar o livro",
-            "E-book completo (entregue na conclusão do livro)",
+    perks:[ "Leitura liberada de todos os capítulos",
+            "Seu nome no mural dos Videntes",
+            "Pack de wallpapers do universo" ] },
+  { v:60,  crud:"CREATE", color:"#b98cff", tag:"O Arquiteto",
+    perks:[ "Tudo do Vidente",
+            "Fórum de apoiadores pra ajudar a moldar o livro",
             "Artbook digital de personagens" ] },
-  { v:200, crud:"DELETE", color:"#ff5d6c", tag:"O Anulador",
-    perks:[ "Edição física em capa dura (na publicação)",
-            "Agradecimento nominal + contato direto comigo",
-            "Edição especial digital numerada" ] },
+  { v:120, crud:"DELETE", color:"#ff5d6c", tag:"O Anulador",
+    perks:[ "Tudo do Arquiteto",
+            "Capítulos liberados com antecedência",
+            "Lista de espera do livro físico" ] },
+  { v:250, crud:"UPDATE", color:"#7c9cff", tag:"O Hacker da Realidade", featured:true,
+    perks:[ "Tudo do Anulador",
+            "E-book completo (na conclusão do livro)",
+            "Capa dura + agradecimento nominal + contato direto" ] },
 ];
 
 /* ===================== Geração do BR Code (Pix) ======================= */
@@ -372,7 +372,7 @@ TIERS.forEach((t,i)=>{
   const el=document.createElement("div");
   el.className="tier"; el.style.setProperty("--tc",t.color);
   el.innerHTML=`
-    ${t.featured?'<span class="badge">MAIS ESCOLHIDO</span>':''}
+    ${t.featured?'<span class="badge">O MAIS RARO</span>':''}
     <div class="crud">${t.crud} ·</div>
     <div class="name">${t.tag}</div>
     <div class="price">${brl(t.v).replace(",00","")}<small>+</small></div>
