@@ -306,6 +306,17 @@ function goChapter(i){
 $("#prevBtn").addEventListener("click", ()=>!$("#prevBtn").disabled && goChapter(current-1));
 $("#nextBtn").addEventListener("click", ()=>{ if(current>=CHAPTERS.length-1){ location.href="capitulo-5.html"; } else if(!$("#nextBtn").disabled){ goChapter(current+1); } });
 
+/* ---- clicar num parágrafo salva o marcador ali (mostra "Você parou aqui") ---- */
+$("#cBody").addEventListener("click", e=>{
+  const p = e.target.closest ? e.target.closest('p[data-p]') : null;
+  if(!p) return;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const frac = max>0 ? window.scrollY/max : 0;
+  localStorage.setItem(KEY_POS, JSON.stringify({c:current, p:+p.dataset.p, f:frac}));
+  flashMark(p);
+  refreshMarkBtn();
+});
+
 /* ---- views ---- */
 function openReader(pos){
   $("#cover").classList.add("hidden");
