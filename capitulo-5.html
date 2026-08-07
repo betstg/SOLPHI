@@ -185,25 +185,24 @@
 
     <!-- CAFÉ / VALOR LIVRE -->
     <div class="cafe">
-      <h3>☕ Me compra um café</h3>
-      <p>Apoio livre, qualquer valor. Sem recompensa material — só a minha gratidão
-      e seu nome no mural digital dos <b style="color:var(--acc)">Videntes</b>.</p>
+      <h3>📖 Leia este capítulo — R$10</h3>
+      <p>Apoie com <b style="color:var(--acc)">R$10 ou mais</b> e libere o Capítulo 5. Cada capítulo abre com um apoio — o próximo pede o seu de novo. Seu nome entra no mural dos <b style="color:var(--acc)">Videntes</b>.</p>
       <div class="amt-row">
         <div class="chips">
-          <button class="chip" data-cafe="5">R$5</button>
           <button class="chip" data-cafe="10">R$10</button>
           <button class="chip" data-cafe="15">R$15</button>
+          <button class="chip" data-cafe="20">R$20</button>
         </div>
         <div class="field"><span>R$</span>
-          <input id="cafeInput" type="number" min="1" step="1" placeholder="outro valor" inputmode="decimal">
+          <input id="cafeInput" type="number" min="10" step="1" value="10" inputmode="decimal">
         </div>
         <button class="btn btn-main" id="cafeGo">Gerar Pix</button>
       </div>
     </div>
 
     <div class="tier-head">
-      <h3>Níveis de Acesso</h3>
-      <p>A partir de R$30 você libera a leitura — quanto mais alto o nível, mais poder no sistema.</p>
+      <h3>Quer apoiar mais? Níveis de recompensa</h3>
+      <p>Além de liberar a leitura, cada nível dá recompensas — quanto mais raro o poder, maior o apoio.</p>
     </div>
     <div class="tiers" id="tiers"></div>
 
@@ -355,13 +354,12 @@ modal.onclick=e=>{ if(e.target===modal) modal.classList.remove("on"); };
 /* café */
 document.querySelectorAll("[data-cafe]").forEach(b=>{
   b.onclick=()=>{ document.getElementById("cafeInput").value=b.dataset.cafe;
-    openPix(Number(b.dataset.cafe),"☕ CAFÉ · VIDENTE"); };
+    openPix(Number(b.dataset.cafe),"LEITURA · Capítulo 5"); };
 });
 document.getElementById("cafeGo").onclick=()=>{
-  const v=Number(document.getElementById("cafeInput").value);
-  if(!v||v<1){ document.getElementById("cafeInput").focus(); return; }
-  const label=v>=30?"☕ APOIO · (desbloqueia tier!)":"☕ CAFÉ · VIDENTE";
-  openPix(v,label);
+  let v=Math.floor(Number(document.getElementById("cafeInput").value));
+  if(!v||v<10){ v=10; document.getElementById("cafeInput").value=10; }  /* minimo protegido: R$10 */
+  openPix(v, v>=30 ? "APOIO · leitura + recompensa" : "LEITURA · Capítulo 5");
 };
 
 /* render tiers */
