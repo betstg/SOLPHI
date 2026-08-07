@@ -72,6 +72,6 @@ Por um longo momento, ninguém falou. Foi Zephyr quem finalmente quebrou o silê
 
 Caelum não respondeu. Pensava que Lyra tinha razão, na noite anterior, com o tomate esfriando entre os dedos — que não se constrói uma gaiola tão elaborada para algo que não importa, que tinham sido cultivados juntos para alguma coisa. Naquela noite, ele quisera acreditar que fosse uma bondade. Agora entendia que talvez fosse uma arma, e que a diferença entre as duas talvez fosse a única escolha que lhe restava.
 
-Dois anos e alguns meses. O mesmo para os quatro. Tique. Taque.
+Dois anos e alguns meses. O mesmo para os quatro.
 
 E agora, pela primeira vez, uma porta.
