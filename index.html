@@ -143,6 +143,8 @@ article p.bm::before{content:""; position:absolute; left:-22px; top:.18em; botto
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 #cover>*, .topbar, .page, .chap-nav, .end-note{position:relative; z-index:2}
+  .topbar{transition:transform .28s ease}
+  .topbar.away{transform:translateY(-110%)}
 </style>
 </head>
 <body>
@@ -380,6 +382,18 @@ document.addEventListener("keydown", e=>{
   if(e.key==="ArrowRight"){ if(current>=CHAPTERS.length-1){ location.href="capitulo-5.html"; } else if(!$("#nextBtn").disabled){ goChapter(current+1); } }
   if(e.key==="ArrowLeft" && !$("#prevBtn").disabled) goChapter(current-1);
 });
+
+/* ---- barra superior: some ao ler, aparece com o mouse no topo ---- */
+(function(){
+  const tb=document.querySelector(".topbar"); if(!tb) return; let hideT;
+  const inReader=()=>!$("#reader").classList.contains("hidden");
+  document.addEventListener("mousemove", e=>{
+    if(!inReader()) return;
+    if(e.clientY<=64){ tb.classList.remove("away"); clearTimeout(hideT); }
+    else { clearTimeout(hideT); hideT=setTimeout(()=>tb.classList.add("away"), 1400); }
+  });
+  window.addEventListener("scroll", ()=>{ if(inReader()) tb.classList.add("away"); }, {passive:true});
+})();
 
 /* ---- contador de acessos (oculto, sem link; total em /counter) ---- */
 try{ fetch("https://abacus.jasoncameron.dev/hit/betstg-solphi-gaiola/acessos").catch(function(){}); }catch(e){}
