@@ -151,6 +151,11 @@
   .copybtn:active{transform:scale(.98)}
   .mhint{font-size:12px;color:var(--dim);margin-top:12px}
   .err{color:var(--danger);font-size:13px;font-family:var(--mono);padding:20px}
+  .nextchap{display:none;margin:8px 0 34px}
+  body.unlocked .nextchap{display:block}
+  .nextchap a,.nextchap span{display:block;text-align:center;text-decoration:none;border:1px solid var(--line2);border-radius:12px;padding:16px;color:var(--acc);font-family:var(--disp);font-weight:600;transition:.15s}
+  .nextchap a:hover{border-color:var(--acc);background:var(--panel2)}
+  .nextchap span{color:var(--faint);font-family:var(--mono);font-weight:400;font-size:13px}
 </style>
 </head>
 <body>
@@ -206,11 +211,8 @@
     </div>
     <div class="tiers" id="tiers"></div>
 
-    <div class="note">
-      <b>Como funciona (provisório):</b> escolha um valor, escaneie o QR ou copie o código Pix.
-      Depois me mande o comprovante e seu contato (o mesmo canal de onde você veio) que eu libero
-      a leitura e as recompensas do seu nível. O formato dos pacotes ainda está em definição —
-      é possível que passe a rodar num sistema de apoio próprio.
+        <div class="note">
+      <b>Como funciona:</b> pague o Pix na chave PicPay abaixo, <b>escolha um username</b> e me mande o <b>comprovante + o username</b> pelo mesmo canal de onde você veio. Eu confirmo e te envio o seu <b>código de acesso</b> em <b>até 24h</b>. (Em breve fica automático.)
     </div>
 
     <div class="unlockbox">
@@ -229,6 +231,8 @@
     <!-- conteúdo criptografado: injetado após o desbloqueio -->
   </div>
 
+  <div class="nextchap"><a href="capitulo-6.html">Continuar → Capítulo Seis · Caixa de Pandora</a></div>
+
   <footer>
     Apoio voluntário via Pix — não constitui compra de produto financeiro. Consulte um contador
     sobre implicações fiscais.<br>
@@ -245,7 +249,7 @@
     <div class="qrbox" id="qrbox"></div>
     <div class="copybox" id="copybox"></div>
     <button class="copybtn" id="copybtn">📋 Copiar código Pix</button>
-    <p class="mhint" id="mHint">Abra o app do seu banco → Pix → Pagar → Ler QR Code (ou colar código). · Descrição: Projeto SOLPHI</p>
+    <p class="mhint" id="mHint">Abra o app do seu banco → Pix → Pagar → Ler QR Code (ou colar código). · Descrição: Projeto SOLPHI · depois me mande o comprovante + seu username</p>
   </div>
 </div>
 
