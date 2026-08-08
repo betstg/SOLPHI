@@ -156,6 +156,27 @@
   .nextchap a,.nextchap span{display:block;text-align:center;text-decoration:none;border:1px solid var(--line2);border-radius:12px;padding:16px;color:var(--acc);font-family:var(--disp);font-weight:600;transition:.15s}
   .nextchap a:hover{border-color:var(--acc);background:var(--panel2)}
   .nextchap span{color:var(--faint);font-family:var(--mono);font-weight:400;font-size:13px}
+
+  /* ao desbloquear: some a paywall, vira tela de leitura limpa */
+  body.unlocked .prov,
+  body.unlocked #paywall{display:none}
+  body.unlocked .reading.preview{padding-top:8px}
+  .backtop{display:none}
+  body.unlocked .backtop{display:inline-flex;align-items:center;gap:7px;position:sticky;top:14px;z-index:30;
+    margin:14px 0 -8px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--dim);text-decoration:none;background:rgba(10,13,18,.7);backdrop-filter:blur(6px);
+    border:1px solid var(--line2);border-radius:999px;padding:8px 14px;transition:.15s}
+  body.unlocked .backtop:hover{color:var(--acc);border-color:var(--acc)}
+  .endmark{display:none}
+  body.unlocked .endmark{display:block}
+  .chapnav{display:none;gap:12px;margin:14px 0 40px}
+  body.unlocked .chapnav{display:flex}
+  .chapnav a{flex:1;text-align:center;text-decoration:none;border:1px solid var(--line2);border-radius:12px;
+    padding:16px 16px;color:var(--acc);font-family:var(--disp);font-weight:600;transition:.15s;background:var(--panel)}
+  .chapnav a:hover{border-color:var(--acc);background:var(--panel2);transform:translateY(-2px)}
+  .chapnav a.prev{color:var(--dim)}
+  .chapnav a.prev:hover{color:var(--acc)}
+  .chapnav a.disabled{color:var(--faint);font-family:var(--mono);font-weight:400;font-size:13px;pointer-events:none;opacity:.7}
 </style>
 </head>
 <body>
@@ -173,6 +194,8 @@
     <p class="chnum">Capítulo Cinco</p>
     <h1>O Arquivo Fantasma</h1>
   </header>
+
+  <a class="backtop" href="index.html">← Voltar ao índice</a>
 
   <!-- ================= ISCA (linha de abertura) ================= -->
   <div class="reading preview">
@@ -231,7 +254,12 @@
     <!-- conteúdo criptografado: injetado após o desbloqueio -->
   </div>
 
-  <div class="nextchap"><a href="capitulo-6.html">Continuar → Capítulo Seis · Caixa de Pandora</a></div>
+  <div class="endmark">◇ ◇ ◇</div>
+
+  <nav class="chapnav">
+    <a class="prev" href="index.html">← Voltar</a>
+    <a class="next" href="capitulo-6.html">Seguir → Capítulo Seis</a>
+  </nav>
 
   <footer>
     Apoio voluntário via Pix — não constitui compra de produto financeiro. Consulte um contador
@@ -399,14 +427,14 @@ async function decryptLocked(pass){
   return new TextDecoder().decode(pt);
 }
 document.getElementById("unlockBtn").onclick=async()=>{
-  const pass=document.getElementById("codeInput").value.trim();
+  const pass=document.getElementById("codeInput").value.trim().toUpperCase().replace(/[‐-―−⁃﹘﹣－]/g,"-").replace(/\s+/g,"");
   const err=document.getElementById("unlockErr"); err.textContent="";
   if(!pass){ document.getElementById("codeInput").focus(); return; }
   try{
     const inner=await decryptLocked(pass);
     document.getElementById("locked").innerHTML=inner;
     document.body.classList.add("unlocked");
-    document.getElementById("locked").scrollIntoView({behavior:"smooth",block:"start"});
+    window.scrollTo({top:0,behavior:"smooth"});
   }catch(e){ err.textContent="⚠ Código inválido. Confira e tente de novo."; }
 };
 document.getElementById("codeInput") && document.getElementById("codeInput")
