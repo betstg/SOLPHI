@@ -54,6 +54,10 @@ body{
   color:var(--gold2); font-size:13px; background:var(--bg); padding:0 8px}
 .cv-book{letter-spacing:.4em; font-size:11px; text-transform:uppercase; color:var(--faint);
   padding-left:.4em; z-index:1}
+.cv-disclaimer{position:absolute; bottom:max(18px,env(safe-area-inset-bottom)); left:50%;
+  transform:translateX(-50%); z-index:1; max-width:min(90vw,420px); text-align:center;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint);
+  font-family:'Space Grotesk',system-ui,sans-serif; line-height:1.6; opacity:.75}
 .cv-actions{margin-top:46px; display:flex; flex-direction:column; gap:14px; align-items:center; z-index:1}
 .btn{
   font-family:'Newsreader',serif; cursor:pointer; border:none; border-radius:999px;
@@ -159,6 +163,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opac
     <button class="btn" id="readBtn">Ler</button>
     <button class="btn ghost hidden" id="resumeBtn">Continuar de onde parou</button>
   </div>
+  <p class="cv-disclaimer">Conteúdo em desenvolvimento, sujeito a alteração sem aviso prévio.</p>
 </main>
 
 <section id="reader" class="hidden">
