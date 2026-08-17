@@ -230,7 +230,7 @@
 
     <div class="tier-head">
       <h3>Quer apoiar mais? Níveis de recompensa</h3>
-      <p>Além de liberar a leitura, cada nível dá recompensas: quanto mais raro o poder, maior o apoio.</p>
+      <p>Além de liberar a leitura, cada nível dá recompensas — quanto mais raro o poder, maior o apoio.</p>
     </div>
     <div class="tiers" id="tiers"></div>
 
@@ -245,7 +245,7 @@
         <button class="btn btn-main" id="unlockBtn">Desbloquear</button>
       </div>
       <p class="unlockerr" id="unlockErr"></p>
-      <p class="ulnote">O texto do capítulo não está nesta página em claro; ele é decifrado no seu navegador só com o código correto.</p>
+      <p class="ulnote">O texto do capítulo não está nesta página em claro — ele é decifrado no seu navegador só com o código correto.</p>
     </div>
   </section>
 
