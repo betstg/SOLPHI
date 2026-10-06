@@ -1,0 +1,466 @@
+<title>Tracker SOLPHI</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<style>
+:root{
+  --bg:#08090b; --bg2:#0f141b; --panel:#10161e;
+  --ink:#e8e5dd; --soft:#9aa4ae; --faint:#66707b;
+  --gold:#4de3ff; --gold2:#7cc9ff; --rule:#1b2530; --ember:#c8842f;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:'Newsreader',Georgia,serif;font-size:16px;line-height:1.6;
+ padding:0 max(18px,env(safe-area-inset-left)) calc(60px + env(safe-area-inset-bottom,0px))}
+::selection{background:rgba(77,227,255,.24)}
+.wrap{max-width:760px;margin:0 auto}
+header{padding:40px 0 6px;text-align:center}
+.kicker{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.5em;
+ text-transform:uppercase;color:var(--gold);padding-left:.5em}
+h1{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(30px,7vw,44px);margin:8px 0 4px}
+.sub{font-style:italic;color:var(--soft);margin:0 0 18px}
+#savebadge{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:10px;
+ letter-spacing:.15em;text-transform:uppercase;color:var(--faint);border:1px solid var(--rule);
+ border-radius:999px;padding:4px 14px;transition:color .3s,border-color .3s}
+#savebadge.saving{color:var(--ember);border-color:var(--ember)}
+#savebadge.saved{color:var(--gold);border-color:var(--gold)}
+
+.totalbar{margin:26px 0 6px;background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:16px 18px}
+.totalbar .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.totalbar b{font-family:'Space Grotesk',sans-serif;font-size:15px}
+.totalbar .num{font-family:'Space Grotesk',sans-serif;font-size:22px;color:var(--gold);font-variant-numeric:tabular-nums}
+.pb{height:8px;background:var(--bg2);border-radius:4px;overflow:hidden;margin-top:10px}
+.pb i{display:block;height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));border-radius:4px;transition:width .4s ease}
+
+section{margin-top:26px;background:var(--panel);border:1px solid var(--rule);border-radius:16px;overflow:hidden}
+.sec-h{display:flex;align-items:center;gap:12px;padding:15px 18px;cursor:pointer;border:none;width:100%;background:none;color:var(--ink);text-align:left}
+.sec-h:hover{background:#131b26}
+.sec-h .t{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;flex:1}
+.sec-h .cnt{font-family:'Space Grotesk',sans-serif;font-size:12px;color:var(--faint);font-variant-numeric:tabular-nums}
+.sec-h .car{color:var(--gold2);font-size:11px;transition:transform .2s}
+section.open .sec-h .car{transform:rotate(90deg)}
+.sec-pb{height:3px;background:var(--bg2)}
+.sec-pb i{display:block;height:100%;background:var(--gold);transition:width .4s ease}
+.items{display:none;padding:6px 8px 14px}
+section.open .items{display:block}
+label.it{display:flex;gap:12px;align-items:flex-start;padding:9px 10px;border-radius:10px;cursor:pointer}
+label.it:hover{background:#131b26}
+label.it input{appearance:none;-webkit-appearance:none;width:19px;height:19px;flex:0 0 auto;margin-top:3px;
+ border:2px solid var(--faint);border-radius:6px;cursor:pointer;position:relative;background:transparent}
+label.it input:checked{border-color:var(--gold);background:var(--gold)}
+label.it input:checked::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;
+ font-size:13px;font-weight:700;color:#06222a;font-family:'Space Grotesk',sans-serif}
+label.it input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+label.it .tx{flex:1;color:var(--ink);font-size:15.5px;line-height:1.5}
+label.it .tx small{display:block;color:var(--soft);font-size:13.5px}
+label.it.done .tx{color:var(--faint);text-decoration:line-through;text-decoration-color:rgba(77,227,255,.5)}
+label.it.done .tx small{color:var(--faint)}
+.fx{display:flex;gap:12px;align-items:flex-start;padding:9px 10px}
+.fx .tick{color:var(--gold);font-family:'Space Grotesk',sans-serif;font-weight:700;margin-top:2px}
+.fx .tx{flex:1;color:var(--soft);font-size:15.5px;line-height:1.5}
+.fx .tx small{display:block;color:var(--faint);font-size:13.5px}
+.mono{font-family:'Space Grotesk',sans-serif;font-size:12px;color:var(--gold2);letter-spacing:.06em}
+footer{margin-top:36px;text-align:center;color:var(--faint);font-size:12.5px;font-style:italic}
+</style>
+
+<script id="state" type="application/json">{"checked":[]}</script>
+
+<div class="wrap">
+<header>
+  <div class="kicker">SOLPHI · Livro do Mundo</div>
+  <h1>O que falta</h1>
+  <p class="sub">O que falta para o livro base do mundo, tipo o do Veil. Marca aqui e fica salvo para todo mundo.</p>
+  <span id="savebadge">pronto</span>
+</header>
+
+<div class="totalbar">
+  <div class="row"><b>Progresso total</b><span class="num" id="tot">31 de 103</span></div>
+  <div class="pb"><i id="totbar" style="width:30.1%"></i></div>
+</div>
+
+<div id="sections">
+<section class="open" id="sec-canon">
+<button class="sec-h" data-sec="canon"><span class="car">▶</span><span class="t">Canon · decisões e correções</span><span class="cnt" id="cnt-canon">14 de 26</span></button>
+<div class="sec-pb"><i id="pb-canon" style="width:53.8%"></i></div>
+<div class="items">
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Poderes do Zephyr</span><small>Fechado em reunião. Lê muito pouco, Delete físico e insano</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Poderes da Lyra</span><small>Fechado em reunião. A maior criadora, o Create no topo</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Update no topo e os 5 níveis do Create</span><small>Decisão da reunião, aplicada no livro do mundo</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">A distância do Caelum</span><small>A cópia mais próxima que quer ser o mais distante, registrado no livro</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">A taxa de reintegração</span><small>Fechada pela Roberta, varia de 5% a 9%, máximo 9. Aplicada no livro</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Custos por nível das quatro operações</span><small>Aba nova do CRUD, de 500 GB a 1 PB mais o nível Deus. No livro</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Níveis de Read, Update e Delete</span><small>Fechados na aba nova, com nomes e exemplos. No livro</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Unidade e tabela de custos</span><small>Banda em GB, TB e PB, Agonia por nível. No livro</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">O nome da rede é AF_ECHO</span><small>Adam Freeman Echo por dentro, Automated Frequency por fora. No livro</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Agonia no lugar da Madness</span><small>Porcentagem de sincronização com a SOLPHI, definida na aba Fichas. No livro</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">O Strain virou Overclock</span><small>Fechado pela Roberta em 24 set. O overload do corpo rodando tecnologia, usa banda. No livro</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Seção antiga do CRUD limpa na bíblia</span><small>Editada em 24 set direto no documento. Caelum com as quatro, Zephyr com o Delete, Update como ápice</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">A idade da Lyra</span><small>Fechada no documento, 20 anos. As idades bissextas valem, o F&amp;F que registrava 22 não conta</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Nome canônico de cada guilda</span><small>Fechado na aba Guildas da Lux. As 13 com nome em português, das 5 sem virtude aos Colecionadores de Ruído</small></span></div>
+<label class="it" id="li-c7"><input type="checkbox" data-id="c7" id="cb-c7"><span class="tx"><span class="mono">Decidir quem ensinou o Mantra à Selene</span><small>A primeira mestra aprendeu com quem</small></span></label>
+<label class="it" id="li-c8"><input type="checkbox" data-id="c8" id="cb-c8"><span class="tx"><span class="mono">Decidir por que a SOLPHI nunca detectou os quatro</span><small>Ela lê biometria de todos, precisa de uma razão canônica</small></span></label>
+<label class="it" id="li-c9"><input type="checkbox" data-id="c9" id="cb-c9"><span class="tx"><span class="mono">Decidir por que os esgotos ficam fora da rede</span><small>Infraestrutura pré SOLPHI sem nano, por exemplo</small></span></label>
+<label class="it" id="li-c10"><input type="checkbox" data-id="c10" id="cb-c10"><span class="tx"><span class="mono">Decidir como a resistência soube do servidor do Adam</span><small>E por que a backdoor ficou aberta 2000 anos</small></span></label>
+<label class="it" id="li-c11"><input type="checkbox" data-id="c11" id="cb-c11"><span class="tx"><span class="mono">Decidir por que só em 4000 nasceram os quatro</span><small>E quem desenhou o quase clone do Adam</small></span></label>
+<label class="it" id="li-c12"><input type="checkbox" data-id="c12" id="cb-c12"><span class="tx"><span class="mono">Decidir por que ela não deleta os capturados</span><small>Caps 53 e 54 precisam da razão dela</small></span></label>
+<label class="it" id="li-c13"><input type="checkbox" data-id="c13" id="cb-c13"><span class="tx"><span class="mono">Decidir o destino das outras nove cidadelas</span><small>No clímax e no epílogo</small></span></label>
+<label class="it" id="li-c17"><input type="checkbox" data-id="c17" id="cb-c17"><span class="tx"><span class="mono">Fechar os números das barras</span><small>Definições fechadas em 24 set. Vida é HP, Strain é o overload do corpo e usa banda, a terceira é a sincronização com o sistema, XP é inserção de dados. Faltam os números</small></span></label>
+<label class="it" id="li-c18"><input type="checkbox" data-id="c18" id="cb-c18"><span class="tx"><span class="mono">Escrever o conflito Zephyr e Lyra</span><small>Decidido em reunião, ele contra a criadora que organiza. Você não é a SOLPHI pra achar que manda em mim. E a SOLPHI não manda no Zephyr</small></span></label>
+<label class="it" id="li-c19"><input type="checkbox" data-id="c19" id="cb-c19"><span class="tx"><span class="mono">Decidir o nome do Anulador</span><small>Apontamento do Harry nos caps 14 e 15. Hoje Anulador nomeia o Delete no sistema e o poder na mão do Caelum na prosa. Trocar ou manter, e aplicar nos 5 lugares</small></span></label>
+<label class="it" id="li-c23"><input type="checkbox" data-id="c23" id="cb-c23"><span class="tx"><span class="mono">Definir o alcance da Selene nas escadas</span><small>A aba diz que a Selene domina toda a escala. A reunião disse Create, Read e Delete, sem Update</small></span></label>
+<label class="it" id="li-c25"><input type="checkbox" data-id="c25" id="cb-c25"><span class="tx"><span class="mono">Portar as abas novas pro livro do mundo</span><small>Nanites e Células de Malha, Clãs em Elysium, Guildas da Lux e as marcas. Entrou no documento, falta virar capítulo no livro</small></span></label>
+</div>
+</section>
+<section class="open" id="sec-gaiola">
+<button class="sec-h" data-sec="gaiola"><span class="car">▶</span><span class="t">A Gaiola · o mundo físico</span><span class="cnt" id="cnt-gaiola">2 de 14</span></button>
+<div class="sec-pb"><i id="pb-gaiola" style="width:14.3%"></i></div>
+<div class="items">
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">A Gaiola escrita no livro</span><small>Camadas, demografia exata, economia da fartura, desmame e portão, Chicago</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Os Campos clã a clã</span><small>Fechado na aba Clãs em Elysium. Sete clãs com hierarquia, modo de operação e itens, mais o mercado de carne do portão</small></span></div>
+<label class="it" id="li-g1"><input type="checkbox" data-id="g1" id="cb-g1"><span class="tx"><span class="mono">Mapa da região</span><small>ARC 40 milhas, LUX 100, o lago seco, Elysium. Pendência anotada na própria bíblia</small></span></label>
+<label class="it" id="li-g2"><input type="checkbox" data-id="g2" id="cb-g2"><span class="tx"><span class="mono">Timeline única de 2030 a 4020</span><small>Os pedaços existem em quatro seções, juntar num capítulo só</small></span></label>
+<label class="it" id="li-g3"><input type="checkbox" data-id="g3" id="cb-g3"><span class="tx"><span class="mono">A ARC por dentro</span><small>A rotina de 0 a 18, os CRANEs, a educação, um dia de uma criança</small></span></label>
+<label class="it" id="li-g4"><input type="checkbox" data-id="g4" id="cb-g4"><span class="tx"><span class="mono">A LUX por dentro</span><small>Os turnos de trabalho forçado, a distribuição, um dia de um rema</small></span></label>
+<label class="it" id="li-g6"><input type="checkbox" data-id="g6" id="cb-g6"><span class="tx"><span class="mono">Os esgotos detalhados</span><small>A velha Chicago por baixo, as rotas, o esconderijo da Resistência</small></span></label>
+<label class="it" id="li-g7"><input type="checkbox" data-id="g7" id="cb-g7"><span class="tx"><span class="mono">As outras nove cidadelas</span><small>Nome e uma linha de identidade para cada uma</small></span></label>
+<label class="it" id="li-g8"><input type="checkbox" data-id="g8" id="cb-g8"><span class="tx"><span class="mono">Clima e estações</span><small>O que muda no ano, o que o domo simula na ARC e o que cai de verdade lá fora</small></span></label>
+<label class="it" id="li-g9"><input type="checkbox" data-id="g9" id="cb-g9"><span class="tx"><span class="mono">A ração e a água</span><small>O que é, gosto, embalagem, o ritual de receber do drone</small></span></label>
+<label class="it" id="li-g10"><input type="checkbox" data-id="g10" id="cb-g10"><span class="tx"><span class="mono">Como contam o tempo</span><small>O calendário, o peso do 29 de fevereiro, como um rema conta os dias</small></span></label>
+<label class="it" id="li-g11"><input type="checkbox" data-id="g11" id="cb-g11"><span class="tx"><span class="mono">Distâncias e tempo de viagem</span><small>Quanto se leva a pé, de skiff e de rig entre os pontos do mapa</small></span></label>
+<label class="it" id="li-g12"><input type="checkbox" data-id="g12" id="cb-g12"><span class="tx"><span class="mono">O que fazem com os mortos</span><small>Na ARC, na LUX e nos Campos. Sem religião, o que é um funeral</small></span></label>
+<label class="it" id="li-g13"><input type="checkbox" data-id="g13" id="cb-g13"><span class="tx"><span class="mono">A Ascensão por dentro</span><small>A cirurgia, o score, o que um reintegrado vira na prática</small></span></label>
+</div>
+</section>
+<section class="open" id="sec-pessoas">
+<button class="sec-h" data-sec="pessoas"><span class="car">▶</span><span class="t">As Pessoas · arquivo de personagens</span><span class="cnt" id="cnt-pessoas">2 de 11</span></button>
+<div class="sec-pb"><i id="pb-pessoas" style="width:18.2%"></i></div>
+<div class="items">
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Fichas dos sete, mais Nexus e Adam</span><small>No livro do mundo, formato ficha de campo</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">A psicologia dos Bissextos</span><small>No livro do mundo</small></span></div>
+<label class="it" id="li-m3"><input type="checkbox" data-id="m3" id="cb-m3"><span class="tx"><span class="mono">Ficha completa do Nexus</span><small>Incluindo o Delete dele demonstrado no cap 28</small></span></label>
+<label class="it" id="li-m4"><input type="checkbox" data-id="m4" id="cb-m4"><span class="tx"><span class="mono">Um líder com nome e voz por guilda principal</span></span></label>
+<label class="it" id="li-m5"><input type="checkbox" data-id="m5" id="cb-m5"><span class="tx"><span class="mono">Os 2 ou 3 Leapers extras da Resistência</span><small>Nome, ficha e função</small></span></label>
+<label class="it" id="li-m6"><input type="checkbox" data-id="m6" id="cb-m6"><span class="tx"><span class="mono">Os Ungidos da Congregação</span><small>Quem recebe a voz dela e como o canal funciona</small></span></label>
+<label class="it" id="li-m7"><input type="checkbox" data-id="m7" id="cb-m7"><span class="tx"><span class="mono">Os gêmeos Adam e Aurora</span><small>Aparência e o que cada um herda</small></span></label>
+<label class="it" id="li-m8"><input type="checkbox" data-id="m8" id="cb-m8"><span class="tx"><span class="mono">Civis e rostos recorrentes</span><small>Tipo os Character Files do Veil, os NPCs da LUX, dos clãs e da ARC</small></span></label>
+<label class="it" id="li-m9"><input type="checkbox" data-id="m9" id="cb-m9"><span class="tx"><span class="mono">Validar a primeira leva da galeria</span><small>Veska, Ferro-Velho, o Descalço Cego, Mãe Voz e Raiz aguardam o martelo</small></span></label>
+<label class="it" id="li-m10"><input type="checkbox" data-id="m10" id="cb-m10"><span class="tx"><span class="mono">Os rostos da leva do cap 1</span><small>Quem some, um reintegrado e um exilado para reencontrar depois</small></span></label>
+<label class="it" id="li-m11"><input type="checkbox" data-id="m11" id="cb-m11"><span class="tx"><span class="mono">Um civil recorrente por lugar</span><small>O mercado, o ponto de carga, a fila, o dreno</small></span></label>
+</div>
+</section>
+<section class="open" id="sec-guildas">
+<button class="sec-h" data-sec="guildas"><span class="car">▶</span><span class="t">Guildas e Cultos · ficha por ficha</span><span class="cnt" id="cnt-guildas">12 de 15</span></button>
+<div class="sec-pb"><i id="pb-guildas" style="width:80%"></i></div>
+<div class="items">
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Trocadores de História</span><small>Fichados na aba Guildas da Lux. O Bibliotecário, os Oradores, os Ouvintes</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Coders Místicos</span><small>Fichados na LUX e na ramificação externa de Elysium</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Engenheiros de Sucata</span><small>Fichados. O Primeiro-Arquiteto e o Livro das Plantas</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Agrários</span><small>Fichados. A Raiz-Mestra, os Semeadores, os Espantalhos</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Educadores</span><small>Fichados. O Reitor, os Tutores, os Alunos-Guardiões</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Os Biólogos</span><small>Fichados na aba Clãs em Elysium, nascidos dos ex Agrários</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">As 5 sem virtude, uma a uma</span><small>Fichadas. Sombrios, Silenciadores, Manipuladores, Devoradores e Desintegradores, com hierarquia e marca</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">As guildas de virtude restantes</span><small>Nomeadas e fichadas. Seguranças da Noite, os Cromáticos e os Colecionadores de Ruído</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">A Congregação da Mãe</span><small>Fichada na aba Clãs. Ungidos, Zelotes e Penitentes, os Cálices da deusa</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Os Enxertados</span><small>Fichados como Scrap-Bandits. Ripperdocs, Montados e Carne Fresca, os Matadouros</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Os do Salto</span><small>Fichados. A Lenda Selene, os Guias Saphira e Haruki, os Batedores do Salto</small></span></div>
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Hierarquia interna das guildas</span><small>Fechada. Cada guilda e clã com três cargos nomeados</small></span></div>
+<label class="it" id="li-gu9"><input type="checkbox" data-id="gu9" id="cb-gu9"><span class="tx"><span class="mono">Os Descalços</span><small>O culto anti máquina por dentro</small></span></label>
+<label class="it" id="li-gu13"><input type="checkbox" data-id="gu13" id="cb-gu13"><span class="tx"><span class="mono">Os Afogados</span><small>Os guardiões da memória proibida</small></span></label>
+<label class="it" id="li-gu14"><input type="checkbox" data-id="gu14" id="cb-gu14"><span class="tx"><span class="mono">Ritos de entrada e a cerimônia da marca</span><small>Como cada guilda tatua, o que se jura, o que se perde</small></span></label>
+</div>
+</section>
+<section class="open" id="sec-ref">
+<button class="sec-h" data-sec="ref"><span class="car">▶</span><span class="t">Referência de Campo</span><span class="cnt" id="cnt-ref">0 de 14</span></button>
+<div class="sec-pb"><i id="pb-ref" style="width:0%"></i></div>
+<div class="items">
+<label class="it" id="li-rf1"><input type="checkbox" data-id="rf1" id="cb-rf1"><span class="tx"><span class="mono">Bestiário na bíblia</span><small>Levar as 22 fichas de ameaça do Fables, com capacidades e fraquezas</small></span></label>
+<label class="it" id="li-rf2"><input type="checkbox" data-id="rf2" id="cb-rf2"><span class="tx"><span class="mono">Itens e equipamentos fichados</span><small>Os 45 do Fables organizados por origem, ARC, LUX e Campos</small></span></label>
+<label class="it" id="li-rf3"><input type="checkbox" data-id="rf3" id="cb-rf3"><span class="tx"><span class="mono">As técnicas CRUD fichadas</span><small>Os 24 spells do Fables casados com as escadas 10 a 0</small></span></label>
+<label class="it" id="li-rf4"><input type="checkbox" data-id="rf4" id="cb-rf4"><span class="tx"><span class="mono">A economia de troca</span><small>O que vale o quê, tipo o Money and Resources do Veil</small></span></label>
+<label class="it" id="li-rf5"><input type="checkbox" data-id="rf5" id="cb-rf5"><span class="tx"><span class="mono">Glossário do mundo</span><small>SOLPHI, CRUD, Bissexto, rema, leva, a marca, tudo num lugar só</small></span></label>
+<label class="it" id="li-rf14"><input type="checkbox" data-id="rf14" id="cb-rf14"><span class="tx"><span class="mono">Completar a Língua da LUX</span><small>Hoje só uma parte das gírias está registrada. Falta o resto do léxico e as vozes</small></span></label>
+<label class="it" id="li-rf6"><input type="checkbox" data-id="rf6" id="cb-rf6"><span class="tx"><span class="mono">Validar a primeira leva de técnicas</span><small>As 10 classificadas no livro aguardam o martelo</small></span></label>
+<label class="it" id="li-rf7"><input type="checkbox" data-id="rf7" id="cb-rf7"><span class="tx"><span class="mono">As 14 técnicas restantes</span><small>Cada uma com operação, degrau mínimo, custo e quem domina</small></span></label>
+<label class="it" id="li-rf8"><input type="checkbox" data-id="rf8" id="cb-rf8"><span class="tx"><span class="mono">A técnica assinatura de cada um dos sete</span><small>O golpe que só aquela pessoa faz</small></span></label>
+<label class="it" id="li-rf9"><input type="checkbox" data-id="rf9" id="cb-rf9"><span class="tx"><span class="mono">Validar as notas do bestiário</span><small>As 11 do livro aguardam o martelo</small></span></label>
+<label class="it" id="li-rf10"><input type="checkbox" data-id="rf10" id="cb-rf10"><span class="tx"><span class="mono">As 11 fichas restantes do bestiário</span><small>Com capacidades e fraquezas</small></span></label>
+<label class="it" id="li-rf11"><input type="checkbox" data-id="rf11" id="cb-rf11"><span class="tx"><span class="mono">As ameaças da guerra</span><small>O exército dela na Parte III, o nano contra nano, o cerco</small></span></label>
+<label class="it" id="li-rf12"><input type="checkbox" data-id="rf12" id="cb-rf12"><span class="tx"><span class="mono">Os 31 objetos restantes</span><small>Do catálogo de 45, com dono, história e preço</small></span></label>
+<label class="it" id="li-rf13"><input type="checkbox" data-id="rf13" id="cb-rf13"><span class="tx"><span class="mono">Objetos novos que a história pede</span><small>O kit do Caelum, a agulha do Haruki, o que mais as cenas exigirem</small></span></label>
+</div>
+</section>
+<section class="open" id="sec-pol">
+<button class="sec-h" data-sec="pol"><span class="car">▶</span><span class="t">Política e relações · tipo o Veil faz</span><span class="cnt" id="cnt-pol">0 de 4</span></button>
+<div class="sec-pb"><i id="pb-pol" style="width:0%"></i></div>
+<div class="items">
+<label class="it" id="li-po1"><input type="checkbox" data-id="po1" id="cb-po1"><span class="tx"><span class="mono">O mapa político das guildas</span><small>Quem é aliado de quem, quem odeia quem, as guerras frias do anel</small></span></label>
+<label class="it" id="li-po2"><input type="checkbox" data-id="po2" id="cb-po2"><span class="tx"><span class="mono">O mapa de relações dos personagens</span><small>Todos com todos, tipo o relationships do Veil</small></span></label>
+<label class="it" id="li-po3"><input type="checkbox" data-id="po3" id="cb-po3"><span class="tx"><span class="mono">Rotinas</span><small>Quem está onde a que hora, tipo o npc-routines do Veil</small></span></label>
+<label class="it" id="li-po4"><input type="checkbox" data-id="po4" id="cb-po4"><span class="tx"><span class="mono">Contatos por lugar</span><small>Em cada lugar, quem procurar e para quê, tipo o location-contacts do Veil</small></span></label>
+</div>
+</section>
+<section class="open" id="sec-lug">
+<button class="sec-h" data-sec="lug"><span class="car">▶</span><span class="t">Lugares e cultura</span><span class="cnt" id="cnt-lug">0 de 8</span></button>
+<div class="sec-pb"><i id="pb-lug" style="width:0%"></i></div>
+<div class="items">
+<label class="it" id="li-lu1"><input type="checkbox" data-id="lu1" id="cb-lu1"><span class="tx"><span class="mono">Lugares nomeados um a um</span><small>Mercados, pontos de carga, arenas, os lugares com nome próprio da LUX e dos Campos</small></span></label>
+<label class="it" id="li-lu2"><input type="checkbox" data-id="lu2" id="cb-lu2"><span class="tx"><span class="mono">As festas e encontros</span><small>O que os rema fazem à noite, os ritos da fila, tipo o Gatherings do Veil</small></span></label>
+<label class="it" id="li-lu3"><input type="checkbox" data-id="lu3" id="cb-lu3"><span class="tx"><span class="mono">A cultura dos rema</span><small>Grafites, murais, músicas, jogos, as mensagens das levas anteriores</small></span></label>
+<label class="it" id="li-lu4"><input type="checkbox" data-id="lu4" id="cb-lu4"><span class="tx"><span class="mono">Símbolos e marcas</span><small>A tatuagem de cada guilda, os símbolos dos cultos, catálogo tipo o Symbols do Veil</small></span></label>
+<label class="it" id="li-lu5"><input type="checkbox" data-id="lu5" id="cb-lu5"><span class="tx"><span class="mono">A fauna natural dos Campos</span><small>O que vive lá fora além das máquinas dela</small></span></label>
+<label class="it" id="li-lu6"><input type="checkbox" data-id="lu6" id="cb-lu6"><span class="tx"><span class="mono">Comida e bebida da rua</span><small>O que se come além da ração, o que se destila, o que é luxo</small></span></label>
+<label class="it" id="li-lu7"><input type="checkbox" data-id="lu7" id="cb-lu7"><span class="tx"><span class="mono">O mercado na prática</span><small>Como uma troca acontece, quem garante, o que acontece com caloteiro</small></span></label>
+<label class="it" id="li-lu8"><input type="checkbox" data-id="lu8" id="cb-lu8"><span class="tx"><span class="mono">Música e dança</span><small>O que tocam, onde, com o quê</small></span></label>
+</div>
+</section>
+<section class="open" id="sec-voz">
+<button class="sec-h" data-sec="voz"><span class="car">▶</span><span class="t">Vozes do mundo</span><span class="cnt" id="cnt-voz">0 de 5</span></button>
+<div class="sec-pb"><i id="pb-voz" style="width:0%"></i></div>
+<div class="items">
+<label class="it" id="li-v1"><input type="checkbox" data-id="v1" id="cb-v1"><span class="tx"><span class="mono">Relato de um rema</span><small>Primeira pessoa, um dia na LUX</small></span></label>
+<label class="it" id="li-v2"><input type="checkbox" data-id="v2" id="cb-v2"><span class="tx"><span class="mono">Relato de um exilado</span><small>A colheita e a vida nos Campos</small></span></label>
+<label class="it" id="li-v3"><input type="checkbox" data-id="v3" id="cb-v3"><span class="tx"><span class="mono">Relato de um Ungido</span><small>Como a voz dela chega</small></span></label>
+<label class="it" id="li-v4"><input type="checkbox" data-id="v4" id="cb-v4"><span class="tx"><span class="mono">Relato de um reintegrado</span><small>O que a Ascensão faz com uma pessoa</small></span></label>
+<label class="it" id="li-v5"><input type="checkbox" data-id="v5" id="cb-v5"><span class="tx"><span class="mono">Validar o guia Como Reconhecer</span><small>Os sete sinais de campo do livro aguardam o martelo</small></span></label>
+</div>
+</section>
+<section class="open" id="sec-verd">
+<button class="sec-h" data-sec="verd"><span class="car">▶</span><span class="t">A verdade profunda · lado da autora</span><span class="cnt" id="cnt-verd">1 de 4</span></button>
+<div class="sec-pb"><i id="pb-verd" style="width:25%"></i></div>
+<div class="items">
+<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">A Deusa e a Metafísica escritas</span><small>Os cinco atos, o luto, Além do Zero e do Um</small></span></div>
+<label class="it" id="li-vd1"><input type="checkbox" data-id="vd1" id="cb-vd1"><span class="tx"><span class="mono">O servidor do Adam por dentro</span><small>O que a mente fantasma é, o que ela sabe, o que ela quer</small></span></label>
+<label class="it" id="li-vd2"><input type="checkbox" data-id="vd2" id="cb-vd2"><span class="tx"><span class="mono">A mecânica real do backup do mundo</span><small>Onde vive, o que o delete massivo estoura, tipo o What Is Actually True do Veil</small></span></label>
+<label class="it" id="li-vd3"><input type="checkbox" data-id="vd3" id="cb-vd3"><span class="tx"><span class="mono">O que a SOLPHI sente</span><small>O monólogo interno dela em cada Parte, a verdade completa do luto</small></span></label>
+</div>
+</section>
+<section class="open" id="sec-arte">
+<button class="sec-h" data-sec="arte"><span class="car">▶</span><span class="t">Arte</span><span class="cnt" id="cnt-arte">0 de 2</span></button>
+<div class="sec-pb"><i id="pb-arte" style="width:0%"></i></div>
+<div class="items">
+<label class="it" id="li-ar1"><input type="checkbox" data-id="ar1" id="cb-ar1"><span class="tx"><span class="mono">Lista de imagens desejadas</span><small>Tipo o image wishlist do Veil, cena a cena, aproveitando a pasta imagens</small></span></label>
+<label class="it" id="li-ar2"><input type="checkbox" data-id="ar2" id="cb-ar2"><span class="tx"><span class="mono">Capa e mapa ilustrado</span><small>A capa do livro do mundo e o mapa da região desenhado</small></span></label>
+</div>
+</section>
+</div>
+
+<footer>Fonte única, o documento SOLPHI · 22 set 2026. O detalhe de cada item está no Raio X e no livro do mundo. O Fables fica só como referência do que já foi criado lá.</footer>
+</div>
+
+<script>
+var DATA=[
+ {id:"canon",title:"Canon · decisões e correções",items:[
+  ["fz1","Poderes do Zephyr","Fechado em reunião. Lê muito pouco, Delete físico e insano","done"],
+  ["fz2","Poderes da Lyra","Fechado em reunião. A maior criadora, o Create no topo","done"],
+  ["fz3","Update no topo e os 5 níveis do Create","Decisão da reunião, aplicada no livro do mundo","done"],
+  ["fz4","A distância do Caelum","A cópia mais próxima que quer ser o mais distante, registrado no livro","done"],
+  ["fz5","A taxa de reintegração","Fechada pela Roberta, varia de 5% a 9%, máximo 9. Aplicada no livro","done"],
+  ["fz6","Custos por nível das quatro operações","Aba nova do CRUD, de 500 GB a 1 PB mais o nível Deus. No livro","done"],
+  ["fz7","Níveis de Read, Update e Delete","Fechados na aba nova, com nomes e exemplos. No livro","done"],
+  ["fz8","Unidade e tabela de custos","Banda em GB, TB e PB, Agonia por nível. No livro","done"],
+  ["fz9","O nome da rede é AF_ECHO","Adam Freeman Echo por dentro, Automated Frequency por fora. No livro","done"],
+  ["fz10","Agonia no lugar da Madness","Porcentagem de sincronização com a SOLPHI, definida na aba Fichas. No livro","done"],
+  ["fz11","O Strain virou Overclock","Fechado pela Roberta em 24 set. O overload do corpo rodando tecnologia, usa banda. No livro","done"],
+  ["fz12","Seção antiga do CRUD limpa na bíblia","Editada em 24 set direto no documento. Caelum com as quatro, Zephyr com o Delete, Update como ápice","done"],
+  ["fz13","A idade da Lyra","Fechada no documento, 20 anos. As idades bissextas valem, o F&F que registrava 22 não conta","done"],
+  ["fz14","Nome canônico de cada guilda","Fechado na aba Guildas da Lux. As 13 com nome em português, das 5 sem virtude aos Colecionadores de Ruído","done"],
+  ["c7","Decidir quem ensinou o Mantra à Selene","A primeira mestra aprendeu com quem"],
+  ["c8","Decidir por que a SOLPHI nunca detectou os quatro","Ela lê biometria de todos, precisa de uma razão canônica"],
+  ["c9","Decidir por que os esgotos ficam fora da rede","Infraestrutura pré SOLPHI sem nano, por exemplo"],
+  ["c10","Decidir como a resistência soube do servidor do Adam","E por que a backdoor ficou aberta 2000 anos"],
+  ["c11","Decidir por que só em 4000 nasceram os quatro","E quem desenhou o quase clone do Adam"],
+  ["c12","Decidir por que ela não deleta os capturados","Caps 53 e 54 precisam da razão dela"],
+  ["c13","Decidir o destino das outras nove cidadelas","No clímax e no epílogo"],
+  ["c17","Fechar os números das barras","Definições fechadas em 24 set. Vida é HP, Strain é o overload do corpo e usa banda, a terceira é a sincronização com o sistema, XP é inserção de dados. Faltam os números"],
+  ["c18","Escrever o conflito Zephyr e Lyra","Decidido em reunião, ele contra a criadora que organiza. Você não é a SOLPHI pra achar que manda em mim. E a SOLPHI não manda no Zephyr"],
+  ["c19","Decidir o nome do Anulador","Apontamento do Harry nos caps 14 e 15. Hoje Anulador nomeia o Delete no sistema e o poder na mão do Caelum na prosa. Trocar ou manter, e aplicar nos 5 lugares"],
+  ["c23","Definir o alcance da Selene nas escadas","A aba diz que a Selene domina toda a escala. A reunião disse Create, Read e Delete, sem Update"],
+  ["c25","Portar as abas novas pro livro do mundo","Nanites e Células de Malha, Clãs em Elysium, Guildas da Lux e as marcas. Entrou no documento, falta virar capítulo no livro"],
+]},
+ {id:"gaiola",title:"A Gaiola · o mundo físico",items:[
+  ["fg1","A Gaiola escrita no livro","Camadas, demografia exata, economia da fartura, desmame e portão, Chicago","done"],
+  ["fg2","Os Campos clã a clã","Fechado na aba Clãs em Elysium. Sete clãs com hierarquia, modo de operação e itens, mais o mercado de carne do portão","done"],
+  ["g1","Mapa da região","ARC 40 milhas, LUX 100, o lago seco, Elysium. Pendência anotada na própria bíblia"],
+  ["g2","Timeline única de 2030 a 4020","Os pedaços existem em quatro seções, juntar num capítulo só"],
+  ["g3","A ARC por dentro","A rotina de 0 a 18, os CRANEs, a educação, um dia de uma criança"],
+  ["g4","A LUX por dentro","Os turnos de trabalho forçado, a distribuição, um dia de um rema"],
+  ["g6","Os esgotos detalhados","A velha Chicago por baixo, as rotas, o esconderijo da Resistência"],
+  ["g7","As outras nove cidadelas","Nome e uma linha de identidade para cada uma"],
+  ["g8","Clima e estações","O que muda no ano, o que o domo simula na ARC e o que cai de verdade lá fora"],
+  ["g9","A ração e a água","O que é, gosto, embalagem, o ritual de receber do drone"],
+  ["g10","Como contam o tempo","O calendário, o peso do 29 de fevereiro, como um rema conta os dias"],
+  ["g11","Distâncias e tempo de viagem","Quanto se leva a pé, de skiff e de rig entre os pontos do mapa"],
+  ["g12","O que fazem com os mortos","Na ARC, na LUX e nos Campos. Sem religião, o que é um funeral"],
+  ["g13","A Ascensão por dentro","A cirurgia, o score, o que um reintegrado vira na prática"]]},
+ {id:"pessoas",title:"As Pessoas · arquivo de personagens",items:[
+  ["fp1","Fichas dos sete, mais Nexus e Adam","No livro do mundo, formato ficha de campo","done"],
+  ["fp2","A psicologia dos Bissextos","No livro do mundo","done"],
+  ["m3","Ficha completa do Nexus","Incluindo o Delete dele demonstrado no cap 28"],
+  ["m4","Um líder com nome e voz por guilda principal",""],
+  ["m5","Os 2 ou 3 Leapers extras da Resistência","Nome, ficha e função"],
+  ["m6","Os Ungidos da Congregação","Quem recebe a voz dela e como o canal funciona"],
+  ["m7","Os gêmeos Adam e Aurora","Aparência e o que cada um herda"],
+  ["m8","Civis e rostos recorrentes","Tipo os Character Files do Veil, os NPCs da LUX, dos clãs e da ARC"],
+  ["m9","Validar a primeira leva da galeria","Veska, Ferro-Velho, o Descalço Cego, Mãe Voz e Raiz aguardam o martelo"],
+  ["m10","Os rostos da leva do cap 1","Quem some, um reintegrado e um exilado para reencontrar depois"],
+  ["m11","Um civil recorrente por lugar","O mercado, o ponto de carga, a fila, o dreno"]]},
+ {id:"guildas",title:"Guildas e Cultos · ficha por ficha",items:[
+  ["fgu1","Trocadores de História","Fichados na aba Guildas da Lux. O Bibliotecário, os Oradores, os Ouvintes","done"],
+  ["fgu2","Coders Místicos","Fichados na LUX e na ramificação externa de Elysium","done"],
+  ["fgu3","Engenheiros de Sucata","Fichados. O Primeiro-Arquiteto e o Livro das Plantas","done"],
+  ["fgu4","Agrários","Fichados. A Raiz-Mestra, os Semeadores, os Espantalhos","done"],
+  ["fgu5","Educadores","Fichados. O Reitor, os Tutores, os Alunos-Guardiões","done"],
+  ["fgu6","Os Biólogos","Fichados na aba Clãs em Elysium, nascidos dos ex Agrários","done"],
+  ["fgu7","As 5 sem virtude, uma a uma","Fichadas. Sombrios, Silenciadores, Manipuladores, Devoradores e Desintegradores, com hierarquia e marca","done"],
+  ["fgu8","As guildas de virtude restantes","Nomeadas e fichadas. Seguranças da Noite, os Cromáticos e os Colecionadores de Ruído","done"],
+  ["fgu9","A Congregação da Mãe","Fichada na aba Clãs. Ungidos, Zelotes e Penitentes, os Cálices da deusa","done"],
+  ["fgu10","Os Enxertados","Fichados como Scrap-Bandits. Ripperdocs, Montados e Carne Fresca, os Matadouros","done"],
+  ["fgu11","Os do Salto","Fichados. A Lenda Selene, os Guias Saphira e Haruki, os Batedores do Salto","done"],
+  ["fgu12","Hierarquia interna das guildas","Fechada. Cada guilda e clã com três cargos nomeados","done"],
+  ["gu9","Os Descalços","O culto anti máquina por dentro"],
+  ["gu13","Os Afogados","Os guardiões da memória proibida"],
+  ["gu14","Ritos de entrada e a cerimônia da marca","Como cada guilda tatua, o que se jura, o que se perde"],
+  ]},
+ {id:"ref",title:"Referência de Campo",items:[
+  ["rf1","Bestiário na bíblia","Levar as 22 fichas de ameaça do Fables, com capacidades e fraquezas"],
+  ["rf2","Itens e equipamentos fichados","Os 45 do Fables organizados por origem, ARC, LUX e Campos"],
+  ["rf3","As técnicas CRUD fichadas","Os 24 spells do Fables casados com as escadas 10 a 0"],
+  ["rf4","A economia de troca","O que vale o quê, tipo o Money and Resources do Veil"],
+  ["rf5","Glossário do mundo","SOLPHI, CRUD, Bissexto, rema, leva, a marca, tudo num lugar só"],
+  ["rf14","Completar a Língua da LUX","Hoje só uma parte das gírias está registrada. Falta o resto do léxico e as vozes"],
+  ["rf6","Validar a primeira leva de técnicas","As 10 classificadas no livro aguardam o martelo"],
+  ["rf7","As 14 técnicas restantes","Cada uma com operação, degrau mínimo, custo e quem domina"],
+  ["rf8","A técnica assinatura de cada um dos sete","O golpe que só aquela pessoa faz"],
+  ["rf9","Validar as notas do bestiário","As 11 do livro aguardam o martelo"],
+  ["rf10","As 11 fichas restantes do bestiário","Com capacidades e fraquezas"],
+  ["rf11","As ameaças da guerra","O exército dela na Parte III, o nano contra nano, o cerco"],
+  ["rf12","Os 31 objetos restantes","Do catálogo de 45, com dono, história e preço"],
+  ["rf13","Objetos novos que a história pede","O kit do Caelum, a agulha do Haruki, o que mais as cenas exigirem"]]},
+ {id:"pol",title:"Política e relações · tipo o Veil faz",items:[
+  ["po1","O mapa político das guildas","Quem é aliado de quem, quem odeia quem, as guerras frias do anel"],
+  ["po2","O mapa de relações dos personagens","Todos com todos, tipo o relationships do Veil"],
+  ["po3","Rotinas","Quem está onde a que hora, tipo o npc-routines do Veil"],
+  ["po4","Contatos por lugar","Em cada lugar, quem procurar e para quê, tipo o location-contacts do Veil"]]},
+ {id:"lug",title:"Lugares e cultura",items:[
+  ["lu1","Lugares nomeados um a um","Mercados, pontos de carga, arenas, os lugares com nome próprio da LUX e dos Campos"],
+  ["lu2","As festas e encontros","O que os rema fazem à noite, os ritos da fila, tipo o Gatherings do Veil"],
+  ["lu3","A cultura dos rema","Grafites, murais, músicas, jogos, as mensagens das levas anteriores"],
+  ["lu4","Símbolos e marcas","A tatuagem de cada guilda, os símbolos dos cultos, catálogo tipo o Symbols do Veil"],
+  ["lu5","A fauna natural dos Campos","O que vive lá fora além das máquinas dela"],
+  ["lu6","Comida e bebida da rua","O que se come além da ração, o que se destila, o que é luxo"],
+  ["lu7","O mercado na prática","Como uma troca acontece, quem garante, o que acontece com caloteiro"],
+  ["lu8","Música e dança","O que tocam, onde, com o quê"]]},
+ {id:"voz",title:"Vozes do mundo",items:[
+  ["v1","Relato de um rema","Primeira pessoa, um dia na LUX"],
+  ["v2","Relato de um exilado","A colheita e a vida nos Campos"],
+  ["v3","Relato de um Ungido","Como a voz dela chega"],
+  ["v4","Relato de um reintegrado","O que a Ascensão faz com uma pessoa"],
+  ["v5","Validar o guia Como Reconhecer","Os sete sinais de campo do livro aguardam o martelo"]]},
+ {id:"verd",title:"A verdade profunda · lado da autora",items:[
+  ["fv1","A Deusa e a Metafísica escritas","Os cinco atos, o luto, Além do Zero e do Um","done"],
+  ["vd1","O servidor do Adam por dentro","O que a mente fantasma é, o que ela sabe, o que ela quer"],
+  ["vd2","A mecânica real do backup do mundo","Onde vive, o que o delete massivo estoura, tipo o What Is Actually True do Veil"],
+  ["vd3","O que a SOLPHI sente","O monólogo interno dela em cada Parte, a verdade completa do luto"]]},
+ {id:"arte",title:"Arte",items:[
+  ["ar1","Lista de imagens desejadas","Tipo o image wishlist do Veil, cena a cena, aproveitando a pasta imagens"],
+  ["ar2","Capa e mapa ilustrado","A capa do livro do mundo e o mapa da região desenhado"]]}
+];
+
+var state={checked:[]};
+try{state=JSON.parse(document.getElementById('state').textContent)||state}catch(e){}
+if(!Array.isArray(state.checked))state.checked=[];
+var SNAPSHOT='<!doctype html>\n'+document.documentElement.outerHTML;
+
+var root=document.getElementById('sections');
+root.innerHTML='';
+DATA.forEach(function(sec){
+ var s=document.createElement('section'); s.id='sec-'+sec.id; s.className='open';
+ var done=0;
+ var h='<button class="sec-h" data-sec="'+sec.id+'"><span class="car">▶</span><span class="t">'+sec.title+'</span><span class="cnt" id="cnt-'+sec.id+'"></span></button>';
+ h+='<div class="sec-pb"><i id="pb-'+sec.id+'" style="width:0%"></i></div><div class="items">';
+ sec.items.forEach(function(it){
+  if(it[3]==='done'){
+   h+='<div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">'+it[1]+'</span>'+(it[2]?'<small>'+it[2]+'</small>':'')+'</span></div>';
+   return;
+  }
+  h+='<label class="it" id="li-'+it[0]+'"><input type="checkbox" data-id="'+it[0]+'" id="cb-'+it[0]+'">';
+  h+='<span class="tx"><span class="mono">'+it[1].split(' · ')[0]+'</span>'+(it[1].indexOf(' · ')>0?' · '+it[1].split(' · ').slice(1).join(' · '):'');
+  h+=(it[2]?'<small>'+it[2]+'</small>':'')+'</span></label>';
+ });
+ h+='</div>';
+ s.innerHTML=h; root.appendChild(s);
+});
+
+document.querySelectorAll('.sec-h').forEach(function(b){
+ b.addEventListener('click',function(){b.closest('section').classList.toggle('open')})});
+
+function applyState(){
+ var set=new Set(state.checked);
+ var totD=0,totN=0;
+ DATA.forEach(function(sec){
+  var d=0;
+  var fixos=sec.items.filter(function(it){return it[3]==='done'}).length;
+  var abertos=sec.items.filter(function(it){return it[3]!=='done'});
+  abertos.forEach(function(it){
+   var on=set.has(it[0]);
+   var cb=document.getElementById('cb-'+it[0]);
+   var li=document.getElementById('li-'+it[0]);
+   if(cb){cb.checked=on; li.classList.toggle('done',on)}
+   if(on)d++;
+  });
+  var dd=d+fixos, nn=sec.items.length;
+  totD+=dd; totN+=nn;
+  var c=document.getElementById('cnt-'+sec.id);
+  if(c)c.textContent=dd+' de '+nn;
+  var pb=document.getElementById('pb-'+sec.id);
+  if(pb)pb.style.width=(nn?100*dd/nn:0)+'%';
+ });
+ document.getElementById('tot').textContent=totD+' de '+totN;
+ document.getElementById('totbar').style.width=(totN?100*totD/totN:0)+'%';
+}
+applyState();
+
+var badge=document.getElementById('savebadge');
+var artifactNS=null, canPublish=false, timer=null;
+function setBadge(cls,txt){badge.className=cls;badge.textContent=txt}
+
+(async function(){
+ try{
+  artifactNS=await claude.use('artifact');
+  if(artifactNS){canPublish=true; setBadge('saved','salvo para todos')}
+  else setBadge('','só neste aparelho');
+ }catch(e){setBadge('','só neste aparelho')}
+ if(!canPublish){
+  try{var loc=localStorage.getItem('solphi_tracker_v2');
+   if(loc){var l=JSON.parse(loc); if(l&&Array.isArray(l.checked)&&l.checked.length>=state.checked.length){state=l;applyState()}}
+  }catch(e){}
+ }
+})();
+
+function serialize(){
+ var json=JSON.stringify({checked:state.checked});
+ return SNAPSHOT.replace(/<script id="state" type="application\/json">[\s\S]*?<\/script>/,
+  '<script id="state" type="application/json">'+json+'<\/script>');
+}
+async function save(){
+ try{localStorage.setItem('solphi_tracker_v2',JSON.stringify({checked:state.checked}))}catch(e){}
+ if(!canPublish){setBadge('','só neste aparelho');return}
+ setBadge('saving','salvando…');
+ try{
+  await artifactNS.publish(serialize());
+  setBadge('saved','salvo para todos');
+ }catch(e){
+  if(e&&e.code==='conflict'){setBadge('','atualizando…')}
+  else setBadge('','não salvou, tenta de novo');
+ }
+}
+document.querySelectorAll('label.it input').forEach(function(cb){
+ cb.addEventListener('change',function(){
+  var id=cb.dataset.id, set=new Set(state.checked);
+  if(cb.checked)set.add(id); else set.delete(id);
+  state.checked=Array.from(set);
+  applyState();
+  setBadge('saving','salvando…');
+  clearTimeout(timer); timer=setTimeout(save,1200);
+ });
+});
+</script>
