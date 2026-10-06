@@ -368,7 +368,6 @@ var DATA=[
 var state={checked:[]};
 try{state=JSON.parse(document.getElementById('state').textContent)||state}catch(e){}
 if(!Array.isArray(state.checked))state.checked=[];
-var SNAPSHOT='<!doctype html>\n'+document.documentElement.outerHTML;
 
 var root=document.getElementById('sections');
 root.innerHTML='';
@@ -420,38 +419,41 @@ function applyState(){
 applyState();
 
 var badge=document.getElementById('savebadge');
-var artifactNS=null, canPublish=false, timer=null;
 function setBadge(cls,txt){badge.className=cls;badge.textContent=txt}
 
-(async function(){
- try{
-  artifactNS=await claude.use('artifact');
-  if(artifactNS){canPublish=true; setBadge('saved','salvo para todos')}
-  else setBadge('','só neste aparelho');
- }catch(e){setBadge('','só neste aparelho')}
- if(!canPublish){
-  try{var loc=localStorage.getItem('solphi_tracker_v2');
-   if(loc){var l=JSON.parse(loc); if(l&&Array.isArray(l.checked)&&l.checked.length>=state.checked.length){state=l;applyState()}}
-  }catch(e){}
- }
-})();
+var SB_URL='https://tbzrueubipwxmegrawuh.supabase.co/rest/v1/solphi_checklist';
+var SB_KEY='sb_publishable_45L2NdpvX15T6ZXTOjtLXg_HyI3FKY7';
+var SB_H={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};
+var online=false;
 
-function serialize(){
- var json=JSON.stringify({checked:state.checked});
- return SNAPSHOT.replace(/<script id="state" type="application\/json">[\s\S]*?<\/script>/,
-  '<script id="state" type="application/json">'+json+'<\/script>');
+async function carregar(){
+ try{
+  var r=await fetch(SB_URL+'?select=id,checked',{headers:SB_H});
+  if(!r.ok)throw 0;
+  var rows=await r.json();
+  state.checked=rows.filter(function(x){return x.checked}).map(function(x){return x.id});
+  online=true; applyState(); setBadge('saved','salvo para todos');
+ }catch(e){
+  online=false;
+  try{var loc=localStorage.getItem('solphi_tracker_v2');
+   if(loc){var l=JSON.parse(loc); if(l&&Array.isArray(l.checked)){state=l;applyState()}}
+  }catch(e2){}
+  setBadge('','só neste aparelho, sem internet');
+ }
 }
-async function save(){
+carregar();
+setInterval(function(){if(document.visibilityState!=='hidden')carregar()},60000);
+
+async function salvar(id,on){
  try{localStorage.setItem('solphi_tracker_v2',JSON.stringify({checked:state.checked}))}catch(e){}
- if(!canPublish){setBadge('','só neste aparelho');return}
  setBadge('saving','salvando…');
  try{
-  await artifactNS.publish(serialize());
-  setBadge('saved','salvo para todos');
- }catch(e){
-  if(e&&e.code==='conflict'){setBadge('','atualizando…')}
-  else setBadge('','não salvou, tenta de novo');
- }
+  var r=await fetch(SB_URL+'?on_conflict=id',{method:'POST',
+   headers:Object.assign({'Prefer':'resolution=merge-duplicates'},SB_H),
+   body:JSON.stringify([{id:id,checked:on,updated_at:new Date().toISOString()}])});
+  if(!r.ok)throw 0;
+  online=true; setBadge('saved','salvo para todos');
+ }catch(e){online=false;setBadge('','não salvou, confere a internet e clica de novo')}
 }
 document.querySelectorAll('label.it input').forEach(function(cb){
  cb.addEventListener('change',function(){
@@ -459,8 +461,7 @@ document.querySelectorAll('label.it input').forEach(function(cb){
   if(cb.checked)set.add(id); else set.delete(id);
   state.checked=Array.from(set);
   applyState();
-  setBadge('saving','salvando…');
-  clearTimeout(timer); timer=setTimeout(save,1200);
+  salvar(id,cb.checked);
  });
 });
 </script>
