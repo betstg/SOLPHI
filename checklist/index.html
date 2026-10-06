@@ -73,14 +73,14 @@ footer{margin-top:36px;text-align:center;color:var(--faint);font-size:12.5px;fon
 </header>
 
 <div class="totalbar">
-  <div class="row"><b>Progresso total</b><span class="num" id="tot">31 de 108</span></div>
-  <div class="pb"><i id="totbar" style="width:28.7%"></i></div>
+  <div class="row"><b>Progresso total</b><span class="num" id="tot">31 de 115</span></div>
+  <div class="pb"><i id="totbar" style="width:27%"></i></div>
 </div>
 
 <div id="sections">
 <section class="open" id="sec-canon">
-<button class="sec-h" data-sec="canon"><span class="car">▶</span><span class="t">Canon · decisões e correções</span><span class="cnt" id="cnt-canon">14 de 26</span></button>
-<div class="sec-pb"><i id="pb-canon" style="width:53.8%"></i></div>
+<button class="sec-h" data-sec="canon"><span class="car">▶</span><span class="t">Canon · decisões e correções</span><span class="cnt" id="cnt-canon">14 de 33</span></button>
+<div class="sec-pb"><i id="pb-canon" style="width:42.4%"></i></div>
 <div class="items">
 <div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Poderes do Zephyr</span><small>Fechado em reunião. Lê muito pouco, Delete físico e insano</small></span></div>
 <div class="fx"><span class="tick">✓</span><span class="tx"><span class="mono">Poderes da Lyra</span><small>Fechado em reunião. A maior criadora, o Create no topo</small></span></div>
@@ -108,6 +108,13 @@ footer{margin-top:36px;text-align:center;color:var(--faint);font-size:12.5px;fon
 <label class="it" id="li-c19"><input type="checkbox" data-id="c19" id="cb-c19"><span class="tx"><span class="mono">Decidir o nome do Anulador</span><small>Apontamento do Harry nos caps 14 e 15. Hoje Anulador nomeia o Delete no sistema e o poder na mão do Caelum na prosa. Trocar ou manter, e aplicar nos 5 lugares</small></span></label>
 <label class="it" id="li-c23"><input type="checkbox" data-id="c23" id="cb-c23"><span class="tx"><span class="mono">Definir o alcance da Selene nas escadas</span><small>A aba diz que a Selene domina toda a escala. A reunião disse Create, Read e Delete, sem Update</small></span></label>
 <label class="it" id="li-c25"><input type="checkbox" data-id="c25" id="cb-c25"><span class="tx"><span class="mono">Portar as abas novas pro livro do mundo</span><small>Nanites e Células de Malha, Clãs em Elysium, Guildas da Lux e as marcas. Entrou no documento, falta virar capítulo no livro</small></span></label>
+<label class="it" id="li-c26"><input type="checkbox" data-id="c26" id="cb-c26"><span class="tx"><span class="mono">Unificar a taxa de reintegração nas menções</span><small>Aparece como 5%, 5 a 14%, 9 a 14%, no máximo 10% e no máximo 9%. Os caps 1 e 2 usam um em cada dez. O fechado é de 5 a 9, aplicar em todo lugar</small></span></label>
+<label class="it" id="li-c27"><input type="checkbox" data-id="c27" id="cb-c27"><span class="tx"><span class="mono">Quantos saem no portão por dia</span><small>O cap 2 fala em dez mil saindo por dia, a aba dos Clãs fala em 7.600. Fechar um número</small></span></label>
+<label class="it" id="li-c28"><input type="checkbox" data-id="c28" id="cb-c28"><span class="tx"><span class="mono">Michigan, mar ou bacia seca</span><small>O cap 2 diz mar de Michigan e o Guia diz bacia seca e salgada</small></span></label>
+<label class="it" id="li-c29"><input type="checkbox" data-id="c29" id="cb-c29"><span class="tx"><span class="mono">Os clãs do cap 2</span><small>O Despertar e os Caçadores esperam no portão, mas não existem na aba Clãs. Criar as fichas ou trocar os nomes</small></span></label>
+<label class="it" id="li-c30"><input type="checkbox" data-id="c30" id="cb-c30"><span class="tx"><span class="mono">Lyra Voltair e os sobrenomes</span><small>O Arco Caelum e Lyra dá sobrenome e a idade antiga, 22. O cap 10 diz que ninguém tem sobrenome</small></span></label>
+<label class="it" id="li-c31"><input type="checkbox" data-id="c31" id="cb-c31"><span class="tx"><span class="mono">Casar o clímax</span><small>O Guia diz que o Caelum deleta o Nexus no fim. A estrutura diz Update, não Delete. Dá pra casar, apagar o Nexus é o Update do luto dela, mas hoje os dois brigam</small></span></label>
+<label class="it" id="li-c32"><input type="checkbox" data-id="c32" id="cb-c32"><span class="tx"><span class="mono">Tirar a nota do Harry do cap 15</span><small>O comentário sugerindo vail pro Anulador ainda está no meio da prosa. Veil é termo de outro livro da Roberta e não entra no SOLPHI</small></span></label>
 </div>
 </section>
 <section class="open" id="sec-gaiola">
@@ -280,6 +287,13 @@ var DATA=[
   ["c19","Decidir o nome do Anulador","Apontamento do Harry nos caps 14 e 15. Hoje Anulador nomeia o Delete no sistema e o poder na mão do Caelum na prosa. Trocar ou manter, e aplicar nos 5 lugares"],
   ["c23","Definir o alcance da Selene nas escadas","A aba diz que a Selene domina toda a escala. A reunião disse Create, Read e Delete, sem Update"],
   ["c25","Portar as abas novas pro livro do mundo","Nanites e Células de Malha, Clãs em Elysium, Guildas da Lux e as marcas. Entrou no documento, falta virar capítulo no livro"],
+  ["c26","Unificar a taxa de reintegração nas menções","Aparece como 5%, 5 a 14%, 9 a 14%, no máximo 10% e no máximo 9%. Os caps 1 e 2 usam um em cada dez. O fechado é de 5 a 9, aplicar em todo lugar"],
+  ["c27","Quantos saem no portão por dia","O cap 2 fala em dez mil saindo por dia, a aba dos Clãs fala em 7.600. Fechar um número"],
+  ["c28","Michigan, mar ou bacia seca","O cap 2 diz mar de Michigan e o Guia diz bacia seca e salgada"],
+  ["c29","Os clãs do cap 2","O Despertar e os Caçadores esperam no portão, mas não existem na aba Clãs. Criar as fichas ou trocar os nomes"],
+  ["c30","Lyra Voltair e os sobrenomes","O Arco Caelum e Lyra dá sobrenome e a idade antiga, 22. O cap 10 diz que ninguém tem sobrenome"],
+  ["c31","Casar o clímax","O Guia diz que o Caelum deleta o Nexus no fim. A estrutura diz Update, não Delete. Dá pra casar, apagar o Nexus é o Update do luto dela, mas hoje os dois brigam"],
+  ["c32","Tirar a nota do Harry do cap 15","O comentário sugerindo vail pro Anulador ainda está no meio da prosa. Veil é termo de outro livro da Roberta e não entra no SOLPHI"],
 ]},
  {id:"gaiola",title:"A Gaiola · o mundo físico",items:[
   ["fg1","A Gaiola escrita no livro","Camadas, demografia exata, economia da fartura, desmame e portão, Chicago","done"],
