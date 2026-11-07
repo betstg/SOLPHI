@@ -286,9 +286,9 @@ function render(i, restore){
   if(i>0){ prev.disabled=false; $("#prevNm").textContent = CHAPTERS[i-1].title; }
   else{ prev.disabled=true; $("#prevNm").textContent="—"; }
   if(i<CHAPTERS.length-1){ next.disabled=false; $("#nextNm").textContent = CHAPTERS[i+1].title; }
-  else{ next.disabled=false; $("#nextNm").textContent="O Arquivo Fantasma 🔒"; }
+  else{ next.disabled=true; $("#nextNm").textContent="Em breve"; }
   $("#endNote").textContent = i<CHAPTERS.length-1
-    ? "" : "O Capítulo 5 continua atrás de um apoio — clique em Próximo.";
+    ? "" : "Fim da prévia. Os próximos capítulos ainda não foram liberados.";
   // restore scroll (paragraph-precise when available)
   clearMark();
   requestAnimationFrame(()=>{
@@ -311,7 +311,7 @@ function goChapter(i){
   render(i, 0); savePos();
 }
 $("#prevBtn").addEventListener("click", ()=>!$("#prevBtn").disabled && goChapter(current-1));
-$("#nextBtn").addEventListener("click", ()=>{ if(current>=CHAPTERS.length-1){ location.href="capitulo-5.html"; } else if(!$("#nextBtn").disabled){ goChapter(current+1); } });
+$("#nextBtn").addEventListener("click", ()=>{ if(!$("#nextBtn").disabled) goChapter(current+1); });
 
 /* ---- clicar num parágrafo salva o marcador ali (mostra "Você parou aqui") ---- */
 $("#cBody").addEventListener("click", e=>{
@@ -384,7 +384,7 @@ window.addEventListener("beforeunload", ()=>{ if(!$("#reader").classList.contain
 /* keyboard */
 document.addEventListener("keydown", e=>{
   if($("#reader").classList.contains("hidden")) return;
-  if(e.key==="ArrowRight"){ if(current>=CHAPTERS.length-1){ location.href="capitulo-5.html"; } else if(!$("#nextBtn").disabled){ goChapter(current+1); } }
+  if(e.key==="ArrowRight"){ if(!$("#nextBtn").disabled) goChapter(current+1); }
   if(e.key==="ArrowLeft" && !$("#prevBtn").disabled) goChapter(current-1);
 });
 
