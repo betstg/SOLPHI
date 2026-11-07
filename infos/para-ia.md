@@ -51,6 +51,24 @@ O grupo de cada personagem vem das tags.
 
 Exemplo de NPC da LUX com tags `npc lux karas`.
 
+## Subpastas dos lugares e da linha do tempo
+
+Lugar leva nas tags a cidade onde fica, `arc`, `lux`, `elysium` ou `ermo`. A própria cidade leva também a tag `cidade`.
+
+Linha do tempo é um registro por linha (uma pessoa, um clã, um grupo). A tag diz o tipo de linha, `pessoas`, `grupos` ou `mundo`. Os momentos ficam em `detalhes`, um por bloco, com uma linha em branco entre eles. A primeira linha do bloco é quando e o título separados por uma barra em pé, e as linhas seguintes são o texto.
+
+```
+2030 | O nascimento da salvadora
+O Adam libera a SOLPHI na rede global.
+
+29 fev 2040 | A morte do Adam
+O Adam é assassinado num dia bissexto.
+```
+
+## O que falta
+
+A lista do que falta decidir e cadastrar fica em `falta.js`, nesta mesma pasta. Ela é editada só no código, não no banco.
+
 ## Regras do mundo pra respeitar
 
 - Só cadastre o que está decidido na bíblia ou o que a Betty ou o Harry mandaram. Nome novo inventado só entra se eles aprovarem
