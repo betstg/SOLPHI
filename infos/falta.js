@@ -1,4 +1,4 @@
-/* O que falta. Fonte única do tracker do SOLPHI. Marcações ficam só no aparelho, nada vai pro banco. fase 1 decide primeiro, 2 corrige no texto, 3 antes das próximas cenas. */
+/* O que falta. Fonte única do tracker do SOLPHI. Marcações ficam só no aparelho, nada vai pro banco. fase 1 decide primeiro, 2 antes de escrever. */
 const FALTA=[
 {
 "cat": "canon",
@@ -209,7 +209,7 @@ const FALTA=[
 "titulo": "Escrever o conflito Zephyr e Lyra",
 "nota": "Decidido em reunião, ele contra a criadora que organiza. Você não é a SOLPHI pra achar que manda em mim. E a SOLPHI não manda no Zephyr",
 "feito": false,
-"fase": 3,
+"fase": 2,
 "ord": 20,
 "pq": "Conflito que atravessa o livro"
 },
@@ -256,7 +256,7 @@ const FALTA=[
 "feito": false,
 "fase": 1,
 "ord": 2,
-"pq": "Depende do portão. O cap 2 cita clãs que caíram. Falta o martelo nos Caçadores e nos Descalços"
+"pq": "Depende do portão. Falta o martelo nos Caçadores"
 },
 {
 "cat": "canon",
@@ -273,7 +273,7 @@ const FALTA=[
 "feito": false,
 "fase": 1,
 "ord": 11,
-"pq": "O cap 1 já mostra o Zephyr de cabelo turquesa. Decidir se é tinta da LUX ou se a cena da cobaia muda de lugar"
+"pq": "Decidir de onde vem o turquesa do Zephyr, se é tinta da LUX ou se é o primeiro teste de Update do Caelum, e em que momento da história isso acontece"
 },
 {
 "cat": "canon",
@@ -283,7 +283,7 @@ const FALTA=[
 "feito": false,
 "fase": 1,
 "ord": 10,
-"pq": "A expressão aparece nas falas, precisa de um sentido só antes de revisar os diálogos"
+"pq": "A expressão aparece muito nas falas, precisa de um sentido só"
 },
 {
 "cat": "canon",
@@ -312,9 +312,9 @@ const FALTA=[
 "titulo": "A cena da tatuagem do Zephyr",
 "nota": "Fechada pela Roberta em 7 out, falta escrever no capítulo. Na LUX, antes da invasão, o Haruki chama o Zephyr de canto e avisa que os membros mecânicos dele podem ser hackeados pela SOLPHI. Os olhos do Ion já têm uma proteção que o próprio Ion fez por dentro. Aí vem a cena, o Haruki tatuando o Zephyr com tinta de nanite, circuitos e símbolos como firewall, e depois programando os nanites no aparelho dele. A cena entra nos capítulos que já existem, antes da missão, na região do cap 7, A Última Noite, não num capítulo novo",
 "feito": false,
-"fase": 3,
+"fase": 2,
 "ord": 19,
-"pq": "Cena da região do cap 7"
+"pq": "Cena antes da invasão"
 },
 {
 "cat": "canon",
@@ -362,7 +362,7 @@ const FALTA=[
 "feito": false,
 "fase": 1,
 "ord": 0,
-"pq": "Muda o cap 2, quantas pessoas existem em Elysium, o mercado de recrutamento e de onde vêm os clãs. Os números de cada dia (k2) e a população (k11) só fecham depois disso"
+"pq": "Muda quantas pessoas existem em Elysium, o mercado de recrutamento e de onde vêm os clãs. Os números de cada dia só fecham depois disso"
 },
 {
 "cat": "canon",
@@ -429,9 +429,9 @@ const FALTA=[
 "titulo": "Os esgotos detalhados",
 "nota": "A velha Chicago por baixo, as rotas, o esconderijo da Resistência",
 "feito": false,
-"fase": 3,
+"fase": 2,
 "ord": 25,
-"pq": "Os caps 14 a 16 se passam lá embaixo"
+"pq": "Parte da fuga se passa lá embaixo"
 },
 {
 "cat": "lugar",
@@ -509,7 +509,7 @@ const FALTA=[
 "titulo": "Ficha completa do Nexus",
 "nota": "A aparência já tá na aba Fichas, com o rosto do Adam. Falta o bloco de poder e o Delete dele do cap 28. Canon da sessão de arte de 9 out, o Nexus é a cara do Caelum envelhecida, o Adam congelado nos 56 anos da morte, e a âncora é o rosto do Caelum. Sugestões do rosto já no doc em 10 out, na ficha e na descrição do avatar",
 "feito": false,
-"fase": 3,
+"fase": 2,
 "ord": 21,
 "pq": "Precisa do poder dele pro Delete do cap 28"
 },
@@ -526,7 +526,7 @@ const FALTA=[
 "titulo": "Os 2 ou 3 Leapers extras da Resistência",
 "nota": "O Guia confirma mais 2 ou 3 Leapers além do grupo. O Argo proposto na aba NPCs espera o aceite, faltam os outros",
 "feito": false,
-"fase": 3,
+"fase": 2,
 "ord": 24,
 "pq": "O Argo está proposto, faltam os outros"
 },
@@ -543,7 +543,7 @@ const FALTA=[
 "titulo": "Os gêmeos Adam e Aurora",
 "nota": "Aparência e o que cada um herda",
 "feito": false,
-"fase": 3,
+"fase": 2,
 "ord": 26,
 "pq": "Só pro fim do Livro 1"
 },
@@ -567,9 +567,9 @@ const FALTA=[
 "titulo": "Os rostos da leva do cap 1",
 "nota": "Quem some, um reintegrado e um exilado para reencontrar depois",
 "feito": false,
-"fase": 3,
+"fase": 2,
 "ord": 22,
-"pq": "Rostos que o cap 1 apresenta e que voltam depois"
+"pq": "Rostos que aparecem no começo e voltam depois"
 },
 {
 "cat": "personagem",
@@ -584,7 +584,7 @@ const FALTA=[
 "titulo": "Os Karas, a guilda das crianças",
 "nota": "Decidido pela Roberta em 7 out. Uma guilda à parte. A Selene leu The Obedience Drug num arquivo preservado de Chicago, as galerias dos esgotos guardam um arquivo de mídia física e digital, ela gostou dos Karas e batizou o grupo assim. No texto o nome entra sutil, a referência nunca é explicada. Resgatadas da ARC, navegam entre ARC, Lux e Elysium, líder criança que responde à Selene, Zephyr é o super herói delas. No fim do Livro 1 ficam sob o comando do Zephyr e do Ion, com os gêmeos, Caelum e Lyra, e os adolescentes que restaram na ARC. Falta fichar a guilda e batizar o líder",
 "feito": false,
-"fase": 3,
+"fase": 2,
 "ord": 23,
 "pq": "O Miguel está proposto como líder, falta o aceite"
 },
@@ -984,7 +984,7 @@ const FALTA=[
 "feito": false,
 "fase": 1,
 "ord": 9,
-"pq": "Também é do cap 10"
+"pq": "É o lugar da cena em que o grupo descobre o servidor"
 },
 {
 "cat": "arte",
@@ -1046,11 +1046,8 @@ const FALTA=[
 "cat": "canon",
 "id": "k1",
 "titulo": "A taxa de reintegração ainda aparece como 9 a 14",
-"nota": "Achado nas linhas do tempo em 7 nov. A aba Informações importantes ainda diz 9 a 14 por cento e o cap 1 diz nunca mais que um em cada dez. O canon é 5 a 9",
-"feito": false,
-"fase": 2,
-"ord": 15,
-"pq": "A decisão já existe, é só corrigir o texto"
+"nota": "Achado nas linhas do tempo em 7 nov. A aba Informações importantes ainda diz 9 a 14 por cento e o cap 1 diz nunca mais que um em cada dez. O canon é 5 a 9. Fica pra reescrita, o texto dos capítulos não vale como canon",
+"feito": false
 },
 {
 "cat": "canon",
@@ -1066,31 +1063,22 @@ const FALTA=[
 "cat": "canon",
 "id": "k3",
 "titulo": "As idades no texto",
-"nota": "No cap 1 o Zephyr conta dois anos, três meses e onze dias até o portão, o que daria 19 anos, mas o capítulo diz 20. O Arco Caelum e Lyra dá 22 pra Lyra. A ficha do Haruki diz 26. A Saphira aparece como 4 anos mais velha, pelas datas são 8",
-"feito": false,
-"fase": 2,
-"ord": 12,
-"pq": "A decisão já existe, é só corrigir os capítulos"
+"nota": "No cap 1 o Zephyr conta dois anos, três meses e onze dias até o portão, o que daria 19 anos, mas o capítulo diz 20. O Arco Caelum e Lyra dá 22 pra Lyra. A ficha do Haruki diz 26. A Saphira aparece como 4 anos mais velha, pelas datas são 8. Fica pra reescrita, o texto dos capítulos não vale como canon",
+"feito": false
 },
 {
 "cat": "canon",
 "id": "k4",
 "titulo": "Os anos de amizade do Zephyr e do Ion",
-"nota": "O cap 3 conta 13 anos de amizade e o cap 13 conta 15",
-"feito": false,
-"fase": 2,
-"ord": 13,
-"pq": "Escolher 13 ou 15 anos e corrigir um dos dois capítulos"
+"nota": "O cap 3 conta 13 anos de amizade e o cap 13 conta 15. Fica pra reescrita, o texto dos capítulos não vale como canon",
+"feito": false
 },
 {
 "cat": "canon",
 "id": "k5",
 "titulo": "O visual do Caelum, do Adam e do Nexus no texto",
-"nota": "A ficha do Caelum diz cabelo escuro curto e o cap 1 diz médio castanho escuro. O Adam é nunca curvado na ficha e de ombros curvados no cap 11. O Nexus tem cabelo castanho numa descrição e grisalho, de óculos e terno em outra",
-"feito": false,
-"fase": 2,
-"ord": 14,
-"pq": "Escolher uma descrição pra cada um e corrigir"
+"nota": "A ficha do Caelum diz cabelo escuro curto e o cap 1 diz médio castanho escuro. O Adam é nunca curvado na ficha e de ombros curvados no cap 11. O Nexus tem cabelo castanho numa descrição e grisalho, de óculos e terno em outra. Fica pra reescrita, o texto dos capítulos não vale como canon",
+"feito": false
 },
 {
 "cat": "canon",
@@ -1100,17 +1088,14 @@ const FALTA=[
 "feito": false,
 "fase": 1,
 "ord": 4,
-"pq": "Define a estrutura do meio do livro, do cap 14 ao 30, e com quem o Caelum e a Lyra treinam"
+"pq": "Define a estrutura do meio do livro e com quem o Caelum e a Lyra treinam"
 },
 {
 "cat": "canon",
 "id": "k7",
 "titulo": "Poderes que ainda contradizem o canon",
-"nota": "O Guia ainda põe o Update como intermediário e o Create como muito difícil. A Selene domina toda a escala num lugar. A Saphira e o Haruki aparecem com Update, que é só do Caelum. O Guia diz que o Caelum deleta o Nexus no clímax e a estrutura diz que ele escolhe o Update",
-"feito": false,
-"fase": 2,
-"ord": 16,
-"pq": "O canon já está fechado, é só limpar o Guia e as fichas"
+"nota": "O Guia ainda põe o Update como intermediário e o Create como muito difícil. A Selene domina toda a escala num lugar. A Saphira e o Haruki aparecem com Update, que é só do Caelum. O Guia diz que o Caelum deleta o Nexus no clímax e a estrutura diz que ele escolhe o Update. Fica pra reescrita, o texto dos capítulos não vale como canon",
+"feito": false
 },
 {
 "cat": "canon",
@@ -1130,27 +1115,21 @@ const FALTA=[
 "feito": false,
 "fase": 1,
 "ord": 8,
-"pq": "O cap 10 já está escrito em cima disso"
+"pq": "Decide o que a Resistência sabe antes da cena do servidor do Adam"
 },
 {
 "cat": "canon",
 "id": "k10",
 "titulo": "Quando o bissexto desperta",
-"nota": "Uma nota diz por volta dos 6 anos, outra diz que não tem hora certa. O cap 10 diz que a SOLPHI apaga cada leva bissexta e poupa alguns",
-"feito": false,
-"fase": 2,
-"ord": 17,
-"pq": "O canon já diz que não tem hora certa, é só limpar a nota antiga"
+"nota": "Uma nota diz por volta dos 6 anos, outra diz que não tem hora certa. O cap 10 diz que a SOLPHI apaga cada leva bissexta e poupa alguns. Fica pra reescrita, o texto dos capítulos não vale como canon",
+"feito": false
 },
 {
 "cat": "canon",
 "id": "k11",
 "titulo": "Fome e população",
-"nota": "O Guia fala de fome na LUX, contra a regra de sem fome nem sede. A população da ARC aparece como 65,6 milhões e como 72,5 milhões. A expectativa de vida em Elysium aparece como 40 e como 40 a 45",
-"feito": false,
-"fase": 2,
-"ord": 18,
-"pq": "A regra de sem fome já existe. Escolher um número de população depois do portão"
+"nota": "O Guia fala de fome na LUX, contra a regra de sem fome nem sede. A população da ARC aparece como 65,6 milhões e como 72,5 milhões. A expectativa de vida em Elysium aparece como 40 e como 40 a 45. Fica pra reescrita, o texto dos capítulos não vale como canon",
+"feito": false
 },
 {
 "cat": "regra",
@@ -1207,5 +1186,15 @@ const FALTA=[
 "titulo": "Esquiva, regras fechadas",
 "nota": "Fechadas pelo Harry em 13 nov. Contra vários ataques só esquiva de um, e escolhe qual. Bala ninguém desvia depois do disparo, mas com Perception dá pra sair da mira antes do gatilho. Não vale contra emboscada nem sniper. A base é Handling mais Atletismo",
 "feito": true
+},
+{
+"cat": "canon",
+"id": "mx1",
+"titulo": "Montar a matriz de controle de pontas soltas",
+"nota": "Pedido da Roberta em 13 nov. Os capítulos escritos têm muitos erros e não valem como canon, então antes de reescrever entra uma matriz com mistérios e perguntas, arcos secundários, armas de Chekhov, regras do mundo, promessa de tom e a estrutura visual de causa e efeito",
+"feito": false,
+"fase": 2,
+"ord": 12.5,
+"pq": "Vem logo depois das decisões. É o que impede ponta solta na reescrita"
 }
 ];

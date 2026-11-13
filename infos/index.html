@@ -554,10 +554,10 @@ function mostraFalta(v){
   const F=typeof FALTA==="undefined"?[]:FALTA;
   let h='<div class="fhead"><h1>O que falta</h1><span class="cnt">'+faltaAbertos()+'</span></div>';
   h+='<p class="fdesc">O que ainda falta decidir, escrever e cadastrar, separado pelas pastas. Marcar aqui fica só neste aparelho. O item fecha pra todo mundo quando a decisão entra na bíblia.</p>';
-  const FASES=[[1,"Decidir primeiro","Muda a história. Nesta ordem, porque um depende do outro."],[2,"Corrigir no texto","A decisão já existe ou é rápida. Falta mexer nos capítulos."],[3,"Antes das próximas cenas","Precisa estar pronto quando a cena for escrita."]];
+  const FASES=[[1,"Decidir primeiro","Muda a história. Nesta ordem, porque um depende do outro."],[2,"Antes de reescrever","Primeiro a matriz de pontas soltas, depois o que cada parte da história precisa ter pronto."]];
   const pr=F.filter(x=>x.fase&&!x.feito).sort((a,b)=>a.ord-b.ord);
   if(pr.length){
-    h+='<section class="fcat open trava" data-c="_trava"><button class="fch">'+svg("falta")+'<span class="t">O que trava a escrita do livro</span><span class="pill">'+pr.filter(x=>!MARC.has(x.id)).length+' abertos</span><span class="chev">'+CHEV+'</span></button><div class="fcb">';
+    h+='<section class="fcat open trava" data-c="_trava"><button class="fch">'+svg("falta")+'<span class="t">O que trava a história</span><span class="pill">'+pr.filter(x=>!MARC.has(x.id)).length+' abertos</span><span class="chev">'+CHEV+'</span></button><div class="fcb">';
     let n=0;
     for(const [f,fn,fd] of FASES){
       const l=pr.filter(x=>x.fase===f); if(!l.length) continue;
