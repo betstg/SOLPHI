@@ -583,7 +583,7 @@ const FALTA=[
 "cat": "personagem",
 "id": "m8",
 "titulo": "Civis e rostos recorrentes",
-"nota": "Tipo os Character Files do Veil, os NPCs da LUX, dos clãs e da ARC. Começou, Baru e Petra aceitos na aba NPCs, e Miguel, Nit, Verbena e Argo propostos esperando o aceite",
+"nota": "Tipo os Character Files do Veil, os NPCs da LUX, dos clãs e da ARC. Começou, Baru e Petra aceitos na aba NPCs, e Miguel, Nit, Verbena e Argo propostos esperando o aceite. O material do outro livro tem perto de 300 fichas de relação entre personagens",
 "feito": false,
 "fase": 3,
 "ord": 35
@@ -1107,7 +1107,7 @@ const FALTA=[
 "cat": "arte",
 "id": "ar1",
 "titulo": "Lista de imagens desejadas",
-"nota": "Tipo o image wishlist do Veil, cena a cena, aproveitando a pasta imagens. Regra da Roberta de 9 out pra cena de referência, redesenhar a imagem da pasta do Drive no estilo do livro com o rosto corrigido, nunca inventar cena a partir do texto",
+"nota": "Tipo o image wishlist do Veil, cena a cena, aproveitando a pasta imagens. Regra da Roberta de 9 out pra cena de referência, redesenhar a imagem da pasta do Drive no estilo do livro com o rosto corrigido, nunca inventar cena a partir do texto. O material do outro livro tem perto de 300 imagens, o do SOLPHI tem umas 40",
 "feito": false,
 "fase": 4,
 "ord": 76
@@ -1355,5 +1355,122 @@ const FALTA=[
 "pq": "Vem logo depois das decisões. É o que impede ponta solta na reescrita",
 "fase": 2,
 "ord": 12
+},
+{
+"cat": "canon",
+"id": "w1",
+"titulo": "O que todo rema sabe",
+"nota": "Abertura do material. O que qualquer pessoa da LUX sabe sobre a SOLPHI, a ARC, o portão e os poderes, contado como se fosse a primeira coisa que alguém aprende. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 13.01
+},
+{
+"cat": "canon",
+"id": "w2",
+"titulo": "O que ninguém fala em voz alta",
+"nota": "A verdade em camadas. O que o rema sabe, o que as guildas sabem, o que a Resistência sabe e o que só a SOLPHI sabe. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 13.03
+},
+{
+"cat": "canon",
+"id": "w5",
+"titulo": "Os órgãos da SOLPHI",
+"nota": "Quem faz o quê por ela na ARC e na LUX. Os CRANEs, os drones de entrega, o Nexus, os Ungidos, os postos de reintegração e como cada um age no dia a dia. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 13.059999999999999
+},
+{
+"cat": "lugar",
+"id": "w11",
+"titulo": "Lugares oficiais da SOLPHI",
+"nota": "As instalações dela na ARC e os postos na LUX, onde ficam, quem entra e o que acontece lá dentro. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 14.01
+},
+{
+"cat": "personagem",
+"id": "w13",
+"titulo": "Como alguém entra nessa vida",
+"nota": "Os caminhos até cada destino. Virar guilda, fugir pra Elysium, ser recrutado pela Resistência, ser reintegrado, ser resgatado no despertar. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 34.01
+},
+{
+"cat": "personagem",
+"id": "w16",
+"titulo": "Fichas de bissextos fora da Resistência",
+"nota": "Os bissextos que ninguém resgatou, que vivem escondidos na LUX ou nos clãs, e o que fazem com o poder. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 55.01
+},
+{
+"cat": "cultura",
+"id": "w4",
+"titulo": "Investigar e lidar com gente",
+"nota": "Como alguém descobre coisas nesse mundo, a quem pergunta, quanto custa uma informação, como funciona a reputação e a palavra dada. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 20.01
+},
+{
+"cat": "poder",
+"id": "w6",
+"titulo": "A rede na prática",
+"nota": "Os nós, os terminais, como alguém se conecta, onde a malha afina e onde ela escuta. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 41.01
+},
+{
+"cat": "poder",
+"id": "w10",
+"titulo": "Cada poder na prática",
+"nota": "Create, Read, Update e Delete contados com casos reais, o que dá certo, o que dá errado e como é sentir cada um. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 41.02
+},
+{
+"cat": "poder",
+"id": "w3",
+"titulo": "Como se morre e o que fica",
+"nota": "Overclock, ruptura, cyberpsicose, delete e backup. O que acontece com o corpo e com os dados de quem morre ou é apagado. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 41.050000000000004
+},
+{
+"cat": "item",
+"id": "w9",
+"titulo": "Materiais de campo e armadilhas",
+"nota": "Células de malha, gadgets, armadilhas da Resistência e dos clãs, e como cada um é usado. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 46.01
+},
+{
+"cat": "item",
+"id": "w12",
+"titulo": "Recursos e onde se acha",
+"nota": "Água, peças, comida, células e remédio. Onde se acha cada um e quem controla. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 51.01
+},
+{
+"cat": "criatura",
+"id": "w18",
+"titulo": "Os que sofrem",
+"nota": "Quem vive com Agonia crônica, cyberpsicose, Kuru e radiação. Como reconhecer, como tratar e o que a sociedade faz com eles. Achado na comparação com o material do outro livro da Roberta, em 13 nov",
+"feito": false,
+"fase": 3,
+"ord": 57.01
 }
 ];
