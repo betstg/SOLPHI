@@ -75,3 +75,4 @@ A lista do que falta decidir e cadastrar fica em `falta.js`, nesta mesma pasta. 
 - Ninguém tem sobrenome
 - A palavra Veil não existe no SOLPHI
 - Não escreva nome dos autores nos textos do mundo
+- Nome de personagem de outra obra nunca entra no material, nem como comparação, por mais que a referência apareça na conversa

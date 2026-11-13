@@ -1,4 +1,4 @@
-/* O que falta. Fonte única do tracker do SOLPHI. Marcações ficam só no aparelho, nada vai pro banco. */
+/* O que falta. Fonte única do tracker do SOLPHI. Marcações ficam só no aparelho, nada vai pro banco. fase 1 decide primeiro, 2 corrige no texto, 3 antes das próximas cenas. */
 const FALTA=[
 {
 "cat": "canon",
@@ -197,10 +197,10 @@ const FALTA=[
 "feito": true
 },
 {
-"cat": "canon",
+"cat": "regra",
 "id": "c17",
 "titulo": "Fechar os números das barras",
-"nota": "Definições fechadas em 24 set. Vida é HP, Strain é o overload do corpo e usa banda, a terceira é a sincronização com o sistema, XP é inserção de dados. Faltam os números",
+"nota": "Definições fechadas em 24 set. Em 10 nov a bíblia ganhou o PV entre 30 e 60. Em 13 nov o Harry mandou a Banda, (Lógica + Sincronização) x 100, e a Agonia, uma barra de 100 por cento em que cada uso do CRUD soma dano menos Organismo mais Sincronização. Falta a conta do PV a partir da Strength e do Organism, e os dois itens abaixo",
 "feito": false
 },
 {
@@ -208,7 +208,10 @@ const FALTA=[
 "id": "c18",
 "titulo": "Escrever o conflito Zephyr e Lyra",
 "nota": "Decidido em reunião, ele contra a criadora que organiza. Você não é a SOLPHI pra achar que manda em mim. E a SOLPHI não manda no Zephyr",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 20,
+"pq": "Conflito que atravessa o livro"
 },
 {
 "cat": "canon",
@@ -250,7 +253,10 @@ const FALTA=[
 "id": "c29",
 "titulo": "Os clãs do cap 2",
 "nota": "Fechado pelo Harry em 9 out. Não vai ter mais clã de descalços nem clã do despertar, e os Caçadores quase certo que caem também, o Harry disse acho que. Falta o martelo final nos Caçadores, tirar os nomes do cap 2 e rever o item dos Descalços, que tinha sido fechado como guilda",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 2,
+"pq": "Depende do portão. O cap 2 cita clãs que caíram. Falta o martelo nos Caçadores e nos Descalços"
 },
 {
 "cat": "canon",
@@ -264,14 +270,20 @@ const FALTA=[
 "id": "c35",
 "titulo": "O visual da ARC e a evolução do Zephyr",
 "nota": "Fechado pela Roberta em 7 out. Na ARC ninguém usa cabelo colorido, piercing ou brinco, ninguém nasce com cabelo colorido e ninguém muda a cor lá, ser normal no visual é parte do sentido da ARC. A mudança visual é da LUX. Na ARC o uniforme é branco, todo mundo igual. Patch na roupa não existe na ARC, a jaqueta da Lyra só ganha os remendos na LUX. O bloco VISUAL DA ARC na aba Fichas carrega a regra completa e a ficha da Lyra tem a regra do patch, as duas sugestões esperando o aceite. O Zephyr antes é dirty blond com look normal, e o turquesa vem quando o Caelum aprende o primeiro nível de Update e muda o cabelo dele, com o Zephyr de cobaia. Pendência pequena, no cap 1 ele já aparece turquesa e o Update do Caelum desperta depois, decidir se o turquesa do começo é tinta da LUX ou se a cena da cobaia muda de lugar. As fichas já têm as sugestões, falta a prosa. Em 10 out entrou a Saphira na régua, na ARC ela era afro natural bem curto e rente, sem miçanga, LED, maquiagem nem piercing, as dreads vêm depois. Sugestão já na ficha dela",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 11,
+"pq": "O cap 1 já mostra o Zephyr de cabelo turquesa. Decidir se é tinta da LUX ou se a cena da cobaia muda de lugar"
 },
 {
 "cat": "canon",
 "id": "c36",
 "titulo": "Pelo salto, juramento ou bit flip",
 "nota": "Conflito anotado no próprio Resumo. Na aba Informações é juramento pelo dia bissexto, no glossário é o salto de bit, e a aba Gírias misturou os dois na mesma linha. Fechar um sentido. Nota de 9 out, o Harry respondeu esse número com outra coisa, o clã Os do Salto não existe mais como clã de verdade, é fachada da Resistência, que não tem lugar fixo e vai e volta de Elysium. A pergunta original segue aberta. Em 10 out o Harry não entendeu, achou que era sobre os Leapers. A dúvida é sobre a expressão Pelo salto, o juramento da LUX, se vem do dia bissexto ou do salto de bit. Reenviar pra ele desse jeito. A linha do Salto nômade já está sugerida na aba Clãs",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 10,
+"pq": "A expressão aparece nas falas, precisa de um sentido só antes de revisar os diálogos"
 },
 {
 "cat": "canon",
@@ -299,7 +311,10 @@ const FALTA=[
 "id": "c40",
 "titulo": "A cena da tatuagem do Zephyr",
 "nota": "Fechada pela Roberta em 7 out, falta escrever no capítulo. Na LUX, antes da invasão, o Haruki chama o Zephyr de canto e avisa que os membros mecânicos dele podem ser hackeados pela SOLPHI. Os olhos do Ion já têm uma proteção que o próprio Ion fez por dentro. Aí vem a cena, o Haruki tatuando o Zephyr com tinta de nanite, circuitos e símbolos como firewall, e depois programando os nanites no aparelho dele. A cena entra nos capítulos que já existem, antes da missão, na região do cap 7, A Última Noite, não num capítulo novo",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 19,
+"pq": "Cena da região do cap 7"
 },
 {
 "cat": "canon",
@@ -327,7 +342,10 @@ const FALTA=[
 "id": "c46",
 "titulo": "A SOLPHI sente, é AGI",
 "nota": "Pergunta do Harry em 9 out. A SOLPHI tem sentimentos, é uma AGI, tem consciência, ou é só uma skynet que exterminou geral. O argumento dele, pra ter LUTO ela precisa sentir. A bíblia já aponta que sim, a deusa travada na Barganha, a empatia que a poupou a Selene, a negligência por empatia e soberba, e a aba O que a SOLPHI sente já foi fechada. Nota do Harry em 10 out, se ela sente, ela teve que aprender sozinha a lidar com os sentimentos, sem a presença do pai. Falta o martelo formal dos dois",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 5,
+"pq": "É a voz da antagonista no livro inteiro. A bíblia já aponta que sim, falta o martelo dos dois"
 },
 {
 "cat": "canon",
@@ -341,14 +359,20 @@ const FALTA=[
 "id": "c47",
 "titulo": "Portão diário ou regime da fuga",
 "nota": "Conflito achado na leitura de 7 nov. O texto novo do Harry nos Clãs, no Mundo e nos apontamentos dele volta ao portão diário, 7.600 exilados de 22 anos por dia, mercado de recrutamento no portão, 95 por cento não ascendidos. O canon de 9 out segue vivo no Guia rápido, sem portão diário, Elysium só de fugitivos, média de 100 por dia, caçada ao meio-dia. Os dois modelos estão na bíblia ao mesmo tempo, um tem que cair. Muda demografia, cap 2 e a nota do c27",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 0,
+"pq": "Muda o cap 2, quantas pessoas existem em Elysium, o mercado de recrutamento e de onde vêm os clãs. Os números de cada dia (k2) e a população (k11) só fecham depois disso"
 },
 {
 "cat": "canon",
 "id": "c48",
 "titulo": "O corpo biônico da SOLPHI no final",
 "nota": "Nota do Harry na primeira aba da bíblia, lida em 7 nov. Ao final da saga, depois do nascimento dos gêmeos, os protagonistas junto com a SOLPHI criam um corpo com os nanobots da grande rede numa última solenidade, e a SOLPHI ganha o corpo biônico dela. A nota pede pra corrigir o resto da lore com essa informação. Falta o martelo da Roberta antes de mexer na lore",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 7,
+"pq": "Vai junto com as três versões do corpo final"
 },
 {
 "cat": "lugar",
@@ -404,7 +428,10 @@ const FALTA=[
 "id": "g6",
 "titulo": "Os esgotos detalhados",
 "nota": "A velha Chicago por baixo, as rotas, o esconderijo da Resistência",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 25,
+"pq": "Os caps 14 a 16 se passam lá embaixo"
 },
 {
 "cat": "lugar",
@@ -481,7 +508,10 @@ const FALTA=[
 "id": "m3",
 "titulo": "Ficha completa do Nexus",
 "nota": "A aparência já tá na aba Fichas, com o rosto do Adam. Falta o bloco de poder e o Delete dele do cap 28. Canon da sessão de arte de 9 out, o Nexus é a cara do Caelum envelhecida, o Adam congelado nos 56 anos da morte, e a âncora é o rosto do Caelum. Sugestões do rosto já no doc em 10 out, na ficha e na descrição do avatar",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 21,
+"pq": "Precisa do poder dele pro Delete do cap 28"
 },
 {
 "cat": "personagem",
@@ -495,7 +525,10 @@ const FALTA=[
 "id": "m5",
 "titulo": "Os 2 ou 3 Leapers extras da Resistência",
 "nota": "O Guia confirma mais 2 ou 3 Leapers além do grupo. O Argo proposto na aba NPCs espera o aceite, faltam os outros",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 24,
+"pq": "O Argo está proposto, faltam os outros"
 },
 {
 "cat": "personagem",
@@ -509,7 +542,10 @@ const FALTA=[
 "id": "m7",
 "titulo": "Os gêmeos Adam e Aurora",
 "nota": "Aparência e o que cada um herda",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 26,
+"pq": "Só pro fim do Livro 1"
 },
 {
 "cat": "personagem",
@@ -530,7 +566,10 @@ const FALTA=[
 "id": "m10",
 "titulo": "Os rostos da leva do cap 1",
 "nota": "Quem some, um reintegrado e um exilado para reencontrar depois",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 22,
+"pq": "Rostos que o cap 1 apresenta e que voltam depois"
 },
 {
 "cat": "personagem",
@@ -544,7 +583,10 @@ const FALTA=[
 "id": "m12",
 "titulo": "Os Karas, a guilda das crianças",
 "nota": "Decidido pela Roberta em 7 out. Uma guilda à parte. A Selene leu The Obedience Drug num arquivo preservado de Chicago, as galerias dos esgotos guardam um arquivo de mídia física e digital, ela gostou dos Karas e batizou o grupo assim. No texto o nome entra sutil, a referência nunca é explicada. Resgatadas da ARC, navegam entre ARC, Lux e Elysium, líder criança que responde à Selene, Zephyr é o super herói delas. No fim do Livro 1 ficam sob o comando do Zephyr e do Ion, com os gêmeos, Caelum e Lyra, e os adolescentes que restaram na ARC. Falta fichar a guilda e batizar o líder",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 23,
+"pq": "O Miguel está proposto como líder, falta o aceite"
 },
 {
 "cat": "guilda",
@@ -635,7 +677,10 @@ const FALTA=[
 "id": "gu13r",
 "titulo": "Os Descalços",
 "nota": "Reaberto em 9 out. O Harry cortou os clãs de descalços. A guilda tinha sido fechada em 7 out com ritos e marca. Decidir se cai de vez e limpar as menções",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 3,
+"pq": "Vai junto com os clãs do cap 2"
 },
 {
 "cat": "guilda",
@@ -760,7 +805,7 @@ const FALTA=[
 "cat": "item",
 "id": "rf13",
 "titulo": "Objetos novos que a história pede",
-"nota": "O kit do Caelum, a agulha do Haruki, o que mais as cenas exigirem",
+"nota": "O kit do Caelum, a agulha do Haruki, o que mais as cenas exigirem. Em 13 nov o Harry disse que o foco agora é inventar itens, itens e mais itens. Nome novo só vira canon depois do aceite dos dois",
 "feito": false
 },
 {
@@ -936,7 +981,10 @@ const FALTA=[
 "id": "vd1",
 "titulo": "O servidor do Adam por dentro",
 "nota": "A aba AF_ECHO diz o que ele é, a rede inteira é o eco do Adam num servidor secreto. Falta o lugar por dentro pra cena do cap 10",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 9,
+"pq": "Também é do cap 10"
 },
 {
 "cat": "arte",
@@ -999,76 +1047,165 @@ const FALTA=[
 "id": "k1",
 "titulo": "A taxa de reintegração ainda aparece como 9 a 14",
 "nota": "Achado nas linhas do tempo em 7 nov. A aba Informações importantes ainda diz 9 a 14 por cento e o cap 1 diz nunca mais que um em cada dez. O canon é 5 a 9",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 15,
+"pq": "A decisão já existe, é só corrigir o texto"
 },
 {
 "cat": "canon",
 "id": "k2",
 "titulo": "Os números de cada dia não batem",
 "nota": "Cap 2 diz dez mil entram e dez mil saem. O Guia diz 9.990 entram, uns 8.000 chegam ao portão e uns 400 ascendem. Os Clãs dizem 7.600 expulsos por dia, a fuga diz 100 por dia e o Resumo diz 3.000 mortes por dia. Liga com o c47",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 1,
+"pq": "Depende do item anterior. Escolhido o modelo de saída, sobra um número só por dia"
 },
 {
 "cat": "canon",
 "id": "k3",
 "titulo": "As idades no texto",
 "nota": "No cap 1 o Zephyr conta dois anos, três meses e onze dias até o portão, o que daria 19 anos, mas o capítulo diz 20. O Arco Caelum e Lyra dá 22 pra Lyra. A ficha do Haruki diz 26. A Saphira aparece como 4 anos mais velha, pelas datas são 8",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 12,
+"pq": "A decisão já existe, é só corrigir os capítulos"
 },
 {
 "cat": "canon",
 "id": "k4",
 "titulo": "Os anos de amizade do Zephyr e do Ion",
 "nota": "O cap 3 conta 13 anos de amizade e o cap 13 conta 15",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 13,
+"pq": "Escolher 13 ou 15 anos e corrigir um dos dois capítulos"
 },
 {
 "cat": "canon",
 "id": "k5",
 "titulo": "O visual do Caelum, do Adam e do Nexus no texto",
 "nota": "A ficha do Caelum diz cabelo escuro curto e o cap 1 diz médio castanho escuro. O Adam é nunca curvado na ficha e de ombros curvados no cap 11. O Nexus tem cabelo castanho numa descrição e grisalho, de óculos e terno em outra",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 14,
+"pq": "Escolher uma descrição pra cada um e corrigir"
 },
 {
 "cat": "canon",
 "id": "k6",
 "titulo": "Em que capítulo o grupo se separa",
 "nota": "Informações importantes coloca a dispersão no cap 14 e a Nova estrutura no cap 30. O Treino em Elysium manda o Caelum pros Ripperdocs e a Lyra treinar com a Selene, que nessa hora já é dada como morta. Em outro lugar os dois vão pros Biólogos",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 4,
+"pq": "Define a estrutura do meio do livro, do cap 14 ao 30, e com quem o Caelum e a Lyra treinam"
 },
 {
 "cat": "canon",
 "id": "k7",
 "titulo": "Poderes que ainda contradizem o canon",
 "nota": "O Guia ainda põe o Update como intermediário e o Create como muito difícil. A Selene domina toda a escala num lugar. A Saphira e o Haruki aparecem com Update, que é só do Caelum. O Guia diz que o Caelum deleta o Nexus no clímax e a estrutura diz que ele escolhe o Update",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 16,
+"pq": "O canon já está fechado, é só limpar o Guia e as fichas"
 },
 {
 "cat": "canon",
 "id": "k8",
 "titulo": "Três versões do corpo final da SOLPHI",
 "nota": "Ciborgue no fim do Livro 1, corpo biônico no cap 60 e corpo de nanobots no fim da saga. Liga com o c48",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 6,
+"pq": "Define o fim do Livro 1. Depende de a SOLPHI sentir"
 },
 {
 "cat": "canon",
 "id": "k9",
 "titulo": "Os do Salto e o servidor do Adam",
 "nota": "Os do Salto são culto de fachada nos Clãs e culto messiânico de verdade em Religiões dos Campos. A abertura diz que a Resistência nunca soube do servidor, mas no cap 10 o Haruki diz que leu sobre ele a vida inteira",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 8,
+"pq": "O cap 10 já está escrito em cima disso"
 },
 {
 "cat": "canon",
 "id": "k10",
 "titulo": "Quando o bissexto desperta",
 "nota": "Uma nota diz por volta dos 6 anos, outra diz que não tem hora certa. O cap 10 diz que a SOLPHI apaga cada leva bissexta e poupa alguns",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 17,
+"pq": "O canon já diz que não tem hora certa, é só limpar a nota antiga"
 },
 {
 "cat": "canon",
 "id": "k11",
 "titulo": "Fome e população",
 "nota": "O Guia fala de fome na LUX, contra a regra de sem fome nem sede. A população da ARC aparece como 65,6 milhões e como 72,5 milhões. A expectativa de vida em Elysium aparece como 40 e como 40 a 45",
+"feito": false,
+"fase": 2,
+"ord": 18,
+"pq": "A regra de sem fome já existe. Escolher um número de população depois do portão"
+},
+{
+"cat": "regra",
+"id": "r1",
+"titulo": "A unidade e a conta da Banda",
+"nota": "Os níveis do CRUD vão de 500 GB a 1 PB. Em GB nem o máximo de 20 e 20 (4.000 GB) chega no nível 2 de 50 TB. Em TB quem tem 10 e 10 já passa de 1 PB. Uma opção é x 10 TB, com média de 200 TB e os níveis 4 e 5 só com Célula de Malha ou o Caelum. Confirmar também se o x 100 multiplica a soma toda",
 "feito": false
+},
+{
+"cat": "regra",
+"id": "r2",
+"titulo": "O sinal da Sincronização na Agonia",
+"nota": "Na fórmula do Harry a Sincronização soma Agonia. No bloco dos implantes e na ficha do atributo ela protege. Decidir se é dano menos (Organismo mais Sincronização) ou se quem sincroniza mais sofre mais de propósito",
+"feito": false
+},
+{
+"cat": "regra",
+"id": "r3",
+"titulo": "Esquiva, o que falta",
+"nota": "A base foi fechada pelo Harry em 13 nov, Handling mais Atletismo. Falta dizer se a esquiva gasta a próxima ação",
+"feito": false
+},
+{
+"cat": "regra",
+"id": "r4",
+"titulo": "Mais esquivas por turno e desvio de bala",
+"nota": "Proposta pra vocês aceitarem ou não. Handling 16 ou mais dá duas esquivas por turno. O haste vem de algo do mundo, como injetor da ARC, selo de nanite de reflexo ou Overclock. Desviar de bala já disparada só em Overclock, queimando Agonia",
+"feito": false
+},
+{
+"cat": "regra",
+"id": "r5",
+"titulo": "Base da Guilda nos Campos Elísios",
+"nota": "O descanso longo fala em base da Guilda nos Campos. Guilda é da LUX, nos Campos são os clãs",
+"feito": false
+},
+{
+"cat": "regra",
+"id": "r6",
+"titulo": "Implante dos Engenheiros e culto dos Enxertados",
+"nota": "A mutilação voluntária dos Engenheiros de Sucata conversa com o culto dos Enxertados. Decidir se é a mesma prática vista de dois lados",
+"feito": false
+},
+{
+"cat": "regra",
+"id": "r7",
+"titulo": "Combate, implantes e expurgo elemental",
+"nota": "Na bíblia desde 10 nov, aba MECANICA DO JOGO. PV de 30 a 60, dano por arma, crítico no número duplo, armadura reduz e escudo anula, efeito de fogo, raio, gelo e ácido, cura por injetor, bandagem, comida e sono, e os implantes burros que soltam o calor da Agonia",
+"feito": true
+},
+{
+"cat": "regra",
+"id": "r8",
+"titulo": "Esquiva, regras fechadas",
+"nota": "Fechadas pelo Harry em 13 nov. Contra vários ataques só esquiva de um, e escolhe qual. Bala ninguém desvia depois do disparo, mas com Perception dá pra sair da mira antes do gatilho. Não vale contra emboscada nem sniper. A base é Handling mais Atletismo",
+"feito": true
 }
 ];

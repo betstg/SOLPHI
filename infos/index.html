@@ -75,6 +75,8 @@ button{font:inherit;color:inherit}
 .fit small,.fok small{display:block;color:var(--soft);font-size:13.5px;line-height:1.5;margin-top:2px}
 .fit.on b,.fit.on small{color:var(--faint);text-decoration:line-through}
 .fdone{margin:8px 6px 0}
+.trava{border-color:rgba(77,227,255,.35);background:linear-gradient(180deg,rgba(77,227,255,.06),transparent 140px),var(--panel)}
+.fit small.pq{color:var(--gold2)}
 .fdone summary{cursor:pointer;color:var(--faint);font-size:13px;padding:6px 0}
 .fok{display:flex;gap:12px;padding:8px 0}
 .fok .tk{color:var(--gold);font-weight:700}
@@ -535,7 +537,7 @@ function momentos(d){
 }
 
 /* ---------- o que falta ---------- */
-const CATS=[["personagem","Personagens"],["lugar","Lugares"],["cla","Clãs de Elysium"],["guilda","Guildas da LUX"],["criatura","Bestiário"],["item","Itens e equipamentos"],["poder","Poderes e técnicas"],["simbolo","Símbolos e marcas"],["giria","Gírias e língua"],["evento","Linha do tempo"],["cultura","Cultura e vida"],["vozes","Vozes do mundo"],["canon","Canon e decisões"],["arte","Arte"],["agr","Agradecimentos e inspirações"]];
+const CATS=[["personagem","Personagens"],["lugar","Lugares"],["cla","Clãs de Elysium"],["guilda","Guildas da LUX"],["criatura","Bestiário"],["item","Itens e equipamentos"],["poder","Poderes e técnicas"],["regra","Regras e mecânica"],["simbolo","Símbolos e marcas"],["giria","Gírias e língua"],["evento","Linha do tempo"],["cultura","Cultura e vida"],["vozes","Vozes do mundo"],["canon","Canon e decisões"],["arte","Arte"],["agr","Agradecimentos e inspirações"]];
 const COM_IMAGEM=["personagem","lugar","cla","guilda","criatura","item","simbolo"];
 let MARC=new Set();try{MARC=new Set(JSON.parse(localStorage.getItem("solphi_falta_v1")||"[]"))}catch(e){}
 let CATABERTA=new Set();
@@ -552,6 +554,20 @@ function mostraFalta(v){
   const F=typeof FALTA==="undefined"?[]:FALTA;
   let h='<div class="fhead"><h1>O que falta</h1><span class="cnt">'+faltaAbertos()+'</span></div>';
   h+='<p class="fdesc">O que ainda falta decidir, escrever e cadastrar, separado pelas pastas. Marcar aqui fica só neste aparelho. O item fecha pra todo mundo quando a decisão entra na bíblia.</p>';
+  const FASES=[[1,"Decidir primeiro","Muda a história. Nesta ordem, porque um depende do outro."],[2,"Corrigir no texto","A decisão já existe ou é rápida. Falta mexer nos capítulos."],[3,"Antes das próximas cenas","Precisa estar pronto quando a cena for escrita."]];
+  const pr=F.filter(x=>x.fase&&!x.feito).sort((a,b)=>a.ord-b.ord);
+  if(pr.length){
+    h+='<section class="fcat open trava" data-c="_trava"><button class="fch">'+svg("falta")+'<span class="t">O que trava a escrita do livro</span><span class="pill">'+pr.filter(x=>!MARC.has(x.id)).length+' abertos</span><span class="chev">'+CHEV+'</span></button><div class="fcb">';
+    let n=0;
+    for(const [f,fn,fd] of FASES){
+      const l=pr.filter(x=>x.fase===f); if(!l.length) continue;
+      h+='<div class="aut" style="margin:14px 6px 2px">'+esc(fn)+'</div><p class="fdesc" style="margin:0 6px 6px;font-size:14px">'+esc(fd)+'</p>';
+      for(const x of l){ n++; const on=MARC.has(x.id);
+        h+='<label class="fit'+(on?' on':'')+'"><input type="checkbox" data-k="'+esc(x.id)+'"'+(on?' checked':'')+'><span><b>'+n+'. '+esc(x.titulo)+'</b><small class="pq">'+esc(x.pq||"")+'</small>'+(x.nota?'<small>'+esc(x.nota)+'</small>':'')+'</span></label>';
+      }
+    }
+    h+='</div></section><div class="h2" style="margin-top:26px">Tudo, por pasta</div>';
+  }
   for(const [c,nome] of CATS){
     const its=F.filter(x=>x.cat===c), ab=its.filter(x=>!x.feito), fe=its.filter(x=>x.feito), au=autoFalta(c);
     const nAu=au.reduce((s,a)=>s+a[1].length,0);
@@ -573,6 +589,7 @@ function mostraFalta(v){
   }
   v.innerHTML=h;
   v.querySelectorAll(".fch").forEach(b=>b.onclick=()=>{const s=b.parentElement,c=s.dataset.c;s.classList.toggle("open");s.classList.contains("open")?CATABERTA.add(c):CATABERTA.delete(c)});
+  v.querySelectorAll(".fit input").forEach(cb=>cb.addEventListener("change",()=>v.querySelectorAll('.fit input[data-k="'+cb.dataset.k+'"]').forEach(o=>{o.checked=cb.checked;o.closest(".fit").classList.toggle("on",cb.checked)})));
   v.querySelectorAll(".aup button").forEach(b=>b.onclick=()=>{const d=DATA.find(x=>String(x.id)===b.dataset.id);if(d)abrir(d)});
   v.querySelectorAll(".fit input").forEach(cb=>cb.onchange=()=>{const k=cb.dataset.k;cb.checked?MARC.add(k):MARC.delete(k);try{localStorage.setItem("solphi_falta_v1",JSON.stringify([...MARC]))}catch(e){}cb.closest(".fit").classList.toggle("on",cb.checked);nav()});
 }
