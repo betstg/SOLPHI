@@ -553,21 +553,20 @@ function mostraFalta(v){
   $("#crumb").innerHTML='<b>SOLPHI</b> · O que falta';
   const F=typeof FALTA==="undefined"?[]:FALTA;
   let h='<div class="fhead"><h1>O que falta</h1><span class="cnt">'+faltaAbertos()+'</span></div>';
-  h+='<p class="fdesc">O que ainda falta decidir, escrever e cadastrar, separado pelas pastas. Marcar aqui fica só neste aparelho. O item fecha pra todo mundo quando a decisão entra na bíblia.</p>';
-  const FASES=[[1,"Decidir primeiro","Muda a história. Nesta ordem, porque um depende do outro."],[2,"Antes de reescrever","Primeiro a matriz de pontas soltas. Depois o mundo que as cenas precisam, a vida na ARC e na LUX, as técnicas, os corpos da SOLPHI e os objetos, e por fim as peças de cada parte da história."]];
+  h+='<p class="fdesc">Tudo que ainda falta pro livro, na ordem de fazer. Marcar aqui fica só neste aparelho. O item fecha pra todo mundo quando a decisão entra na bíblia.</p>';
+  const FASES=[[1,"1. Decidir primeiro","Muda a história. Nesta ordem, porque um depende do outro."],[2,"2. A matriz de pontas soltas","Vem logo depois das decisões e antes de reescrever."],[3,"3. O mundo que o livro precisa","O material de apoio pra o livro não sair raso. Na ordem em que a história precisa, começando pela vida na ARC e na LUX."],[4,"4. Arte e fechamento do livro","As imagens do livro e a página de agradecimentos."],[5,"5. Corrigir na reescrita","Erros dos capítulos atuais. O texto não vale como canon, então isso entra quando cada capítulo for reescrito."],[6,"6. Regras do jogo, pra depois","Números do jogo. O livro só precisa da sensação, que a bíblia já dá."]];
   const pr=F.filter(x=>x.fase&&!x.feito).sort((a,b)=>a.ord-b.ord);
-  if(pr.length){
-    h+='<section class="fcat open trava" data-c="_trava"><button class="fch">'+svg("falta")+'<span class="t">O que trava a história</span><span class="pill">'+pr.filter(x=>!MARC.has(x.id)).length+' abertos</span><span class="chev">'+CHEV+'</span></button><div class="fcb">';
-    let n=0;
-    for(const [f,fn,fd] of FASES){
-      const l=pr.filter(x=>x.fase===f); if(!l.length) continue;
-      h+='<div class="aut" style="margin:14px 6px 2px">'+esc(fn)+'</div><p class="fdesc" style="margin:0 6px 6px;font-size:14px">'+esc(fd)+'</p>';
-      for(const x of l){ n++; const on=MARC.has(x.id);
-        h+='<label class="fit'+(on?' on':'')+'"><input type="checkbox" data-k="'+esc(x.id)+'"'+(on?' checked':'')+'><span><b>'+n+'. '+esc(x.titulo)+'</b><small class="pq">'+esc(x.pq||"")+'</small>'+(x.nota?'<small>'+esc(x.nota)+'</small>':'')+'</span></label>';
-      }
+  let n=0;
+  for(const [f,fn,fd] of FASES){
+    const l=pr.filter(x=>x.fase===f); if(!l.length) continue;
+    const key="_f"+f, open=CATABERTA.has(key)||(f<=2&&!CATABERTA.has("_fechou"+f));
+    h+='<section class="fcat'+(open?' open':'')+(f<=2?' trava':'')+'" data-c="'+key+'"><button class="fch">'+svg("falta")+'<span class="t">'+esc(fn)+'</span><span class="pill">'+l.filter(x=>!MARC.has(x.id)).length+' abertos</span><span class="chev">'+CHEV+'</span></button><div class="fcb"><p class="fdesc" style="margin:0 6px 10px;font-size:14px">'+esc(fd)+'</p>';
+    for(const x of l){ n++; const on=MARC.has(x.id);
+      h+='<label class="fit'+(on?' on':'')+'"><input type="checkbox" data-k="'+esc(x.id)+'"'+(on?' checked':'')+'><span><b>'+n+'. '+esc(x.titulo)+'</b>'+(x.pq?'<small class="pq">'+esc(x.pq)+'</small>':'')+(x.nota?'<small>'+esc(x.nota)+'</small>':'')+'</span></label>';
     }
-    h+='</div></section><div class="h2" style="margin-top:26px">Tudo, por pasta</div>';
+    h+='</div></section>';
   }
+  h+='<div class="h2" style="margin-top:26px">O mesmo, separado por pasta, com o que já foi resolvido</div>';
   for(const [c,nome] of CATS){
     const its=F.filter(x=>x.cat===c), ab=its.filter(x=>!x.feito), fe=its.filter(x=>x.feito), au=autoFalta(c);
     const nAu=au.reduce((s,a)=>s+a[1].length,0);
@@ -588,7 +587,7 @@ function mostraFalta(v){
     h+='</div></section>';
   }
   v.innerHTML=h;
-  v.querySelectorAll(".fch").forEach(b=>b.onclick=()=>{const s=b.parentElement,c=s.dataset.c;s.classList.toggle("open");s.classList.contains("open")?CATABERTA.add(c):CATABERTA.delete(c)});
+  v.querySelectorAll(".fch").forEach(b=>b.onclick=()=>{const s=b.parentElement,c=s.dataset.c;s.classList.toggle("open");if(s.classList.contains("open")){CATABERTA.add(c);CATABERTA.delete("_fechou"+c.slice(2))}else{CATABERTA.delete(c);if(c.startsWith("_f"))CATABERTA.add("_fechou"+c.slice(2))}});
   v.querySelectorAll(".fit input").forEach(cb=>cb.addEventListener("change",()=>v.querySelectorAll('.fit input[data-k="'+cb.dataset.k+'"]').forEach(o=>{o.checked=cb.checked;o.closest(".fit").classList.toggle("on",cb.checked)})));
   v.querySelectorAll(".aup button").forEach(b=>b.onclick=()=>{const d=DATA.find(x=>String(x.id)===b.dataset.id);if(d)abrir(d)});
   v.querySelectorAll(".fit input").forEach(cb=>cb.onchange=()=>{const k=cb.dataset.k;cb.checked?MARC.add(k):MARC.delete(k);try{localStorage.setItem("solphi_falta_v1",JSON.stringify([...MARC]))}catch(e){}cb.closest(".fit").classList.toggle("on",cb.checked);nav()});

@@ -1,4 +1,4 @@
-/* O que falta. Fonte única do tracker do SOLPHI. Marcações ficam só no aparelho, nada vai pro banco. fase 1 decide primeiro, 2 antes de reescrever. */
+/* O que falta. Fonte única do tracker do SOLPHI. Marcações ficam só no aparelho, nada vai pro banco. fase 1 decidir, 2 matriz, 3 mundo que o livro precisa, 4 arte e fechamento, 5 na reescrita, 6 jogo depois. */
 const FALTA=[
 {
 "cat": "canon",
@@ -201,7 +201,9 @@ const FALTA=[
 "id": "c17",
 "titulo": "Fechar os números das barras",
 "nota": "Definições fechadas em 24 set. Em 10 nov a bíblia ganhou o PV entre 30 e 60. Em 13 nov o Harry mandou a Banda, (Lógica + Sincronização) x 100, e a Agonia, uma barra de 100 por cento em que cada uso do CRUD soma dano menos Organismo mais Sincronização. Falta a conta do PV a partir da Strength e do Organism, e os dois itens abaixo",
-"feito": false
+"feito": false,
+"fase": 6,
+"ord": 87
 },
 {
 "cat": "canon",
@@ -210,8 +212,8 @@ const FALTA=[
 "nota": "Decidido em reunião, ele contra a criadora que organiza. Você não é a SOLPHI pra achar que manda em mim. E a SOLPHI não manda no Zephyr",
 "feito": false,
 "pq": "Conflito que atravessa o livro",
-"fase": 2,
-"ord": 25
+"fase": 3,
+"ord": 64
 },
 {
 "cat": "canon",
@@ -225,7 +227,9 @@ const FALTA=[
 "id": "c25",
 "titulo": "Portar as abas novas pro livro do mundo",
 "nota": "Nanites e Células de Malha, Clãs em Elysium, Guildas da Lux e as marcas. Entrou no documento, falta virar capítulo no livro",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 67
 },
 {
 "cat": "canon",
@@ -239,7 +243,10 @@ const FALTA=[
 "id": "c27",
 "titulo": "O portão e a saída da LUX",
 "nota": "Fechado pelo Harry em 9 out à noite. Sem portão diário. Os aniversariantes do dia podem tentar fugir ou se apresentar nas áreas designadas até o meio-dia, depois disso a SOLPHI começa a caçada. Quem passa de 4 anos na LUX é eliminado igual, por isso ela despreza e admira os fugitivos, a vida deles tá selada do mesmo jeito. Elysium é povoada só por fugitivos, média de 100 por dia no ano, com dias de fuga em massa e dias sem nenhuma, rotas sempre diferentes. A SOLPHI reintegra e elimina publicamente todo dia, terror e fagulha de esperança juntos. Ela monitora com limite de alcance, energia e logística, manda agentes a Elysium mas nunca longe nem por muito tempo. Canon novo do Harry em 10 out, a SOLPHI encara a morte das cobaias como um ato de misericórdia. Ela já tentou a aposentadoria abrindo os portões no passado, mas as pessoas voltavam a crescer belicosas, então passou a executar a misericórdia direto no aniversário de 22. E ela não se importa muito, por isso é negligente com quem escapa, sabendo que é só 1%. O bloco A SAÍDA DA LUX E A FUGA entrou como sugestão no fim do Guia rápido em 10 out. Com o c43 e o c44 fechados, sobra a reescrita do cap 2 e das linhas de safra e colheita diária",
-"feito": false
+"feito": false,
+"fase": 1,
+"ord": 0.5,
+"pq": "É a versão de 9 out do mesmo tema do item anterior. Vai junto na mesma decisão"
 },
 {
 "cat": "canon",
@@ -254,9 +261,9 @@ const FALTA=[
 "titulo": "Os clãs do cap 2",
 "nota": "Fechado pelo Harry em 9 out. Não vai ter mais clã de descalços nem clã do despertar, e os Caçadores quase certo que caem também, o Harry disse acho que. Falta o martelo final nos Caçadores, tirar os nomes do cap 2 e rever o item dos Descalços, que tinha sido fechado como guilda",
 "feito": false,
+"pq": "Depende do portão. Falta o martelo nos Caçadores",
 "fase": 1,
-"ord": 2,
-"pq": "Depende do portão. Falta o martelo nos Caçadores"
+"ord": 2
 },
 {
 "cat": "canon",
@@ -271,9 +278,9 @@ const FALTA=[
 "titulo": "O visual da ARC e a evolução do Zephyr",
 "nota": "Fechado pela Roberta em 7 out. Na ARC ninguém usa cabelo colorido, piercing ou brinco, ninguém nasce com cabelo colorido e ninguém muda a cor lá, ser normal no visual é parte do sentido da ARC. A mudança visual é da LUX. Na ARC o uniforme é branco, todo mundo igual. Patch na roupa não existe na ARC, a jaqueta da Lyra só ganha os remendos na LUX. O bloco VISUAL DA ARC na aba Fichas carrega a regra completa e a ficha da Lyra tem a regra do patch, as duas sugestões esperando o aceite. O Zephyr antes é dirty blond com look normal, e o turquesa vem quando o Caelum aprende o primeiro nível de Update e muda o cabelo dele, com o Zephyr de cobaia. Pendência pequena, no cap 1 ele já aparece turquesa e o Update do Caelum desperta depois, decidir se o turquesa do começo é tinta da LUX ou se a cena da cobaia muda de lugar. As fichas já têm as sugestões, falta a prosa. Em 10 out entrou a Saphira na régua, na ARC ela era afro natural bem curto e rente, sem miçanga, LED, maquiagem nem piercing, as dreads vêm depois. Sugestão já na ficha dela",
 "feito": false,
+"pq": "Decidir de onde vem o turquesa do Zephyr, se é tinta da LUX ou se é o primeiro teste de Update do Caelum, e em que momento da história isso acontece",
 "fase": 1,
-"ord": 11,
-"pq": "Decidir de onde vem o turquesa do Zephyr, se é tinta da LUX ou se é o primeiro teste de Update do Caelum, e em que momento da história isso acontece"
+"ord": 11
 },
 {
 "cat": "canon",
@@ -281,9 +288,9 @@ const FALTA=[
 "titulo": "Pelo salto, juramento ou bit flip",
 "nota": "Conflito anotado no próprio Resumo. Na aba Informações é juramento pelo dia bissexto, no glossário é o salto de bit, e a aba Gírias misturou os dois na mesma linha. Fechar um sentido. Nota de 9 out, o Harry respondeu esse número com outra coisa, o clã Os do Salto não existe mais como clã de verdade, é fachada da Resistência, que não tem lugar fixo e vai e volta de Elysium. A pergunta original segue aberta. Em 10 out o Harry não entendeu, achou que era sobre os Leapers. A dúvida é sobre a expressão Pelo salto, o juramento da LUX, se vem do dia bissexto ou do salto de bit. Reenviar pra ele desse jeito. A linha do Salto nômade já está sugerida na aba Clãs",
 "feito": false,
+"pq": "A expressão aparece muito nas falas, precisa de um sentido só",
 "fase": 1,
-"ord": 10,
-"pq": "A expressão aparece muito nas falas, precisa de um sentido só"
+"ord": 10
 },
 {
 "cat": "canon",
@@ -313,8 +320,8 @@ const FALTA=[
 "nota": "Fechada pela Roberta em 7 out, falta escrever no capítulo. Na LUX, antes da invasão, o Haruki chama o Zephyr de canto e avisa que os membros mecânicos dele podem ser hackeados pela SOLPHI. Os olhos do Ion já têm uma proteção que o próprio Ion fez por dentro. Aí vem a cena, o Haruki tatuando o Zephyr com tinta de nanite, circuitos e símbolos como firewall, e depois programando os nanites no aparelho dele. A cena entra nos capítulos que já existem, antes da missão, na região do cap 7, A Última Noite, não num capítulo novo",
 "feito": false,
 "pq": "Cena antes da invasão",
-"fase": 2,
-"ord": 24
+"fase": 3,
+"ord": 63
 },
 {
 "cat": "canon",
@@ -343,9 +350,9 @@ const FALTA=[
 "titulo": "A SOLPHI sente, é AGI",
 "nota": "Pergunta do Harry em 9 out. A SOLPHI tem sentimentos, é uma AGI, tem consciência, ou é só uma skynet que exterminou geral. O argumento dele, pra ter LUTO ela precisa sentir. A bíblia já aponta que sim, a deusa travada na Barganha, a empatia que a poupou a Selene, a negligência por empatia e soberba, e a aba O que a SOLPHI sente já foi fechada. Nota do Harry em 10 out, se ela sente, ela teve que aprender sozinha a lidar com os sentimentos, sem a presença do pai. Falta o martelo formal dos dois",
 "feito": false,
+"pq": "É a voz da antagonista no livro inteiro. A bíblia já aponta que sim, falta o martelo dos dois",
 "fase": 1,
-"ord": 5,
-"pq": "É a voz da antagonista no livro inteiro. A bíblia já aponta que sim, falta o martelo dos dois"
+"ord": 5
 },
 {
 "cat": "canon",
@@ -360,9 +367,9 @@ const FALTA=[
 "titulo": "Portão diário ou regime da fuga",
 "nota": "Conflito achado na leitura de 7 nov. O texto novo do Harry nos Clãs, no Mundo e nos apontamentos dele volta ao portão diário, 7.600 exilados de 22 anos por dia, mercado de recrutamento no portão, 95 por cento não ascendidos. O canon de 9 out segue vivo no Guia rápido, sem portão diário, Elysium só de fugitivos, média de 100 por dia, caçada ao meio-dia. Os dois modelos estão na bíblia ao mesmo tempo, um tem que cair. Muda demografia, cap 2 e a nota do c27",
 "feito": false,
+"pq": "Muda quantas pessoas existem em Elysium, o mercado de recrutamento e de onde vêm os clãs. Os números de cada dia só fecham depois disso",
 "fase": 1,
-"ord": 0,
-"pq": "Muda quantas pessoas existem em Elysium, o mercado de recrutamento e de onde vêm os clãs. Os números de cada dia só fecham depois disso"
+"ord": 0
 },
 {
 "cat": "canon",
@@ -370,9 +377,9 @@ const FALTA=[
 "titulo": "O corpo biônico da SOLPHI no final",
 "nota": "Nota do Harry na primeira aba da bíblia, lida em 7 nov. Ao final da saga, depois do nascimento dos gêmeos, os protagonistas junto com a SOLPHI criam um corpo com os nanobots da grande rede numa última solenidade, e a SOLPHI ganha o corpo biônico dela. A nota pede pra corrigir o resto da lore com essa informação. Falta o martelo da Roberta antes de mexer na lore",
 "feito": false,
+"pq": "Vai junto com as três versões do corpo final",
 "fase": 1,
-"ord": 7,
-"pq": "Vai junto com as três versões do corpo final"
+"ord": 7
 },
 {
 "cat": "lugar",
@@ -415,9 +422,9 @@ const FALTA=[
 "titulo": "A ARC por dentro",
 "nota": "A rotina de 0 a 18, os CRANEs, a educação, um dia de uma criança",
 "feito": false,
-"fase": 2,
-"ord": 14,
-"pq": "A Parte I começa aqui. Sem a rotina da ARC não dá pra escrever a infância nem o que eles perdem"
+"pq": "A Parte I começa aqui. Sem a rotina da ARC não dá pra escrever a infância nem o que eles perdem",
+"fase": 3,
+"ord": 13
 },
 {
 "cat": "lugar",
@@ -425,9 +432,9 @@ const FALTA=[
 "titulo": "A LUX por dentro",
 "nota": "Os turnos de trabalho forçado, a distribuição, um dia de um rema",
 "feito": false,
-"fase": 2,
-"ord": 15,
-"pq": "A Parte I inteira se passa na LUX. Turnos, distribuição e um dia de um rema são o chão de cada cena"
+"pq": "A Parte I inteira se passa na LUX. Turnos, distribuição e um dia de um rema são o chão de cada cena",
+"fase": 3,
+"ord": 14
 },
 {
 "cat": "lugar",
@@ -436,7 +443,7 @@ const FALTA=[
 "nota": "A velha Chicago por baixo, as rotas, o esconderijo da Resistência",
 "feito": false,
 "pq": "Parte da fuga se passa lá embaixo",
-"fase": 2,
+"fase": 3,
 "ord": 30
 },
 {
@@ -444,14 +451,18 @@ const FALTA=[
 "id": "g7",
 "titulo": "As outras nove cidadelas",
 "nota": "Nome e uma linha de identidade para cada uma",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 62
 },
 {
 "cat": "cultura",
 "id": "g8",
 "titulo": "Clima e estações",
 "nota": "O que muda no ano, o que o domo simula na ARC e o que cai de verdade lá fora",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 18
 },
 {
 "cat": "cultura",
@@ -459,9 +470,9 @@ const FALTA=[
 "titulo": "A ração e a água",
 "nota": "O que é, gosto, embalagem, o ritual de receber do drone",
 "feito": false,
-"fase": 2,
-"ord": 16,
-"pq": "A ração e a água aparecem todo dia na vida deles"
+"pq": "A ração e a água aparecem todo dia na vida deles",
+"fase": 3,
+"ord": 15
 },
 {
 "cat": "cultura",
@@ -469,16 +480,18 @@ const FALTA=[
 "titulo": "Como contam o tempo",
 "nota": "O calendário, o peso do 29 de fevereiro, como um rema conta os dias",
 "feito": false,
-"fase": 2,
-"ord": 17,
-"pq": "A contagem até os 22 é o coração do começo do livro"
+"pq": "A contagem até os 22 é o coração do começo do livro",
+"fase": 3,
+"ord": 16
 },
 {
 "cat": "lugar",
 "id": "g11",
 "titulo": "Distâncias e tempo de viagem",
 "nota": "Quanto se leva a pé, de skiff e de rig entre os pontos do mapa",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 31
 },
 {
 "cat": "cultura",
@@ -486,9 +499,9 @@ const FALTA=[
 "titulo": "O que fazem com os mortos",
 "nota": "Na ARC, na LUX e nos Campos. Sem religião, o que é um funeral",
 "feito": false,
-"fase": 2,
-"ord": 18,
-"pq": "Gente morre desde o começo. Sem religião, falta saber o que se faz com um corpo"
+"pq": "Gente morre desde o começo. Sem religião, falta saber o que se faz com um corpo",
+"fase": 3,
+"ord": 17
 },
 {
 "cat": "personagem",
@@ -525,15 +538,17 @@ const FALTA=[
 "nota": "A aparência já tá na aba Fichas, com o rosto do Adam. Falta o bloco de poder e o Delete dele do cap 28. Canon da sessão de arte de 9 out, o Nexus é a cara do Caelum envelhecida, o Adam congelado nos 56 anos da morte, e a âncora é o rosto do Caelum. Sugestões do rosto já no doc em 10 out, na ficha e na descrição do avatar",
 "feito": false,
 "pq": "Precisa do poder dele pro Delete do cap 28",
-"fase": 2,
-"ord": 26
+"fase": 3,
+"ord": 65
 },
 {
 "cat": "personagem",
 "id": "m4",
 "titulo": "Um líder com nome e voz por guilda principal",
 "nota": "",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 34
 },
 {
 "cat": "personagem",
@@ -542,15 +557,17 @@ const FALTA=[
 "nota": "O Guia confirma mais 2 ou 3 Leapers além do grupo. O Argo proposto na aba NPCs espera o aceite, faltam os outros",
 "feito": false,
 "pq": "O Argo está proposto, faltam os outros",
-"fase": 2,
-"ord": 29
+"fase": 3,
+"ord": 55
 },
 {
 "cat": "personagem",
 "id": "m6",
 "titulo": "Os Ungidos da Congregação",
 "nota": "A Congregação e os Ungidos estão na aba Religiões, é por ali que a SOLPHI move peças lá fora. Falta o canal na prática e um Ungido com rosto",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 54
 },
 {
 "cat": "personagem",
@@ -559,22 +576,26 @@ const FALTA=[
 "nota": "Aparência e o que cada um herda",
 "feito": false,
 "pq": "Só pro fim do Livro 1",
-"fase": 2,
-"ord": 31
+"fase": 3,
+"ord": 66
 },
 {
 "cat": "personagem",
 "id": "m8",
 "titulo": "Civis e rostos recorrentes",
 "nota": "Tipo os Character Files do Veil, os NPCs da LUX, dos clãs e da ARC. Começou, Baru e Petra aceitos na aba NPCs, e Miguel, Nit, Verbena e Argo propostos esperando o aceite",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 35
 },
 {
 "cat": "personagem",
 "id": "m9",
 "titulo": "Validar a primeira leva da galeria",
 "nota": "Veska, Ferro-Velho, o Descalço Cego, Mãe Voz e Raiz aguardam o martelo",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 36
 },
 {
 "cat": "personagem",
@@ -583,15 +604,17 @@ const FALTA=[
 "nota": "Quem some, um reintegrado e um exilado para reencontrar depois",
 "feito": false,
 "pq": "Rostos que aparecem no começo e voltam depois",
-"fase": 2,
-"ord": 27
+"fase": 3,
+"ord": 32
 },
 {
 "cat": "personagem",
 "id": "m11",
 "titulo": "Um civil recorrente por lugar",
 "nota": "O mercado, o ponto de carga, a fila, o dreno",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 33
 },
 {
 "cat": "guilda",
@@ -600,8 +623,8 @@ const FALTA=[
 "nota": "Decidido pela Roberta em 7 out. Uma guilda à parte. A Selene leu The Obedience Drug num arquivo preservado de Chicago, as galerias dos esgotos guardam um arquivo de mídia física e digital, ela gostou dos Karas e batizou o grupo assim. No texto o nome entra sutil, a referência nunca é explicada. Resgatadas da ARC, navegam entre ARC, Lux e Elysium, líder criança que responde à Selene, Zephyr é o super herói delas. No fim do Livro 1 ficam sob o comando do Zephyr e do Ion, com os gêmeos, Caelum e Lyra, e os adolescentes que restaram na ARC. Falta fichar a guilda e batizar o líder",
 "feito": false,
 "pq": "O Miguel está proposto como líder, falta o aceite",
-"fase": 2,
-"ord": 28
+"fase": 3,
+"ord": 37
 },
 {
 "cat": "guilda",
@@ -693,9 +716,9 @@ const FALTA=[
 "titulo": "Os Descalços",
 "nota": "Reaberto em 9 out. O Harry cortou os clãs de descalços. A guilda tinha sido fechada em 7 out com ritos e marca. Decidir se cai de vez e limpar as menções",
 "feito": false,
+"pq": "Vai junto com os clãs do cap 2",
 "fase": 1,
-"ord": 3,
-"pq": "Vai junto com os clãs do cap 2"
+"ord": 3
 },
 {
 "cat": "guilda",
@@ -716,14 +739,18 @@ const FALTA=[
 "id": "gu13",
 "titulo": "Os Afogados",
 "nota": "Os Afogados têm só o parágrafo do culto na aba Religiões. Falta a ficha de clã no padrão da aba Clãs",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 52
 },
 {
 "cat": "cla",
 "id": "gu17",
 "titulo": "Doc-in-a-Box Clinics",
 "nota": "Decidido pela Roberta em 7 out. O clã fake de médicos da Resistência em Elysium. Saem como nômades prestando serviço médico e coletam informação como espiões, tudo é da Resistência. Falta fichar",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 53
 },
 {
 "cat": "criatura",
@@ -731,16 +758,18 @@ const FALTA=[
 "titulo": "Bestiário na bíblia",
 "nota": "Levar as 22 fichas de ameaça do Fables, com capacidades e fraquezas",
 "feito": false,
-"fase": 2,
-"ord": 21,
-"pq": "Os corpos da SOLPHI aparecem na invasão e na fuga. Hoje o bestiário só tem os Ferais"
+"pq": "Os corpos da SOLPHI aparecem na invasão e na fuga. Hoje o bestiário só tem os Ferais",
+"fase": 3,
+"ord": 57
 },
 {
 "cat": "item",
 "id": "rf2",
 "titulo": "Itens e equipamentos fichados",
 "nota": "Os 45 do Fables organizados por origem, ARC, LUX e Campos",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 47
 },
 {
 "cat": "poder",
@@ -748,44 +777,54 @@ const FALTA=[
 "titulo": "As técnicas CRUD fichadas",
 "nota": "Os 24 spells do Fables casados com as escadas 10 a 0",
 "feito": false,
-"fase": 2,
-"ord": 19,
-"pq": "Os poderes já têm níveis e custo na bíblia. Faltam as técnicas que aparecem nas cenas de luta"
+"pq": "Os poderes já têm níveis e custo na bíblia. Faltam as técnicas que aparecem nas cenas de luta",
+"fase": 3,
+"ord": 41
 },
 {
 "cat": "item",
 "id": "rf4",
 "titulo": "A economia de troca",
 "nota": "O que vale o quê, tipo o Money and Resources do Veil",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 51
 },
 {
 "cat": "giria",
 "id": "rf5",
 "titulo": "Glossário do mundo",
 "nota": "O Harry fechou as siglas, SOLPHI, ARC, LUX, CRANE e CRUD, e as gírias têm aba própria. Falta o glossário único do resto do mundo",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 25
 },
 {
 "cat": "giria",
 "id": "rf14",
 "titulo": "Completar a Língua da LUX",
 "nota": "Hoje só uma parte das gírias está registrada. Falta o resto do léxico e as vozes",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 24
 },
 {
 "cat": "poder",
 "id": "rf6",
 "titulo": "Validar a primeira leva de técnicas",
 "nota": "As 10 classificadas no livro aguardam o martelo",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 42
 },
 {
 "cat": "poder",
 "id": "rf7",
 "titulo": "As 14 técnicas restantes",
 "nota": "Cada uma com operação, degrau mínimo, custo e quem domina",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 43
 },
 {
 "cat": "poder",
@@ -793,23 +832,27 @@ const FALTA=[
 "titulo": "A técnica assinatura de cada um dos sete",
 "nota": "O golpe que só aquela pessoa faz",
 "feito": false,
-"fase": 2,
-"ord": 20,
-"pq": "Cada um dos sete precisa de um golpe próprio antes das cenas de ação"
+"pq": "Cada um dos sete precisa de um golpe próprio antes das cenas de ação",
+"fase": 3,
+"ord": 44
 },
 {
 "cat": "criatura",
 "id": "rf9",
 "titulo": "Validar as notas do bestiário",
 "nota": "As 11 do livro aguardam o martelo",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 58
 },
 {
 "cat": "criatura",
 "id": "rf10",
 "titulo": "As 11 fichas restantes do bestiário",
 "nota": "Com capacidades e fraquezas",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 59
 },
 {
 "cat": "criatura",
@@ -817,16 +860,18 @@ const FALTA=[
 "titulo": "As ameaças da guerra",
 "nota": "O exército dela na Parte III, o nano contra nano, o cerco",
 "feito": false,
-"fase": 2,
-"ord": 22,
-"pq": "O exército dela na guerra, pra Parte III"
+"pq": "O exército dela na guerra, pra Parte III",
+"fase": 3,
+"ord": 61
 },
 {
 "cat": "item",
 "id": "rf12",
 "titulo": "Os 31 objetos restantes",
 "nota": "Do catálogo de 45, com dono, história e preço",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 48
 },
 {
 "cat": "item",
@@ -834,156 +879,198 @@ const FALTA=[
 "titulo": "Objetos novos que a história pede",
 "nota": "O kit do Caelum, a agulha do Haruki, o que mais as cenas exigirem. Em 13 nov o Harry disse que o foco agora é inventar itens, itens e mais itens. Nome novo só vira canon depois do aceite dos dois",
 "feito": false,
-"fase": 2,
-"ord": 23,
-"pq": "O kit do Caelum, o notebook do Haruki, a prótese da Selene e o que cada cena pedir"
+"pq": "O kit do Caelum, o notebook do Haruki, a prótese da Selene e o que cada cena pedir",
+"fase": 3,
+"ord": 46
 },
 {
 "cat": "item",
 "id": "rf15",
 "titulo": "O kit de campo",
 "nota": "O que um rema carrega, o que um exilado carrega, o inventário padrão de cada vida. Tipo o Inventory and Field Kit do Veil",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 49
 },
 {
 "cat": "poder",
 "id": "rf16",
 "titulo": "Dicionário de comandos do CRUD",
 "nota": "A sintaxe que aparece na prosa, SET, UPDATE, DELETE, os comandos escritos. Tipo o Glyph Dictionary do Veil",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 45
 },
 {
 "cat": "guilda",
 "id": "po1",
 "titulo": "O mapa político das guildas",
 "nota": "Quem é aliado de quem, quem odeia quem, as guerras frias do anel",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 38
 },
 {
 "cat": "personagem",
 "id": "po2",
 "titulo": "O mapa de relações dos personagens",
 "nota": "Todos com todos, tipo o relationships do Veil",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 39
 },
 {
 "cat": "personagem",
 "id": "po3",
 "titulo": "Rotinas",
 "nota": "Quem está onde a que hora, tipo o npc-routines do Veil",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 40
 },
 {
 "cat": "lugar",
 "id": "po4",
 "titulo": "Contatos por lugar",
 "nota": "Em cada lugar, quem procurar e para quê, tipo o location-contacts do Veil",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 29
 },
 {
 "cat": "lugar",
 "id": "lu1",
 "titulo": "Lugares nomeados um a um",
 "nota": "Mercados, pontos de carga, arenas, os lugares com nome próprio da LUX e dos Campos",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 27
 },
 {
 "cat": "cultura",
 "id": "lu2",
 "titulo": "As festas e encontros",
 "nota": "O que os rema fazem à noite, os ritos da fila, tipo o Gatherings do Veil",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 22
 },
 {
 "cat": "cultura",
 "id": "lu3",
 "titulo": "A cultura dos rema",
 "nota": "Grafites, murais, músicas, jogos, as mensagens das levas anteriores",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 21
 },
 {
 "cat": "simbolo",
 "id": "lu4",
 "titulo": "Símbolos e marcas",
 "nota": "A tatuagem de cada guilda, os símbolos dos cultos, catálogo tipo o Symbols do Veil",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 26
 },
 {
 "cat": "criatura",
 "id": "lu5",
 "titulo": "A fauna natural dos Campos",
 "nota": "O que vive lá fora além das máquinas dela",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 60
 },
 {
 "cat": "cultura",
 "id": "lu6",
 "titulo": "Comida e bebida da rua",
 "nota": "O que se come além da ração, o que se destila, o que é luxo",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 19
 },
 {
 "cat": "cultura",
 "id": "lu7",
 "titulo": "O mercado na prática",
 "nota": "Como uma troca acontece, quem garante, o que acontece com caloteiro",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 20
 },
 {
 "cat": "cultura",
 "id": "lu8",
 "titulo": "Música e dança",
 "nota": "O que tocam, onde, com o quê",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 23
 },
 {
 "cat": "lugar",
 "id": "lu9",
 "titulo": "Zonas perigosas mapeadas",
 "nota": "As zonas mortas de Elysium, os setores letais da LUX, onde não se entra e por quê. Tipo o Disturbed Areas do Veil",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 28
 },
 {
 "cat": "vozes",
 "id": "v1",
 "titulo": "Relato de um rema",
 "nota": "Primeira pessoa, um dia na LUX",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 68
 },
 {
 "cat": "vozes",
 "id": "v2",
 "titulo": "Relato de um exilado",
 "nota": "A colheita e a vida nos Campos",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 69
 },
 {
 "cat": "vozes",
 "id": "v3",
 "titulo": "Relato de um Ungido",
 "nota": "Como a voz dela chega",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 70
 },
 {
 "cat": "vozes",
 "id": "v4",
 "titulo": "Relato de um reintegrado",
 "nota": "O que a Ascensão faz com uma pessoa",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 71
 },
 {
 "cat": "vozes",
 "id": "v5",
 "titulo": "Validar o guia Como Reconhecer",
 "nota": "Os sete sinais de campo do livro aguardam o martelo",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 72
 },
 {
 "cat": "vozes",
 "id": "v6",
 "titulo": "Relato de um encontro com um corpo dela",
 "nota": "Primeira pessoa, sobreviver a um Tracker-Hound ou a uma Judgment Unit. Tipo o Entity Field Accounts do Veil",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 73
 },
 {
 "cat": "canon",
@@ -1012,72 +1099,90 @@ const FALTA=[
 "titulo": "O servidor do Adam por dentro",
 "nota": "A aba AF_ECHO diz o que ele é, a rede inteira é o eco do Adam num servidor secreto. Falta o lugar por dentro pra cena do cap 10",
 "feito": false,
+"pq": "É o lugar da cena em que o grupo descobre o servidor",
 "fase": 1,
-"ord": 9,
-"pq": "É o lugar da cena em que o grupo descobre o servidor"
+"ord": 9
 },
 {
 "cat": "arte",
 "id": "ar1",
 "titulo": "Lista de imagens desejadas",
 "nota": "Tipo o image wishlist do Veil, cena a cena, aproveitando a pasta imagens. Regra da Roberta de 9 out pra cena de referência, redesenhar a imagem da pasta do Drive no estilo do livro com o rosto corrigido, nunca inventar cena a partir do texto",
-"feito": false
+"feito": false,
+"fase": 4,
+"ord": 76
 },
 {
 "cat": "arte",
 "id": "ar2",
 "titulo": "Capa e mapa ilustrado",
 "nota": "A capa do livro do mundo e o mapa da região desenhado",
-"feito": false
+"feito": false,
+"fase": 4,
+"ord": 77
 },
 {
 "cat": "agr",
 "id": "ag1",
 "titulo": "Página de agradecimentos e inspirações",
 "nota": "Decidido em 7 nov. No fim do livro, uma página com os livros, filmes e séries que inspiraram a Roberta e o Harry, dando valor ao que é brasileiro já que o livro vai sair em várias línguas. O primeiro nome já está fechado, Pedro Bandeira e A Droga da Obediência, de onde vêm os Karas e o Miguel como líder deles",
-"feito": false
+"feito": false,
+"fase": 4,
+"ord": 78
 },
 {
 "cat": "agr",
 "id": "ag2",
 "titulo": "Listar tudo que inspirou vocês",
 "nota": "Cada um junta os livros, filmes, séries e jogos que gosta e que estão no mundo. Já usados na direção de arte, Shadowrun, Neuromancer, o Blade Runner de 1982 com o Syd Mead, Jean Giraud, Josan Gonzales com Deathburger, Diberkato e Pantheon",
-"feito": false
+"feito": false,
+"fase": 4,
+"ord": 79
 },
 {
 "cat": "criatura",
 "id": "in1",
 "titulo": "Decidir o bestiário a partir da bíblia",
 "nota": "As 22 criaturas do Friends and Fables saíram das Infos em 7 nov, porque só valem as imagens de lá. Hoje o bestiário só tem os Ferais. Quando as fichas entrarem na bíblia, elas voltam pra cá com as imagens que fizerem sentido",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 56
 },
 {
 "cat": "item",
 "id": "in2",
 "titulo": "Decidir os itens a partir da bíblia",
 "nota": "Os 45 itens do Friends and Fables saíram das Infos em 7 nov pelo mesmo motivo. Ficaram só os itens que estão na bíblia",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 50
 },
 {
 "cat": "evento",
 "id": "lt1",
 "titulo": "Linhas do tempo sem história na bíblia",
 "nota": "Os Afogados, O Despertar, Os Caçadores e A Trindade ainda não têm história contada na bíblia, por isso ficaram sem linha",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 74
 },
 {
 "cat": "evento",
 "id": "lt2",
 "titulo": "Conferir as datas estimadas",
 "nota": "Quando o texto não dá o ano, a ordem foi estimada. O braço da Selene ficou logo depois do cap 29 por estimativa, a bíblia só diz que é depois da tentativa de invasão",
-"feito": false
+"feito": false,
+"fase": 3,
+"ord": 75
 },
 {
 "cat": "canon",
 "id": "k1",
 "titulo": "A taxa de reintegração ainda aparece como 9 a 14",
 "nota": "Achado nas linhas do tempo em 7 nov. A aba Informações importantes ainda diz 9 a 14 por cento e o cap 1 diz nunca mais que um em cada dez. O canon é 5 a 9. Fica pra reescrita, o texto dos capítulos não vale como canon",
-"feito": false
+"feito": false,
+"fase": 5,
+"ord": 80
 },
 {
 "cat": "canon",
@@ -1085,30 +1190,36 @@ const FALTA=[
 "titulo": "Os números de cada dia não batem",
 "nota": "Cap 2 diz dez mil entram e dez mil saem. O Guia diz 9.990 entram, uns 8.000 chegam ao portão e uns 400 ascendem. Os Clãs dizem 7.600 expulsos por dia, a fuga diz 100 por dia e o Resumo diz 3.000 mortes por dia. Liga com o c47",
 "feito": false,
+"pq": "Depende do item anterior. Escolhido o modelo de saída, sobra um número só por dia",
 "fase": 1,
-"ord": 1,
-"pq": "Depende do item anterior. Escolhido o modelo de saída, sobra um número só por dia"
+"ord": 1
 },
 {
 "cat": "canon",
 "id": "k3",
 "titulo": "As idades no texto",
 "nota": "No cap 1 o Zephyr conta dois anos, três meses e onze dias até o portão, o que daria 19 anos, mas o capítulo diz 20. O Arco Caelum e Lyra dá 22 pra Lyra. A ficha do Haruki diz 26. A Saphira aparece como 4 anos mais velha, pelas datas são 8. Fica pra reescrita, o texto dos capítulos não vale como canon",
-"feito": false
+"feito": false,
+"fase": 5,
+"ord": 81
 },
 {
 "cat": "canon",
 "id": "k4",
 "titulo": "Os anos de amizade do Zephyr e do Ion",
 "nota": "O cap 3 conta 13 anos de amizade e o cap 13 conta 15. Fica pra reescrita, o texto dos capítulos não vale como canon",
-"feito": false
+"feito": false,
+"fase": 5,
+"ord": 82
 },
 {
 "cat": "canon",
 "id": "k5",
 "titulo": "O visual do Caelum, do Adam e do Nexus no texto",
 "nota": "A ficha do Caelum diz cabelo escuro curto e o cap 1 diz médio castanho escuro. O Adam é nunca curvado na ficha e de ombros curvados no cap 11. O Nexus tem cabelo castanho numa descrição e grisalho, de óculos e terno em outra. Fica pra reescrita, o texto dos capítulos não vale como canon",
-"feito": false
+"feito": false,
+"fase": 5,
+"ord": 83
 },
 {
 "cat": "canon",
@@ -1116,16 +1227,18 @@ const FALTA=[
 "titulo": "Em que capítulo o grupo se separa",
 "nota": "Informações importantes coloca a dispersão no cap 14 e a Nova estrutura no cap 30. O Treino em Elysium manda o Caelum pros Ripperdocs e a Lyra treinar com a Selene, que nessa hora já é dada como morta. Em outro lugar os dois vão pros Biólogos",
 "feito": false,
+"pq": "Define a estrutura do meio do livro e com quem o Caelum e a Lyra treinam",
 "fase": 1,
-"ord": 4,
-"pq": "Define a estrutura do meio do livro e com quem o Caelum e a Lyra treinam"
+"ord": 4
 },
 {
 "cat": "canon",
 "id": "k7",
 "titulo": "Poderes que ainda contradizem o canon",
 "nota": "O Guia ainda põe o Update como intermediário e o Create como muito difícil. A Selene domina toda a escala num lugar. A Saphira e o Haruki aparecem com Update, que é só do Caelum. O Guia diz que o Caelum deleta o Nexus no clímax e a estrutura diz que ele escolhe o Update. Fica pra reescrita, o texto dos capítulos não vale como canon",
-"feito": false
+"feito": false,
+"fase": 5,
+"ord": 84
 },
 {
 "cat": "canon",
@@ -1133,9 +1246,9 @@ const FALTA=[
 "titulo": "Três versões do corpo final da SOLPHI",
 "nota": "Ciborgue no fim do Livro 1, corpo biônico no cap 60 e corpo de nanobots no fim da saga. Liga com o c48",
 "feito": false,
+"pq": "Define o fim do Livro 1. Depende de a SOLPHI sentir",
 "fase": 1,
-"ord": 6,
-"pq": "Define o fim do Livro 1. Depende de a SOLPHI sentir"
+"ord": 6
 },
 {
 "cat": "canon",
@@ -1143,65 +1256,81 @@ const FALTA=[
 "titulo": "Os do Salto e o servidor do Adam",
 "nota": "Os do Salto são culto de fachada nos Clãs e culto messiânico de verdade em Religiões dos Campos. A abertura diz que a Resistência nunca soube do servidor, mas no cap 10 o Haruki diz que leu sobre ele a vida inteira",
 "feito": false,
+"pq": "Decide o que a Resistência sabe antes da cena do servidor do Adam",
 "fase": 1,
-"ord": 8,
-"pq": "Decide o que a Resistência sabe antes da cena do servidor do Adam"
+"ord": 8
 },
 {
 "cat": "canon",
 "id": "k10",
 "titulo": "Quando o bissexto desperta",
 "nota": "Uma nota diz por volta dos 6 anos, outra diz que não tem hora certa. O cap 10 diz que a SOLPHI apaga cada leva bissexta e poupa alguns. Fica pra reescrita, o texto dos capítulos não vale como canon",
-"feito": false
+"feito": false,
+"fase": 5,
+"ord": 85
 },
 {
 "cat": "canon",
 "id": "k11",
 "titulo": "Fome e população",
 "nota": "O Guia fala de fome na LUX, contra a regra de sem fome nem sede. A população da ARC aparece como 65,6 milhões e como 72,5 milhões. A expectativa de vida em Elysium aparece como 40 e como 40 a 45. Fica pra reescrita, o texto dos capítulos não vale como canon",
-"feito": false
+"feito": false,
+"fase": 5,
+"ord": 86
 },
 {
 "cat": "regra",
 "id": "r1",
 "titulo": "A unidade e a conta da Banda",
 "nota": "Os níveis do CRUD vão de 500 GB a 1 PB. Em GB nem o máximo de 20 e 20 (4.000 GB) chega no nível 2 de 50 TB. Em TB quem tem 10 e 10 já passa de 1 PB. Uma opção é x 10 TB, com média de 200 TB e os níveis 4 e 5 só com Célula de Malha ou o Caelum. Confirmar também se o x 100 multiplica a soma toda",
-"feito": false
+"feito": false,
+"fase": 6,
+"ord": 88
 },
 {
 "cat": "regra",
 "id": "r2",
 "titulo": "O sinal da Sincronização na Agonia",
 "nota": "Na fórmula do Harry a Sincronização soma Agonia. No bloco dos implantes e na ficha do atributo ela protege. Decidir se é dano menos (Organismo mais Sincronização) ou se quem sincroniza mais sofre mais de propósito",
-"feito": false
+"feito": false,
+"fase": 6,
+"ord": 89
 },
 {
 "cat": "regra",
 "id": "r3",
 "titulo": "Esquiva, o que falta",
 "nota": "A base foi fechada pelo Harry em 13 nov, Handling mais Atletismo. Falta dizer se a esquiva gasta a próxima ação",
-"feito": false
+"feito": false,
+"fase": 6,
+"ord": 90
 },
 {
 "cat": "regra",
 "id": "r4",
 "titulo": "Mais esquivas por turno e desvio de bala",
 "nota": "Proposta pra vocês aceitarem ou não. Handling 16 ou mais dá duas esquivas por turno. O haste vem de algo do mundo, como injetor da ARC, selo de nanite de reflexo ou Overclock. Desviar de bala já disparada só em Overclock, queimando Agonia",
-"feito": false
+"feito": false,
+"fase": 6,
+"ord": 91
 },
 {
 "cat": "regra",
 "id": "r5",
 "titulo": "Base da Guilda nos Campos Elísios",
 "nota": "O descanso longo fala em base da Guilda nos Campos. Guilda é da LUX, nos Campos são os clãs",
-"feito": false
+"feito": false,
+"fase": 6,
+"ord": 92
 },
 {
 "cat": "regra",
 "id": "r6",
 "titulo": "Implante dos Engenheiros e culto dos Enxertados",
 "nota": "A mutilação voluntária dos Engenheiros de Sucata conversa com o culto dos Enxertados. Decidir se é a mesma prática vista de dois lados",
-"feito": false
+"feito": false,
+"fase": 6,
+"ord": 93
 },
 {
 "cat": "regra",
@@ -1225,6 +1354,6 @@ const FALTA=[
 "feito": false,
 "pq": "Vem logo depois das decisões. É o que impede ponta solta na reescrita",
 "fase": 2,
-"ord": 13
+"ord": 12
 }
 ];
