@@ -1,4 +1,4 @@
-/* O que falta. Fonte única do tracker do SOLPHI. Marcações ficam só no aparelho, nada vai pro banco. fase 1 decide primeiro, 2 antes de escrever. */
+/* O que falta. Fonte única do tracker do SOLPHI. Marcações ficam só no aparelho, nada vai pro banco. fase 1 decide primeiro, 2 antes de reescrever. */
 const FALTA=[
 {
 "cat": "canon",
@@ -209,9 +209,9 @@ const FALTA=[
 "titulo": "Escrever o conflito Zephyr e Lyra",
 "nota": "Decidido em reunião, ele contra a criadora que organiza. Você não é a SOLPHI pra achar que manda em mim. E a SOLPHI não manda no Zephyr",
 "feito": false,
+"pq": "Conflito que atravessa o livro",
 "fase": 2,
-"ord": 20,
-"pq": "Conflito que atravessa o livro"
+"ord": 25
 },
 {
 "cat": "canon",
@@ -312,9 +312,9 @@ const FALTA=[
 "titulo": "A cena da tatuagem do Zephyr",
 "nota": "Fechada pela Roberta em 7 out, falta escrever no capítulo. Na LUX, antes da invasão, o Haruki chama o Zephyr de canto e avisa que os membros mecânicos dele podem ser hackeados pela SOLPHI. Os olhos do Ion já têm uma proteção que o próprio Ion fez por dentro. Aí vem a cena, o Haruki tatuando o Zephyr com tinta de nanite, circuitos e símbolos como firewall, e depois programando os nanites no aparelho dele. A cena entra nos capítulos que já existem, antes da missão, na região do cap 7, A Última Noite, não num capítulo novo",
 "feito": false,
+"pq": "Cena antes da invasão",
 "fase": 2,
-"ord": 19,
-"pq": "Cena antes da invasão"
+"ord": 24
 },
 {
 "cat": "canon",
@@ -414,14 +414,20 @@ const FALTA=[
 "id": "g3",
 "titulo": "A ARC por dentro",
 "nota": "A rotina de 0 a 18, os CRANEs, a educação, um dia de uma criança",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 14,
+"pq": "A Parte I começa aqui. Sem a rotina da ARC não dá pra escrever a infância nem o que eles perdem"
 },
 {
 "cat": "lugar",
 "id": "g4",
 "titulo": "A LUX por dentro",
 "nota": "Os turnos de trabalho forçado, a distribuição, um dia de um rema",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 15,
+"pq": "A Parte I inteira se passa na LUX. Turnos, distribuição e um dia de um rema são o chão de cada cena"
 },
 {
 "cat": "lugar",
@@ -429,9 +435,9 @@ const FALTA=[
 "titulo": "Os esgotos detalhados",
 "nota": "A velha Chicago por baixo, as rotas, o esconderijo da Resistência",
 "feito": false,
+"pq": "Parte da fuga se passa lá embaixo",
 "fase": 2,
-"ord": 25,
-"pq": "Parte da fuga se passa lá embaixo"
+"ord": 30
 },
 {
 "cat": "lugar",
@@ -452,14 +458,20 @@ const FALTA=[
 "id": "g9",
 "titulo": "A ração e a água",
 "nota": "O que é, gosto, embalagem, o ritual de receber do drone",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 16,
+"pq": "A ração e a água aparecem todo dia na vida deles"
 },
 {
 "cat": "cultura",
 "id": "g10",
 "titulo": "Como contam o tempo",
 "nota": "O calendário, o peso do 29 de fevereiro, como um rema conta os dias",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 17,
+"pq": "A contagem até os 22 é o coração do começo do livro"
 },
 {
 "cat": "lugar",
@@ -473,7 +485,10 @@ const FALTA=[
 "id": "g12",
 "titulo": "O que fazem com os mortos",
 "nota": "Na ARC, na LUX e nos Campos. Sem religião, o que é um funeral",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 18,
+"pq": "Gente morre desde o começo. Sem religião, falta saber o que se faz com um corpo"
 },
 {
 "cat": "personagem",
@@ -509,9 +524,9 @@ const FALTA=[
 "titulo": "Ficha completa do Nexus",
 "nota": "A aparência já tá na aba Fichas, com o rosto do Adam. Falta o bloco de poder e o Delete dele do cap 28. Canon da sessão de arte de 9 out, o Nexus é a cara do Caelum envelhecida, o Adam congelado nos 56 anos da morte, e a âncora é o rosto do Caelum. Sugestões do rosto já no doc em 10 out, na ficha e na descrição do avatar",
 "feito": false,
+"pq": "Precisa do poder dele pro Delete do cap 28",
 "fase": 2,
-"ord": 21,
-"pq": "Precisa do poder dele pro Delete do cap 28"
+"ord": 26
 },
 {
 "cat": "personagem",
@@ -526,9 +541,9 @@ const FALTA=[
 "titulo": "Os 2 ou 3 Leapers extras da Resistência",
 "nota": "O Guia confirma mais 2 ou 3 Leapers além do grupo. O Argo proposto na aba NPCs espera o aceite, faltam os outros",
 "feito": false,
+"pq": "O Argo está proposto, faltam os outros",
 "fase": 2,
-"ord": 24,
-"pq": "O Argo está proposto, faltam os outros"
+"ord": 29
 },
 {
 "cat": "personagem",
@@ -543,9 +558,9 @@ const FALTA=[
 "titulo": "Os gêmeos Adam e Aurora",
 "nota": "Aparência e o que cada um herda",
 "feito": false,
+"pq": "Só pro fim do Livro 1",
 "fase": 2,
-"ord": 26,
-"pq": "Só pro fim do Livro 1"
+"ord": 31
 },
 {
 "cat": "personagem",
@@ -567,9 +582,9 @@ const FALTA=[
 "titulo": "Os rostos da leva do cap 1",
 "nota": "Quem some, um reintegrado e um exilado para reencontrar depois",
 "feito": false,
+"pq": "Rostos que aparecem no começo e voltam depois",
 "fase": 2,
-"ord": 22,
-"pq": "Rostos que aparecem no começo e voltam depois"
+"ord": 27
 },
 {
 "cat": "personagem",
@@ -584,9 +599,9 @@ const FALTA=[
 "titulo": "Os Karas, a guilda das crianças",
 "nota": "Decidido pela Roberta em 7 out. Uma guilda à parte. A Selene leu The Obedience Drug num arquivo preservado de Chicago, as galerias dos esgotos guardam um arquivo de mídia física e digital, ela gostou dos Karas e batizou o grupo assim. No texto o nome entra sutil, a referência nunca é explicada. Resgatadas da ARC, navegam entre ARC, Lux e Elysium, líder criança que responde à Selene, Zephyr é o super herói delas. No fim do Livro 1 ficam sob o comando do Zephyr e do Ion, com os gêmeos, Caelum e Lyra, e os adolescentes que restaram na ARC. Falta fichar a guilda e batizar o líder",
 "feito": false,
+"pq": "O Miguel está proposto como líder, falta o aceite",
 "fase": 2,
-"ord": 23,
-"pq": "O Miguel está proposto como líder, falta o aceite"
+"ord": 28
 },
 {
 "cat": "guilda",
@@ -715,7 +730,10 @@ const FALTA=[
 "id": "rf1",
 "titulo": "Bestiário na bíblia",
 "nota": "Levar as 22 fichas de ameaça do Fables, com capacidades e fraquezas",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 21,
+"pq": "Os corpos da SOLPHI aparecem na invasão e na fuga. Hoje o bestiário só tem os Ferais"
 },
 {
 "cat": "item",
@@ -729,7 +747,10 @@ const FALTA=[
 "id": "rf3",
 "titulo": "As técnicas CRUD fichadas",
 "nota": "Os 24 spells do Fables casados com as escadas 10 a 0",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 19,
+"pq": "Os poderes já têm níveis e custo na bíblia. Faltam as técnicas que aparecem nas cenas de luta"
 },
 {
 "cat": "item",
@@ -771,7 +792,10 @@ const FALTA=[
 "id": "rf8",
 "titulo": "A técnica assinatura de cada um dos sete",
 "nota": "O golpe que só aquela pessoa faz",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 20,
+"pq": "Cada um dos sete precisa de um golpe próprio antes das cenas de ação"
 },
 {
 "cat": "criatura",
@@ -792,7 +816,10 @@ const FALTA=[
 "id": "rf11",
 "titulo": "As ameaças da guerra",
 "nota": "O exército dela na Parte III, o nano contra nano, o cerco",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 22,
+"pq": "O exército dela na guerra, pra Parte III"
 },
 {
 "cat": "item",
@@ -806,7 +833,10 @@ const FALTA=[
 "id": "rf13",
 "titulo": "Objetos novos que a história pede",
 "nota": "O kit do Caelum, a agulha do Haruki, o que mais as cenas exigirem. Em 13 nov o Harry disse que o foco agora é inventar itens, itens e mais itens. Nome novo só vira canon depois do aceite dos dois",
-"feito": false
+"feito": false,
+"fase": 2,
+"ord": 23,
+"pq": "O kit do Caelum, o notebook do Haruki, a prótese da Selene e o que cada cena pedir"
 },
 {
 "cat": "item",
@@ -1193,8 +1223,8 @@ const FALTA=[
 "titulo": "Montar a matriz de controle de pontas soltas",
 "nota": "Pedido da Roberta em 13 nov. Os capítulos escritos têm muitos erros e não valem como canon, então antes de reescrever entra uma matriz com mistérios e perguntas, arcos secundários, armas de Chekhov, regras do mundo, promessa de tom e a estrutura visual de causa e efeito",
 "feito": false,
+"pq": "Vem logo depois das decisões. É o que impede ponta solta na reescrita",
 "fase": 2,
-"ord": 12.5,
-"pq": "Vem logo depois das decisões. É o que impede ponta solta na reescrita"
+"ord": 13
 }
 ];
